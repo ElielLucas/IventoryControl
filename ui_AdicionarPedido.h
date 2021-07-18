@@ -11,14 +11,18 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,35 +37,37 @@ public:
     QPushButton *btnAdicionar;
     QPushButton *btnExcluir;
     QTableWidget *twPedido;
-    QLabel *label_6;
-    QLineEdit *txtDia;
     QLabel *label_7;
     QLabel *lblValorTotal;
     QPushButton *btnFinalizarPedido;
-    QLineEdit *txtMes;
-    QLineEdit *txtAno;
-    QLabel *label_8;
-    QLabel *label_9;
-    QFrame *frame_2;
-    QLabel *label;
+    QLineEdit *lineEditSearchProduto;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_6;
+    QDateTimeEdit *dateTimeEdit;
+    QFrame *frCliente;
     QPushButton *btnPesquisarCliente;
-    QLineEdit *txtIdCliente;
-    QLabel *label_2;
     QPushButton *btnNovoPedido;
-    QFrame *frClienteNovo;
-    QLabel *label_10;
+    QComboBox *comboBox;
+    QFrame *frBuscaCliente;
+    QFrame *frInformacoesCliente;
     QLabel *label_11;
     QLabel *label_12;
     QLabel *label_13;
-    QLabel *label_14;
-    QLabel *lblIdClienteNovo;
     QLabel *lblNomeNovo;
     QLabel *lblEnderecoNovo;
     QLabel *lblTelefoneNovo;
-    QLabel *lblCPFNovo;
+    QLineEdit *txtSearchCliente;
+    QFrame *frCadastroCliente;
+    QWidget *widget1;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label_2;
+    QVBoxLayout *verticalLayout;
+    QLineEdit *lineEditNome;
+    QLineEdit *lineEditEndereco;
+    QLineEdit *lineEditTelefone;
     QWidget *pesquisarPedido;
     QLabel *label_3;
-    QPushButton *btnPesquisarPedido;
     QLineEdit *txtIdPedido;
     QFrame *frDadosPedido;
     QTableWidget *twProdutosPedido;
@@ -83,6 +89,7 @@ public:
     QLabel *label_21;
     QLabel *lblValorTotalPesquisar;
     QLabel *label_22;
+    QPushButton *btnPesquisarPedido;
     QWidget *tab;
     QLineEdit *txtIdClientePesqC;
     QPushButton *btnPesquisarPesqC;
@@ -139,122 +146,187 @@ public:
     {
         if (AdicionarPedido->objectName().isEmpty())
             AdicionarPedido->setObjectName(QString::fromUtf8("AdicionarPedido"));
-        AdicionarPedido->resize(888, 655);
+        AdicionarPedido->resize(940, 690);
+        AdicionarPedido->setStyleSheet(QString::fromUtf8("QDialog{background:qlineargradient(spread:reflect, x1:1, y1:0.494409, x2:1, y2:0.942727, stop:0.198864 rgba(243, 112, 25, 251), stop:0.738636 rgba(221, 77, 48, 255))}"));
         tabWidget = new QTabWidget(AdicionarPedido);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 20, 871, 641));
+        tabWidget->setGeometry(QRect(40, 30, 861, 631));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Courier"));
+        tabWidget->setFont(font);
+        tabWidget->setStyleSheet(QString::fromUtf8("Widget{background:rgb(255, 140, 64)}\n"
+""));
         novoPedido = new QWidget();
         novoPedido->setObjectName(QString::fromUtf8("novoPedido"));
         frNovoPedido = new QFrame(novoPedido);
         frNovoPedido->setObjectName(QString::fromUtf8("frNovoPedido"));
-        frNovoPedido->setGeometry(QRect(10, 210, 841, 391));
+        frNovoPedido->setGeometry(QRect(10, 20, 841, 391));
         frNovoPedido->setFrameShape(QFrame::StyledPanel);
         frNovoPedido->setFrameShadow(QFrame::Raised);
         twProdutos = new QTableWidget(frNovoPedido);
         twProdutos->setObjectName(QString::fromUtf8("twProdutos"));
         twProdutos->setGeometry(QRect(20, 50, 401, 301));
+        twProdutos->setStyleSheet(QString::fromUtf8("QWidget{background:rgb(255,255, 255)}"));
         twProdutos->setEditTriggers(QAbstractItemView::NoEditTriggers);
         btnAdicionar = new QPushButton(frNovoPedido);
         btnAdicionar->setObjectName(QString::fromUtf8("btnAdicionar"));
-        btnAdicionar->setGeometry(QRect(320, 359, 93, 28));
+        btnAdicionar->setGeometry(QRect(330, 359, 93, 28));
+        btnAdicionar->setFont(font);
         btnExcluir = new QPushButton(frNovoPedido);
         btnExcluir->setObjectName(QString::fromUtf8("btnExcluir"));
         btnExcluir->setGeometry(QRect(440, 359, 93, 28));
+        btnExcluir->setFont(font);
         twPedido = new QTableWidget(frNovoPedido);
+        if (twPedido->rowCount() < 1)
+            twPedido->setRowCount(1);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Courier"));
+        font1.setKerning(true);
+        font1.setStyleStrategy(QFont::PreferDefault);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setTextAlignment(Qt::AlignCenter);
+        __qtablewidgetitem->setFont(font1);
+        twPedido->setVerticalHeaderItem(0, __qtablewidgetitem);
         twPedido->setObjectName(QString::fromUtf8("twPedido"));
-        twPedido->setGeometry(QRect(430, 50, 401, 301));
+        twPedido->setGeometry(QRect(440, 50, 401, 301));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(twPedido->sizePolicy().hasHeightForWidth());
+        twPedido->setSizePolicy(sizePolicy);
         twPedido->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        label_6 = new QLabel(frNovoPedido);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(30, 6, 41, 20));
-        txtDia = new QLineEdit(frNovoPedido);
-        txtDia->setObjectName(QString::fromUtf8("txtDia"));
-        txtDia->setGeometry(QRect(80, 10, 31, 22));
+        twPedido->setTextElideMode(Qt::ElideMiddle);
         label_7 = new QLabel(frNovoPedido);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(660, 20, 81, 16));
+        label_7->setGeometry(QRect(640, 20, 201, 21));
+        label_7->setFont(font);
         lblValorTotal = new QLabel(frNovoPedido);
         lblValorTotal->setObjectName(QString::fromUtf8("lblValorTotal"));
         lblValorTotal->setGeometry(QRect(750, 20, 61, 20));
         btnFinalizarPedido = new QPushButton(frNovoPedido);
         btnFinalizarPedido->setObjectName(QString::fromUtf8("btnFinalizarPedido"));
-        btnFinalizarPedido->setGeometry(QRect(712, 360, 111, 28));
-        txtMes = new QLineEdit(frNovoPedido);
-        txtMes->setObjectName(QString::fromUtf8("txtMes"));
-        txtMes->setGeometry(QRect(122, 10, 31, 22));
-        txtAno = new QLineEdit(frNovoPedido);
-        txtAno->setObjectName(QString::fromUtf8("txtAno"));
-        txtAno->setGeometry(QRect(170, 10, 61, 22));
-        label_8 = new QLabel(frNovoPedido);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(114, 12, 16, 16));
-        label_9 = new QLabel(frNovoPedido);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setGeometry(QRect(158, 12, 16, 16));
-        frame_2 = new QFrame(novoPedido);
-        frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(80, 20, 691, 181));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
-        label = new QLabel(frame_2);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 30, 121, 16));
-        btnPesquisarCliente = new QPushButton(frame_2);
+        btnFinalizarPedido->setGeometry(QRect(690, 360, 151, 28));
+        btnFinalizarPedido->setFont(font);
+        lineEditSearchProduto = new QLineEdit(frNovoPedido);
+        lineEditSearchProduto->setObjectName(QString::fromUtf8("lineEditSearchProduto"));
+        lineEditSearchProduto->setGeometry(QRect(20, 20, 401, 20));
+        lineEditSearchProduto->setFont(font);
+        widget = new QWidget(frNovoPedido);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(20, 360, 204, 24));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        label_6 = new QLabel(widget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font);
+
+        horizontalLayout->addWidget(label_6);
+
+        dateTimeEdit = new QDateTimeEdit(widget);
+        dateTimeEdit->setObjectName(QString::fromUtf8("dateTimeEdit"));
+        dateTimeEdit->setFont(font);
+
+        horizontalLayout->addWidget(dateTimeEdit);
+
+        frCliente = new QFrame(novoPedido);
+        frCliente->setObjectName(QString::fromUtf8("frCliente"));
+        frCliente->setGeometry(QRect(10, 430, 841, 161));
+        frCliente->setFrameShape(QFrame::StyledPanel);
+        frCliente->setFrameShadow(QFrame::Raised);
+        btnPesquisarCliente = new QPushButton(frCliente);
         btnPesquisarCliente->setObjectName(QString::fromUtf8("btnPesquisarCliente"));
-        btnPesquisarCliente->setGeometry(QRect(380, 30, 93, 28));
-        txtIdCliente = new QLineEdit(frame_2);
-        txtIdCliente->setObjectName(QString::fromUtf8("txtIdCliente"));
-        txtIdCliente->setGeometry(QRect(190, 30, 181, 22));
-        label_2 = new QLabel(frame_2);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(30, 80, 161, 16));
-        btnNovoPedido = new QPushButton(frame_2);
+        btnPesquisarCliente->setGeometry(QRect(220, 0, 93, 28));
+        btnNovoPedido = new QPushButton(frCliente);
         btnNovoPedido->setObjectName(QString::fromUtf8("btnNovoPedido"));
-        btnNovoPedido->setGeometry(QRect(570, 110, 93, 28));
-        frClienteNovo = new QFrame(frame_2);
-        frClienteNovo->setObjectName(QString::fromUtf8("frClienteNovo"));
-        frClienteNovo->setGeometry(QRect(180, 70, 381, 101));
-        frClienteNovo->setFrameShape(QFrame::StyledPanel);
-        frClienteNovo->setFrameShadow(QFrame::Raised);
-        label_10 = new QLabel(frClienteNovo);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(10, 0, 71, 16));
-        label_11 = new QLabel(frClienteNovo);
+        btnNovoPedido->setGeometry(QRect(330, 0, 101, 28));
+        comboBox = new QComboBox(frCliente);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(20, 0, 181, 22));
+        comboBox->setFont(font);
+        frBuscaCliente = new QFrame(frCliente);
+        frBuscaCliente->setObjectName(QString::fromUtf8("frBuscaCliente"));
+        frBuscaCliente->setGeometry(QRect(10, 30, 411, 121));
+        frBuscaCliente->setFrameShape(QFrame::StyledPanel);
+        frBuscaCliente->setFrameShadow(QFrame::Raised);
+        frInformacoesCliente = new QFrame(frBuscaCliente);
+        frInformacoesCliente->setObjectName(QString::fromUtf8("frInformacoesCliente"));
+        frInformacoesCliente->setGeometry(QRect(0, 40, 401, 71));
+        frInformacoesCliente->setFont(font);
+        frInformacoesCliente->setFrameShape(QFrame::StyledPanel);
+        frInformacoesCliente->setFrameShadow(QFrame::Raised);
+        label_11 = new QLabel(frInformacoesCliente);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(10, 20, 71, 16));
-        label_12 = new QLabel(frClienteNovo);
+        label_11->setGeometry(QRect(10, 10, 71, 16));
+        label_11->setFont(font);
+        label_12 = new QLabel(frInformacoesCliente);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(10, 40, 71, 16));
-        label_13 = new QLabel(frClienteNovo);
+        label_12->setGeometry(QRect(10, 30, 71, 16));
+        label_12->setFont(font);
+        label_13 = new QLabel(frInformacoesCliente);
         label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setGeometry(QRect(10, 60, 71, 16));
-        label_14 = new QLabel(frClienteNovo);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(10, 80, 71, 16));
-        lblIdClienteNovo = new QLabel(frClienteNovo);
-        lblIdClienteNovo->setObjectName(QString::fromUtf8("lblIdClienteNovo"));
-        lblIdClienteNovo->setGeometry(QRect(80, 0, 281, 16));
-        lblNomeNovo = new QLabel(frClienteNovo);
+        label_13->setGeometry(QRect(10, 50, 71, 16));
+        label_13->setFont(font);
+        lblNomeNovo = new QLabel(frInformacoesCliente);
         lblNomeNovo->setObjectName(QString::fromUtf8("lblNomeNovo"));
-        lblNomeNovo->setGeometry(QRect(80, 20, 301, 16));
-        lblEnderecoNovo = new QLabel(frClienteNovo);
+        lblNomeNovo->setGeometry(QRect(90, 30, 291, 20));
+        lblEnderecoNovo = new QLabel(frInformacoesCliente);
         lblEnderecoNovo->setObjectName(QString::fromUtf8("lblEnderecoNovo"));
-        lblEnderecoNovo->setGeometry(QRect(80, 40, 301, 16));
-        lblTelefoneNovo = new QLabel(frClienteNovo);
+        lblEnderecoNovo->setGeometry(QRect(60, 10, 301, 16));
+        lblTelefoneNovo = new QLabel(frInformacoesCliente);
         lblTelefoneNovo->setObjectName(QString::fromUtf8("lblTelefoneNovo"));
-        lblTelefoneNovo->setGeometry(QRect(80, 60, 301, 16));
-        lblCPFNovo = new QLabel(frClienteNovo);
-        lblCPFNovo->setObjectName(QString::fromUtf8("lblCPFNovo"));
-        lblCPFNovo->setGeometry(QRect(80, 80, 301, 16));
+        lblTelefoneNovo->setGeometry(QRect(80, 50, 301, 16));
+        txtSearchCliente = new QLineEdit(frBuscaCliente);
+        txtSearchCliente->setObjectName(QString::fromUtf8("txtSearchCliente"));
+        txtSearchCliente->setGeometry(QRect(10, 10, 181, 22));
+        txtSearchCliente->setFont(font);
+        frCadastroCliente = new QFrame(frCliente);
+        frCadastroCliente->setObjectName(QString::fromUtf8("frCadastroCliente"));
+        frCadastroCliente->setGeometry(QRect(0, 20, 351, 131));
+        frCadastroCliente->setFrameShape(QFrame::StyledPanel);
+        frCadastroCliente->setFrameShadow(QFrame::Raised);
+        widget1 = new QWidget(frCadastroCliente);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(20, 10, 311, 117));
+        verticalLayout_2 = new QVBoxLayout(widget1);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label_2 = new QLabel(widget1);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        verticalLayout_2->addWidget(label_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        lineEditNome = new QLineEdit(widget1);
+        lineEditNome->setObjectName(QString::fromUtf8("lineEditNome"));
+        lineEditNome->setFont(font);
+
+        verticalLayout->addWidget(lineEditNome);
+
+        lineEditEndereco = new QLineEdit(widget1);
+        lineEditEndereco->setObjectName(QString::fromUtf8("lineEditEndereco"));
+        lineEditEndereco->setFont(font);
+
+        verticalLayout->addWidget(lineEditEndereco);
+
+        lineEditTelefone = new QLineEdit(widget1);
+        lineEditTelefone->setObjectName(QString::fromUtf8("lineEditTelefone"));
+        lineEditTelefone->setFont(font);
+
+        verticalLayout->addWidget(lineEditTelefone);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
         tabWidget->addTab(novoPedido, QString());
         pesquisarPedido = new QWidget();
         pesquisarPedido->setObjectName(QString::fromUtf8("pesquisarPedido"));
         label_3 = new QLabel(pesquisarPedido);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(20, 47, 71, 16));
-        btnPesquisarPedido = new QPushButton(pesquisarPedido);
-        btnPesquisarPedido->setObjectName(QString::fromUtf8("btnPesquisarPedido"));
-        btnPesquisarPedido->setGeometry(QRect(250, 40, 93, 28));
         txtIdPedido = new QLineEdit(pesquisarPedido);
         txtIdPedido->setObjectName(QString::fromUtf8("txtIdPedido"));
         txtIdPedido->setGeometry(QRect(90, 44, 151, 22));
@@ -322,6 +394,9 @@ public:
         label_22 = new QLabel(frClientePesquisar);
         label_22->setObjectName(QString::fromUtf8("label_22"));
         label_22->setGeometry(QRect(0, 140, 71, 16));
+        btnPesquisarPedido = new QPushButton(pesquisarPedido);
+        btnPesquisarPedido->setObjectName(QString::fromUtf8("btnPesquisarPedido"));
+        btnPesquisarPedido->setGeometry(QRect(270, 40, 93, 28));
         tabWidget->addTab(pesquisarPedido, QString());
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
@@ -500,29 +575,31 @@ public:
         AdicionarPedido->setWindowTitle(QCoreApplication::translate("AdicionarPedido", "Dialog", nullptr));
         btnAdicionar->setText(QCoreApplication::translate("AdicionarPedido", "Adicionar", nullptr));
         btnExcluir->setText(QCoreApplication::translate("AdicionarPedido", "Excluir", nullptr));
-        label_6->setText(QCoreApplication::translate("AdicionarPedido", "Data:", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = twPedido->verticalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("AdicionarPedido", "Carrinho de Compras", nullptr));
         label_7->setText(QCoreApplication::translate("AdicionarPedido", "Valor total R$:", nullptr));
         lblValorTotal->setText(QString());
         btnFinalizarPedido->setText(QCoreApplication::translate("AdicionarPedido", "Finalizar Pedido", nullptr));
-        label_8->setText(QCoreApplication::translate("AdicionarPedido", "/", nullptr));
-        label_9->setText(QCoreApplication::translate("AdicionarPedido", "/", nullptr));
-        label->setText(QCoreApplication::translate("AdicionarPedido", "Pesquisar Id Cliente:", nullptr));
+        lineEditSearchProduto->setPlaceholderText(QCoreApplication::translate("AdicionarPedido", "Buscar Produto", nullptr));
+        label_6->setText(QCoreApplication::translate("AdicionarPedido", "Data:", nullptr));
         btnPesquisarCliente->setText(QCoreApplication::translate("AdicionarPedido", "Pesquisar", nullptr));
-        label_2->setText(QCoreApplication::translate("AdicionarPedido", "Informa\303\247\303\265es do Cliente:", nullptr));
         btnNovoPedido->setText(QCoreApplication::translate("AdicionarPedido", "Novo Pedido", nullptr));
-        label_10->setText(QCoreApplication::translate("AdicionarPedido", "Id Cliente:", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("AdicionarPedido", "Novo Cliente", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("AdicionarPedido", "Cliente Cadastrado", nullptr));
+
         label_11->setText(QCoreApplication::translate("AdicionarPedido", "Nome:", nullptr));
-        label_12->setText(QCoreApplication::translate("AdicionarPedido", "Endereco:", nullptr));
+        label_12->setText(QCoreApplication::translate("AdicionarPedido", "Endere\303\247o:", nullptr));
         label_13->setText(QCoreApplication::translate("AdicionarPedido", "Telefone:", nullptr));
-        label_14->setText(QCoreApplication::translate("AdicionarPedido", "CPF:", nullptr));
-        lblIdClienteNovo->setText(QString());
         lblNomeNovo->setText(QString());
         lblEnderecoNovo->setText(QString());
         lblTelefoneNovo->setText(QString());
-        lblCPFNovo->setText(QString());
+        txtSearchCliente->setPlaceholderText(QCoreApplication::translate("AdicionarPedido", "Buscar Cliente", nullptr));
+        label_2->setText(QCoreApplication::translate("AdicionarPedido", "Informa\303\247\303\265es do Cliente:", nullptr));
+        lineEditNome->setPlaceholderText(QCoreApplication::translate("AdicionarPedido", "Nome", nullptr));
+        lineEditEndereco->setPlaceholderText(QCoreApplication::translate("AdicionarPedido", "Endere\303\247o", nullptr));
+        lineEditTelefone->setPlaceholderText(QCoreApplication::translate("AdicionarPedido", "Telefone", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(novoPedido), QCoreApplication::translate("AdicionarPedido", "Novo Pedido", nullptr));
         label_3->setText(QCoreApplication::translate("AdicionarPedido", "Id Pedido:", nullptr));
-        btnPesquisarPedido->setText(QCoreApplication::translate("AdicionarPedido", "Pesquisar", nullptr));
         label_4->setText(QCoreApplication::translate("AdicionarPedido", "Informa\303\247\303\265es do Cliente:", nullptr));
         label_15->setText(QCoreApplication::translate("AdicionarPedido", "Id Cliente:", nullptr));
         label_16->setText(QCoreApplication::translate("AdicionarPedido", "Nome:", nullptr));
@@ -540,6 +617,7 @@ public:
         label_21->setText(QCoreApplication::translate("AdicionarPedido", "Data:", nullptr));
         lblValorTotalPesquisar->setText(QString());
         label_22->setText(QCoreApplication::translate("AdicionarPedido", "Valor total:", nullptr));
+        btnPesquisarPedido->setText(QCoreApplication::translate("AdicionarPedido", "Pesquisar", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(pesquisarPedido), QCoreApplication::translate("AdicionarPedido", "Pesquisar Pedido", nullptr));
         btnPesquisarPesqC->setText(QCoreApplication::translate("AdicionarPedido", "Pesquisar", nullptr));
         label_40->setText(QCoreApplication::translate("AdicionarPedido", "Id Cliente:", nullptr));

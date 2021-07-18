@@ -1,8 +1,7 @@
 #ifndef ADICIONARPEDIDO_H
 #define ADICIONARPEDIDO_H
 
-#include<interfacecrud.h>
-#include<persistenciacliente.h>
+
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<QMessageBox>
@@ -46,12 +45,11 @@ private slots:
 
 private:
     Ui::AdicionarPedido *ui;
-    HEV::InterfaceCRUD * pedidos;
-    HEV::List<HEV::Produto> comprarProduto;
-    HEV::List<HEV::Produto> escolhidos;
-    HEV::List<HEV::Produto> mostrar;
-    HEV::List<HEV::PedidoVenda> pedidovenda;
-    HEV::List<HEV::PedidoVenda> pedidoporcliente;
+//    HEV::List<HEV::Produto> comprarProduto;
+//    HEV::List<HEV::Produto> escolhidos;
+//    HEV::List<HEV::Produto> mostrar;
+//    HEV::List<HEV::PedidoVenda> pedidovenda;
+//    HEV::List<HEV::PedidoVenda> pedidoporcliente;
 
     QString valorDuasCasa(QString aux);
 

@@ -2,8 +2,6 @@
 #define ADICIONARCLIENTES_H
 
 #include <QDialog>
-#include<interfacecrud.h>
-#include<persistenciacliente.h>
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<QMessageBox>
@@ -35,7 +33,6 @@ private slots:
 
 private:
     Ui::AdicionarClientes *ui;
-    HEV::InterfaceCRUD * client;
 
     void limparDadosIncluir();
     void limparDadosPesquisar();

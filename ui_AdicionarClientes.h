@@ -191,7 +191,7 @@ public:
 
         retranslateUi(AdicionarClientes);
 
-        tabCliente->setCurrentIndex(3);
+        tabCliente->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(AdicionarClientes);

@@ -61,48 +61,7 @@ void Cliente::setTelefone(QString telefone)
     this->telefone = telefone;
 
 }
-void Cliente::montarDados(string Dat)
-{
-    QString copDat=QString::fromStdString(Dat),aux="";
 
-    int i = 0;
-    for(;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    id=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    nome=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    endereco=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    telefone=aux;
-    aux="";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    cpf=aux;
-}
-
-QString Cliente::desmontarDados()
-{
-    QString aux="";
-    aux+=id+";";
-    aux+=nome+";";
-    aux+=endereco+";";
-    aux+=telefone+";";
-    aux+=cpf+";";
-
-    return aux;
-}
 void Cliente::setCpf(QString CPF)
 {
     QString aux;
@@ -151,21 +110,5 @@ void Cliente::setCpf(QString CPF)
 
     cpf=CPF;
 }
-
-QString Cliente::print()
-{
-    QString saida="";
-
-    saida+="ID do Cliente: "+id;
-    saida+="\nNome: "+nome;
-    saida+="\nEndereço: "+endereco;
-    saida+="\nTelefone: "+telefone;
-    saida+="\nCPF: "+cpf+"\n\n";
-
-    return saida;
-}
-
-
-
 
 }

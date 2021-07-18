@@ -11,7 +11,7 @@ namespace HEV
     {
         QSqlQuery codInsertion;
         codInsertion.prepare("insert into tb_products(id, nome, descricao, quantidade, preco) values"
-                  "('"+obj.getCodigo()+"','"+obj.getDescricao()+"','"+nullptr+"','"+obj.getQuantidade()+"','"+obj.getPreco()+"')");
+                  "('"+obj.getCodigo()+"','"+obj.getNome()+"','"+obj.getDescricao()+"','"+obj.getQuantidade()+"','"+obj.getPreco()+"')");
         if(!codInsertion.exec())
           throw QString("Falha no cadastro do produto!");
 
@@ -108,25 +108,23 @@ namespace HEV
 //        return dat.desmontarDados();
     }
 
-    Produto PersistenciaProduto::pesquisar(QString key, int opcao)
+    int PersistenciaProduto::pesquisarIndex(QString key, int opcao, QString order)
     {
         QSqlQuery codSelect;
-        if(opcao==0)codSelect.prepare("SELECT * from tb_products WHERE id="+key+";");
-        else codSelect.prepare("SELECT * from tb_products WHERE nome='"+key+"';");
+        if(opcao==0)
+             codSelect.prepare("with aux as (SELECT ROW_NUMBER ( ) OVER("+order+") as linha, id from tb_products) select * from aux where id="+key);
+        else
+            codSelect.prepare("with aux as (SELECT ROW_NUMBER ( ) OVER("+order+") as linha, nome from tb_products) select * from aux where LOWER(nome)='"+key.toLower()+"'");
+
 
         if(!codSelect.exec())
           throw QString("Falha ao pesquisar o produto!");
 
-
-        int iCod, iNome, iQuant, iPrec;
-        iCod = codSelect.record().indexOf("id");
-        iNome = codSelect.record().indexOf("nome");
-        iQuant = codSelect.record().indexOf("quantidade");
-        iPrec = codSelect.record().indexOf("preco");
-
         codSelect.next();
-        Produto saida(codSelect.value(iCod).toString(),codSelect.value(iNome).toString(),codSelect.value(iQuant).toString(),codSelect.value(iPrec).toString());
-        return saida;
+
+        int linha = codSelect.record().indexOf("linha");
+
+        return codSelect.value(linha).toInt();
 
 //        ifstream arquivo;
 //        arquivo.open(nomeDoArquivoP.toStdString().c_str(), std::ios::in);
@@ -157,11 +155,37 @@ namespace HEV
 //        return arm.desmontarDados();
     }
 
+    Produto PersistenciaProduto::pesquisarProduto(QString key, int opcao, QString order)
+    {
+        QSqlQuery codSelect;
+        if(opcao==0)
+             codSelect.prepare("select * from tb_products WHERE id="+key+" "+order);
+        else
+            codSelect.prepare("select * from tb_products WHERE nome='"+key+"' "+order);
+
+        if(!codSelect.exec())
+          throw QString("Falha ao pesquisar o produto!");
+
+        codSelect.next();
+
+        int iCod, iNome, iQuant, iPrec, iDesc;
+
+        iCod = codSelect.record().indexOf("id");
+        iNome = codSelect.record().indexOf("nome");
+        iQuant = codSelect.record().indexOf("quantidade");
+        iPrec = codSelect.record().indexOf("preco");
+        iDesc = codSelect.record().indexOf("descricao");
+
+        Produto aux(codSelect.value(iCod).toString(), codSelect.value(iNome).toString(), codSelect.value(iQuant).toString(), codSelect.value(iPrec).toString(), codSelect.value(iDesc).toString());
+
+        return aux;
+    }
+
     void PersistenciaProduto::alterar(Produto obj)
     {
         QSqlQuery codUpdate("UPDATE tb_products SET id='"+obj.getCodigo()+"'"+
-                                                ", nome='"+obj.getDescricao()+"'"+
-                                                ", descricao='"+nullptr+"'"+
+                                                ", nome='"+obj.getNome()+"'"+
+                                                ", descricao='"+obj.getDescricao()+"'"+
                                                 ", quantidade='"+obj.getQuantidade()+"'"+
                                                 ", preco='"+obj.getPreco()+"'"+
                                                 " WHERE id="+obj.getCodigo()+";");
@@ -208,26 +232,21 @@ namespace HEV
 //            throw QString("Não foi possível alterar!");
   }
 
-    List<Produto> PersistenciaProduto::criarLista(QString order)
+    QSqlQuery PersistenciaProduto::criarLista(QString order)
     {
-        QSqlQuery codSelect("SELECT * from tb_products");
+        QSqlQuery codSelect("SELECT * from tb_products "+order);
 
         if(!codSelect.exec())
           throw QString("Falha ao montar lista!");
 
-        int iCod, iNome, iQuant, iPrec;
-        iCod = codSelect.record().indexOf("id");
-        iNome = codSelect.record().indexOf("nome");
-        iQuant = codSelect.record().indexOf("quantidade");
-        iPrec = codSelect.record().indexOf("preco");
+        return codSelect;
+//        HEV::Tree saida;
+//        while (codSelect.next())
+//        {
+//            Produto aux(codSelect.value(iCod).toString(),codSelect.value(iNome).toString(),codSelect.value(iQuant).toString(),codSelect.value(iPrec).toString());
+//            saida.push(&aux);
+//        }
 
-        List<Produto> saida;
-        while (codSelect.next())
-        {
-            Produto aux(codSelect.value(iCod).toString(),codSelect.value(iNome).toString(),codSelect.value(iQuant).toString(),codSelect.value(iPrec).toString());
-            saida.insert(&aux);
-        }
-        return saida;
 //        fstream arquivo;
 //        arquivo.open(nomeDoArquivoP.toStdString().c_str(), std::ios::in |std::ios::out | std::ios::app);
 

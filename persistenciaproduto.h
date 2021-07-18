@@ -8,7 +8,7 @@
 #include<QSqlRecord>
 #include<QVariant>
 #include<produto.h>
-#include<list.h>
+#include<treeavl.h>
 using std::ifstream;
 using std::ofstream;
 using std::string;
@@ -20,10 +20,11 @@ namespace HEV
             PersistenciaProduto();
             void incluir(Produto obj);
             void excluir(QString key, int opcao);
-            Produto pesquisar(QString key, int opcao);
+            int pesquisarIndex(QString key, int opcao, QString order);
+            Produto pesquisarProduto(QString key, int opcao, QString order);
             int currentPosition(QString key, QString comand, int opcao);
             void alterar(Produto obj);
-            List<Produto> criarLista(QString order);
+            QSqlQuery criarLista(QString order);
     };
 }
 #endif // PERSISTENCIAPRODUTO_H

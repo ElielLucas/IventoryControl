@@ -3,14 +3,16 @@ namespace HEV
 {
 Produto::Produto():
     codigo(""),
-    descricao(""),
+    nome(""),
     quantidade(""),
-    preco("")
+    preco(""),
+    descricao("")
 {
 }
-Produto::Produto(QString codigo, QString descricao, QString quantidade, QString preco)
+Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao)
 {
     setCodigo(codigo);
+    setNome(nome);
     setDescricao(descricao);
     setQuantidade(quantidade);
     setPreco(preco);
@@ -21,17 +23,18 @@ void Produto::setCodigo(QString codigo)
     if(aux<=0)throw QString("Código inválido!");
     this->codigo=codigo;
 }
-void Produto::setDescricao(QString descricao)
+
+void Produto::setNome(QString nome)
 {
-    if(descricao=="")throw QString("Descrição inválida!");
+    if(nome=="")throw QString("Nome inválido!");
     QString aux="";
-    QChar p=descricao[0];
+    QChar p=nome[0];
     aux+=p.toUpper();
-    for(int i=1;i<descricao.size();i++)
+    for(int i=1;i<nome.size();i++)
     {
-        aux+=descricao[i].toLower();
+        aux+=nome[i].toLower();
     }
-    this->descricao=aux;
+    this->nome=aux;
 }
 void Produto::setQuantidade(QString quantidade)
 {
@@ -70,52 +73,6 @@ void Produto::incQuantidade(int n)
 {
     int aux=quantidade.toInt()+n;
     quantidade=QString::number(aux);
-}
-void Produto::montarDados(string Dat)
-{
-    QString copDat=QString::fromStdString(Dat),aux="";
-
-    int i = 0;
-    for(;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    codigo=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    descricao=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    quantidade=aux;
-    aux = "";
-    for(i++;i<copDat.size() && copDat[i] != ';';i++){
-        aux+=Dat[i];
-    }
-    preco=aux;
-}
-QString Produto::desmontarDados()
-{
-    QString aux="";
-    aux+=codigo+";";
-    aux+=descricao+";";
-    aux+=quantidade+";";
-    aux+=preco+";";
-
-    return aux;
-}
-
-QString Produto::print()
-{
-    QString aux="";
-    aux+="Código: "+codigo+"\n";
-    aux+="Descrição: "+descricao+"\n";
-    aux+="Quantidade: "+quantidade+"\n";
-    aux+="Preço unitário: "+preco+"\n";
-
-    return aux;
 }
 
 }

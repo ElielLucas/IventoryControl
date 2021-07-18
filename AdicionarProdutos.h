@@ -2,11 +2,10 @@
 #define ADICIONARPRODUTOS_H
 
 #include <QDialog>
-#include<interfacecrud.h>
-#include<persistenciacliente.h>
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<QTableWidgetItem>
+#include<treeavl.h>
 #include<QMessageBox>
 
 namespace Ui {
@@ -30,21 +29,22 @@ private slots:
 
     void on_btnExcluir_clicked();
 
-    void on_btnMostrarLista_clicked();
-
     void on_tabProdutos_currentChanged(int index);
 
     void on_twProdutos_itemDoubleClicked(QTableWidgetItem *item);
 
+    void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
+
 private:
     Ui::AdicionarProdutos *ui;
     HEV::PersistenciaProduto * produt;
-    HEV::List<HEV::Produto> listaBuffer;
+    QString currentOrder;
 
     void limparDadosIncluir();
     void limparDadosPesquisar();
     void iniciarLista();
-    void mostrarLista();
+    void mostrarLista(QString order);
+    void organizeOrder();
 };
 
 #endif // ADICIONARPRODUTOS_H

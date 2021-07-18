@@ -1,10 +1,9 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include<QString>
-#include<transformardados.h>
 namespace HEV
 {
-    class Cliente: public TransformarDados
+    class Cliente
     {
     private:
         QString id;
@@ -26,11 +25,6 @@ namespace HEV
         QString getEndereco(){return endereco;}
         QString getTelefone(){return telefone;}
         QString getCPF(){return cpf;}
-
-        virtual void montarDados(string Dat);
-        virtual QString desmontarDados();
-        virtual QString getKey(){return id;}
-        virtual QString print();
 
         bool operator != (Cliente &P){return id.toLongLong()!=P.id.toLongLong();}
         bool operator == (Cliente &P){return id.toLongLong()==P.id.toLongLong();}

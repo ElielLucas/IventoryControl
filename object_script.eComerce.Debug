@@ -5,10 +5,10 @@ debug/cliente.o
 debug/main.o
 debug/mainwindow.o
 debug/pedidovenda.o
-debug/persistenciacliente.o
 debug/persistenciapedidovenda.o
 debug/persistenciaproduto.o
 debug/produto.o
+debug/treeavl.o
 debug/moc_AdicionarClientes.o
 debug/moc_AdicionarPedido.o
 debug/moc_AdicionarProdutos.o

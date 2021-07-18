@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AdicionarProdutos_t {
     QByteArrayData data[12];
-    char stringdata0[224];
+    char stringdata0[234];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,20 +38,21 @@ QT_MOC_LITERAL(2, 40, 0), // ""
 QT_MOC_LITERAL(3, 41, 23), // "on_btnPesquisar_clicked"
 QT_MOC_LITERAL(4, 65, 18), // "on_btnEdit_clicked"
 QT_MOC_LITERAL(5, 84, 21), // "on_btnExcluir_clicked"
-QT_MOC_LITERAL(6, 106, 26), // "on_btnMostrarLista_clicked"
-QT_MOC_LITERAL(7, 133, 29), // "on_tabProdutos_currentChanged"
-QT_MOC_LITERAL(8, 163, 5), // "index"
-QT_MOC_LITERAL(9, 169, 31), // "on_twProdutos_itemDoubleClicked"
-QT_MOC_LITERAL(10, 201, 17), // "QTableWidgetItem*"
-QT_MOC_LITERAL(11, 219, 4) // "item"
+QT_MOC_LITERAL(6, 106, 29), // "on_tabProdutos_currentChanged"
+QT_MOC_LITERAL(7, 136, 5), // "index"
+QT_MOC_LITERAL(8, 142, 31), // "on_twProdutos_itemDoubleClicked"
+QT_MOC_LITERAL(9, 174, 17), // "QTableWidgetItem*"
+QT_MOC_LITERAL(10, 192, 4), // "item"
+QT_MOC_LITERAL(11, 197, 36) // "on_comboBoxOrdem_currentIndex..."
 
     },
     "AdicionarProdutos\0on_btnIncluir_clicked\0"
     "\0on_btnPesquisar_clicked\0on_btnEdit_clicked\0"
-    "on_btnExcluir_clicked\0on_btnMostrarLista_clicked\0"
+    "on_btnExcluir_clicked\0"
     "on_tabProdutos_currentChanged\0index\0"
     "on_twProdutos_itemDoubleClicked\0"
-    "QTableWidgetItem*\0item"
+    "QTableWidgetItem*\0item\0"
+    "on_comboBoxOrdem_currentIndexChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,18 +74,18 @@ static const uint qt_meta_data_AdicionarProdutos[] = {
        3,    0,   50,    2, 0x08 /* Private */,
        4,    0,   51,    2, 0x08 /* Private */,
        5,    0,   52,    2, 0x08 /* Private */,
-       6,    0,   53,    2, 0x08 /* Private */,
-       7,    1,   54,    2, 0x08 /* Private */,
-       9,    1,   57,    2, 0x08 /* Private */,
+       6,    1,   53,    2, 0x08 /* Private */,
+       8,    1,   56,    2, 0x08 /* Private */,
+      11,    0,   59,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, 0x80000000 | 9,   10,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, 0x80000000 | 10,   11,
 
        0        // eod
 };
@@ -99,9 +100,9 @@ void AdicionarProdutos::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 1: _t->on_btnPesquisar_clicked(); break;
         case 2: _t->on_btnEdit_clicked(); break;
         case 3: _t->on_btnExcluir_clicked(); break;
-        case 4: _t->on_btnMostrarLista_clicked(); break;
-        case 5: _t->on_tabProdutos_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->on_twProdutos_itemDoubleClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 4: _t->on_tabProdutos_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->on_twProdutos_itemDoubleClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 6: _t->on_comboBoxOrdem_currentIndexChanged(); break;
         default: ;
         }
     }

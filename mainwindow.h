@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include<QMessageBox>
-#include<interfacecrud.h>
-#include<persistenciacliente.h>
+#include<QLinearGradient>
+#include<QPainter>
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<AdicionarProdutos.h>

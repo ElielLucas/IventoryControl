@@ -7,31 +7,34 @@ namespace HEV
     {
         public:
         Thing D;
-        Node<Thing> *next;
+        Node<Thing> *left;
+        Node<Thing> *right;
+        int fb;
         Node();
-
         static Node<Thing>* montaNode(Thing *Dat);
-        static Thing desmontaNode(Node<Thing> *P);
+        static Thing desmontaNode(Node<Thing>* P);
     };
 
     template <class Thing>
     Node<Thing>::Node()
     {
-        next=0;
+        left=0;
+        right=0;
+        fb=0;
     }
     template <class Thing>
     Node<Thing>* Node<Thing>::montaNode(Thing *Dat)
     {
-        Node<Thing>* P=new Node;
-        if(P) P->D=*Dat;
+        Node*P=new Node;
+        if(P)P->D=*Dat;
         return P;
     }
     template <class Thing>
-    Thing Node<Thing>::desmontaNode(Node<Thing> *P)
+    Thing Node<Thing>::desmontaNode(Node* P)
     {
-        Thing x=P->D;
+        Thing aux=P->D;
         delete P;
-        return x;
+        return aux;
     }
 }
 #endif // NODE_H

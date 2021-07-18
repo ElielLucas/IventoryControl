@@ -5,8 +5,7 @@ namespace HEV
     PedidoVenda::PedidoVenda():
         idPedido("0"),
         idCliente(""),
-        dataCompra(""),
-        listaProduto()
+        dataCompra("")
     {
     }
     PedidoVenda::PedidoVenda(QString idPedido, QString idCliente, int dia, int mes, int ano, QString total)
@@ -56,102 +55,14 @@ namespace HEV
         valorTotal = total;
     }
 
-    void PedidoVenda::setLista(List<Produto> *lista)
-    {
-        while (!(lista)->isEmpty()){
-            Produto p = lista->pegarPrimeiro();
-            listaProduto.insert(&p);
-        }
-    }
+//    void PedidoVenda::setLista(List<Produto> *lista)
+//    {
+//        while (!(lista)->isEmpty()){
+//            Produto p = lista->pegarPrimeiro();
+//            listaProduto.insert(&p);
+//        }
+//    }
 
-    void PedidoVenda::montarDados(string Dat)
-    {   
-        QString copDat=QString::fromStdString(Dat),aux="";
-        Produto x;
 
-        int i = 0;
-        for(;i<copDat.size() && copDat[i] != ';';i++){
-            aux+=Dat[i];
-        }
-        idCliente=aux;
-        aux = "";
-        for(i++;i<copDat.size() && copDat[i] != ';';i++){
-            aux+=Dat[i];
-        }
-        idPedido=aux;
-        aux = "";
-        for(i++;i<copDat.size() && copDat[i] != ';';i++){
-            aux+=Dat[i];
-        }
-        dataCompra=aux;
-        aux = "";
-        for(i++;i<copDat.size() && copDat[i] != ';';i++){
-            aux+=Dat[i];
-        }
-        valorTotal=aux;
-        aux="";
-        i=i+2;
-        while (copDat[i] != '-') {
-            for(;i<copDat.size() && copDat[i] != ';';i++){
-                aux+=Dat[i];
-            }       
-            x.setCodigo(aux);          
-            aux = "";
-            for(i++;i<copDat.size() && copDat[i] != ';';i++){
-                aux+=Dat[i];
-            }
-            x.setDescricao(aux);
-            aux = "";
-            for(i++;i<copDat.size() && copDat[i] != ';';i++){
-                aux+=Dat[i];
-            }
-            x.setQuantidade(aux);
-            aux = "";
-            for(i++;i<copDat.size() && copDat[i] != '*';i++){
-                aux+=Dat[i];
-            }
-            x.setPreco(aux);          
-            aux = "";
-            listaProduto.insert(&x);          
-            i++;
-        }
-
-    }
-
-    QString PedidoVenda::desmontarDados()
-    {
-        QString saida = "";
-        saida += idCliente+";";
-        saida += idPedido +";";
-        saida += dataCompra+";";
-        saida += valorTotal+";";
-        saida += "*";
-
-        while(!listaProduto.isEmpty())
-        {
-            Produto x=listaProduto.pegarPrimeiro();
-            saida+=x.getCodigo()+";"+x.getDescricao()+";"+x.getQuantidade()+";"+x.getPreco()+"*";
-        }
-        saida+="-";
-        return saida;
-    }
-    
-    QString PedidoVenda::print()
-    {
-        QString saida="";
-        saida+="ID do Pedido: "+idPedido+"\n";
-        saida+="ID do Cliente: "+idCliente+"\n";
-        saida+="Data da Compra: "+dataCompra+"\n";
-        saida+="Valor total: "+valorTotal+"\n\n";
-        List<Produto> aux=listaProduto;       
-        int cont=1;
-        while(!aux.isEmpty())
-        {
-            saida+="Produto "+QString::number(cont)+":"+"\n";
-            saida+=aux.pegarPrimeiro().print();
-            cont++;
-        }       
-        return saida;
-    }
 
 } // namespace HEV
