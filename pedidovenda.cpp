@@ -3,29 +3,13 @@
 namespace HEV
 {
     PedidoVenda::PedidoVenda():
-        idPedido("0"),
-        idCliente(""),
-        dataCompra("")
+        idPedido("0")
     {
     }
-    PedidoVenda::PedidoVenda(QString idPedido, QString idCliente, int dia, int mes, int ano, QString total)
+    PedidoVenda::PedidoVenda(QDateTime dataHoras, QString total)
     {
-        setIDPedido(idPedido);
-        setIDCliente(idCliente);
-        setDataCompra(dia, mes, ano);
+        this->dataHoras=dataHoras;
         setValorTotal(total);
-    }
-
-    void PedidoVenda::setDataCompra(int dia, int mes, int ano)
-    {
-        int tmes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-        if(ano > 2020 || ano < 2000)
-            throw QString("Ano Inválido");
-        if(mes > 12 || mes < 1)
-            throw QString("Mês Inválido");
-        if(dia > tmes[mes-1] || dia < 1)
-            throw QString("Dia Inválido");
-        dataCompra = QString::number(dia) + "/" + QString::number(mes) + "/" + QString::number(ano);
     }
 
     void PedidoVenda::setValorTotal(QString total)
@@ -54,15 +38,6 @@ namespace HEV
         total = nova;
         valorTotal = total;
     }
-
-//    void PedidoVenda::setLista(List<Produto> *lista)
-//    {
-//        while (!(lista)->isEmpty()){
-//            Produto p = lista->pegarPrimeiro();
-//            listaProduto.insert(&p);
-//        }
-//    }
-
 
 
 } // namespace HEV

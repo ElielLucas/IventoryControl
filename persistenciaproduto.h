@@ -2,15 +2,13 @@
 #define PERSISTENCIAPRODUTO_H
 #include<fstream>
 #include<QString>
+#include<produto.h>
 #include<QSql>
 #include<QSqlDatabase>
 #include<QSqlQuery>
 #include<QSqlRecord>
 #include<QVariant>
-#include<produto.h>
-#include<treeavl.h>
-using std::ifstream;
-using std::ofstream;
+
 using std::string;
 namespace HEV
 {

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'AdicionarClientes.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.1.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,14 +11,17 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,170 +31,322 @@ class Ui_AdicionarClientes
 public:
     QTabWidget *tabCliente;
     QWidget *tabIncluirCliente;
-    QFrame *frame;
-    QLabel *label;
-    QLineEdit *txtNomeIncluir;
+    QPushButton *pushButtonIncluir;
     QLabel *label_2;
-    QLineEdit *txtEnderecoIncluir;
-    QLabel *label_3;
-    QLineEdit *txtTelefoneIncluir;
-    QLineEdit *txtCPFIncluir;
-    QLabel *label_4;
-    QPushButton *btnIncluir;
-    QWidget *tabPesquisarCliente;
-    QFrame *frame_2;
-    QLabel *label_7;
-    QLineEdit *txtIdClienteEdit;
-    QPushButton *btnPesquisar;
-    QFrame *frPesquisarCliente;
-    QPushButton *btnEdit;
-    QLabel *label_10;
-    QLineEdit *txtNomeEdit;
-    QLabel *label_5;
-    QLineEdit *txtEnderecoEdit;
-    QLabel *label_6;
-    QLineEdit *txtTelefoneEdit;
-    QLabel *label_9;
-    QLineEdit *txtCPFEdit;
-    QWidget *tabExcluirCliente;
-    QFrame *frame_6;
-    QLineEdit *txtIdClienteExcluir;
-    QPushButton *btnExcluir;
-    QLabel *label_17;
-    QLabel *lblDadoExcluido;
-    QLabel *label_11;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLineEdit *lineEditNomeIncluir;
+    QLineEdit *lineEditEnderecoIncluir;
+    QLineEdit *lineEditTelefoneIncluir;
+    QLineEdit *lineEditEmail;
     QWidget *tabListarCliente;
     QTableWidget *twCliente;
-    QPushButton *btnMostrarLista;
+    QLineEdit *lineEditSearchCliente;
+    QComboBox *comboBoxOrdem;
+    QFrame *fr_DadosCliente;
+    QPushButton *pushButtonEdit;
+    QPushButton *pushButtonExcluir;
+    QWidget *layoutWidget1;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_12;
+    QLineEdit *lineEditNomeEdit;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_13;
+    QLineEdit *lineEditEnderecoEdit;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label_14;
+    QLineEdit *lineEditTelefoneEdit;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label;
+    QLineEdit *lineEditEmailEdit;
+    QWidget *quadradim;
+    QLabel *labelID;
 
     void setupUi(QDialog *AdicionarClientes)
     {
         if (AdicionarClientes->objectName().isEmpty())
             AdicionarClientes->setObjectName(QString::fromUtf8("AdicionarClientes"));
-        AdicionarClientes->resize(615, 578);
+        AdicionarClientes->resize(860, 598);
+        AdicionarClientes->setMaximumSize(QSize(860, 598));
+        AdicionarClientes->setStyleSheet(QString::fromUtf8("QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));\n"
+"font-family: Courier;\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"  font-size:15px;\n"
+"  border-width:1px;\n"
+"  border-color:#1f2f47;\n"
+"  border-radius:6px;\n"
+"  height:25px\n"
+"}\n"
+"\n"
+"QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}\n"
+"\n"
+"QPushButton::pressed\n"
+"{\n"
+"	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));\n"
+"margin-top:1px;\n"
+"margin-bottom:-1px;\n"
+"\n"
+"}\n"
+"QPushButton::hover\n"
+"{\n"
+"	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));\n"
+"}\n"
+"\n"
+"QComboBox{\n"
+"  border-color:#1f2f47;\n"
+"  border-radius:4px\n"
+"}\n"
+""
+                        "\n"
+"QLineEdit{\n"
+"  height:22px;\n"
+"  border-width:1px;\n"
+"  border-radius:4px;\n"
+"  border-color:#fff;\n"
+"  background:#b5b5b5\n"
+"}\n"
+"\n"
+"QTextEdit{\n"
+"  background:#b5b5b5;\n"
+"  border:6px;\n"
+"}\n"
+"\n"
+"#twCliente\n"
+"{	\n"
+"	 selection-background-color: rgb(250, 128, 114);\n"
+"	 background:#b5b5b5;\n"
+"	 border-bottom-right-radius:20px;\n"
+"     border-bottom-left-radius:20px;\n"
+"     border: 1px solid #F4A460;\n"
+"}\n"
+"\n"
+""));
         tabCliente = new QTabWidget(AdicionarClientes);
         tabCliente->setObjectName(QString::fromUtf8("tabCliente"));
-        tabCliente->setGeometry(QRect(20, 20, 571, 531));
+        tabCliente->setGeometry(QRect(30, 20, 801, 551));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Courier")});
+        tabCliente->setFont(font);
+        tabCliente->setStyleSheet(QString::fromUtf8(""));
         tabIncluirCliente = new QWidget();
         tabIncluirCliente->setObjectName(QString::fromUtf8("tabIncluirCliente"));
-        frame = new QFrame(tabIncluirCliente);
-        frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(20, 20, 371, 341));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
-        label = new QLabel(frame);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(0, 30, 55, 16));
-        txtNomeIncluir = new QLineEdit(frame);
-        txtNomeIncluir->setObjectName(QString::fromUtf8("txtNomeIncluir"));
-        txtNomeIncluir->setGeometry(QRect(120, 20, 231, 22));
-        label_2 = new QLabel(frame);
+        tabIncluirCliente->setFont(font);
+        pushButtonIncluir = new QPushButton(tabIncluirCliente);
+        pushButtonIncluir->setObjectName(QString::fromUtf8("pushButtonIncluir"));
+        pushButtonIncluir->setGeometry(QRect(150, 370, 501, 28));
+        pushButtonIncluir->setFont(font);
+        pushButtonIncluir->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"width: 120px;\n"
+"\n"
+"}"));
+        label_2 = new QLabel(tabIncluirCliente);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(0, 90, 71, 16));
-        txtEnderecoIncluir = new QLineEdit(frame);
-        txtEnderecoIncluir->setObjectName(QString::fromUtf8("txtEnderecoIncluir"));
-        txtEnderecoIncluir->setGeometry(QRect(120, 80, 231, 22));
-        label_3 = new QLabel(frame);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(0, 150, 81, 16));
-        txtTelefoneIncluir = new QLineEdit(frame);
-        txtTelefoneIncluir->setObjectName(QString::fromUtf8("txtTelefoneIncluir"));
-        txtTelefoneIncluir->setGeometry(QRect(120, 150, 113, 22));
-        txtCPFIncluir = new QLineEdit(frame);
-        txtCPFIncluir->setObjectName(QString::fromUtf8("txtCPFIncluir"));
-        txtCPFIncluir->setGeometry(QRect(120, 210, 113, 22));
-        label_4 = new QLabel(frame);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(0, 210, 111, 16));
-        btnIncluir = new QPushButton(frame);
-        btnIncluir->setObjectName(QString::fromUtf8("btnIncluir"));
-        btnIncluir->setGeometry(QRect(250, 290, 93, 28));
+        label_2->setGeometry(QRect(180, 70, 431, 51));
+        label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	background:#ff9318;\n"
+"	border-top-right-radius:50px;\n"
+"	border-bottom-left-radius:50px;\n"
+"	font-family: Courier;\n"
+"}"));
+        layoutWidget = new QWidget(tabIncluirCliente);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(150, 140, 501, 211));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        lineEditNomeIncluir = new QLineEdit(layoutWidget);
+        lineEditNomeIncluir->setObjectName(QString::fromUtf8("lineEditNomeIncluir"));
+        lineEditNomeIncluir->setFont(font);
+
+        verticalLayout->addWidget(lineEditNomeIncluir);
+
+        lineEditEnderecoIncluir = new QLineEdit(layoutWidget);
+        lineEditEnderecoIncluir->setObjectName(QString::fromUtf8("lineEditEnderecoIncluir"));
+        lineEditEnderecoIncluir->setFont(font);
+
+        verticalLayout->addWidget(lineEditEnderecoIncluir);
+
+        lineEditTelefoneIncluir = new QLineEdit(layoutWidget);
+        lineEditTelefoneIncluir->setObjectName(QString::fromUtf8("lineEditTelefoneIncluir"));
+        lineEditTelefoneIncluir->setFont(font);
+
+        verticalLayout->addWidget(lineEditTelefoneIncluir);
+
+        lineEditEmail = new QLineEdit(layoutWidget);
+        lineEditEmail->setObjectName(QString::fromUtf8("lineEditEmail"));
+        lineEditEmail->setFont(font);
+
+        verticalLayout->addWidget(lineEditEmail);
+
         tabCliente->addTab(tabIncluirCliente, QString());
-        tabPesquisarCliente = new QWidget();
-        tabPesquisarCliente->setObjectName(QString::fromUtf8("tabPesquisarCliente"));
-        frame_2 = new QFrame(tabPesquisarCliente);
-        frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setGeometry(QRect(30, 50, 361, 311));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
-        label_7 = new QLabel(frame_2);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(10, 30, 81, 16));
-        txtIdClienteEdit = new QLineEdit(frame_2);
-        txtIdClienteEdit->setObjectName(QString::fromUtf8("txtIdClienteEdit"));
-        txtIdClienteEdit->setGeometry(QRect(100, 30, 113, 22));
-        btnPesquisar = new QPushButton(frame_2);
-        btnPesquisar->setObjectName(QString::fromUtf8("btnPesquisar"));
-        btnPesquisar->setGeometry(QRect(240, 30, 93, 28));
-        frPesquisarCliente = new QFrame(frame_2);
-        frPesquisarCliente->setObjectName(QString::fromUtf8("frPesquisarCliente"));
-        frPesquisarCliente->setGeometry(QRect(10, 70, 321, 231));
-        frPesquisarCliente->setFrameShape(QFrame::StyledPanel);
-        frPesquisarCliente->setFrameShadow(QFrame::Raised);
-        btnEdit = new QPushButton(frPesquisarCliente);
-        btnEdit->setObjectName(QString::fromUtf8("btnEdit"));
-        btnEdit->setGeometry(QRect(210, 190, 93, 28));
-        label_10 = new QLabel(frPesquisarCliente);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(0, 20, 55, 16));
-        txtNomeEdit = new QLineEdit(frPesquisarCliente);
-        txtNomeEdit->setObjectName(QString::fromUtf8("txtNomeEdit"));
-        txtNomeEdit->setGeometry(QRect(70, 10, 231, 22));
-        label_5 = new QLabel(frPesquisarCliente);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(0, 60, 71, 16));
-        txtEnderecoEdit = new QLineEdit(frPesquisarCliente);
-        txtEnderecoEdit->setObjectName(QString::fromUtf8("txtEnderecoEdit"));
-        txtEnderecoEdit->setGeometry(QRect(70, 60, 231, 22));
-        label_6 = new QLabel(frPesquisarCliente);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(0, 100, 81, 16));
-        txtTelefoneEdit = new QLineEdit(frPesquisarCliente);
-        txtTelefoneEdit->setObjectName(QString::fromUtf8("txtTelefoneEdit"));
-        txtTelefoneEdit->setGeometry(QRect(70, 100, 113, 22));
-        label_9 = new QLabel(frPesquisarCliente);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setGeometry(QRect(0, 140, 61, 16));
-        txtCPFEdit = new QLineEdit(frPesquisarCliente);
-        txtCPFEdit->setObjectName(QString::fromUtf8("txtCPFEdit"));
-        txtCPFEdit->setGeometry(QRect(70, 140, 113, 22));
-        tabCliente->addTab(tabPesquisarCliente, QString());
-        tabExcluirCliente = new QWidget();
-        tabExcluirCliente->setObjectName(QString::fromUtf8("tabExcluirCliente"));
-        frame_6 = new QFrame(tabExcluirCliente);
-        frame_6->setObjectName(QString::fromUtf8("frame_6"));
-        frame_6->setGeometry(QRect(20, 20, 381, 331));
-        frame_6->setFrameShape(QFrame::StyledPanel);
-        frame_6->setFrameShadow(QFrame::Raised);
-        txtIdClienteExcluir = new QLineEdit(frame_6);
-        txtIdClienteExcluir->setObjectName(QString::fromUtf8("txtIdClienteExcluir"));
-        txtIdClienteExcluir->setGeometry(QRect(120, 20, 113, 22));
-        btnExcluir = new QPushButton(frame_6);
-        btnExcluir->setObjectName(QString::fromUtf8("btnExcluir"));
-        btnExcluir->setGeometry(QRect(250, 20, 93, 28));
-        label_17 = new QLabel(frame_6);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
-        label_17->setGeometry(QRect(10, 100, 91, 16));
-        lblDadoExcluido = new QLabel(frame_6);
-        lblDadoExcluido->setObjectName(QString::fromUtf8("lblDadoExcluido"));
-        lblDadoExcluido->setGeometry(QRect(30, 130, 331, 151));
-        label_11 = new QLabel(frame_6);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(10, 20, 81, 16));
-        tabCliente->addTab(tabExcluirCliente, QString());
         tabListarCliente = new QWidget();
         tabListarCliente->setObjectName(QString::fromUtf8("tabListarCliente"));
         twCliente = new QTableWidget(tabListarCliente);
         twCliente->setObjectName(QString::fromUtf8("twCliente"));
-        twCliente->setGeometry(QRect(30, 70, 501, 381));
-        btnMostrarLista = new QPushButton(tabListarCliente);
-        btnMostrarLista->setObjectName(QString::fromUtf8("btnMostrarLista"));
-        btnMostrarLista->setGeometry(QRect(410, 20, 93, 28));
+        twCliente->setGeometry(QRect(10, 50, 501, 471));
+        twCliente->setFont(font);
+        twCliente->setStyleSheet(QString::fromUtf8(" selection-background-color: rgb(250, 128, 114);"));
+        twCliente->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        lineEditSearchCliente = new QLineEdit(tabListarCliente);
+        lineEditSearchCliente->setObjectName(QString::fromUtf8("lineEditSearchCliente"));
+        lineEditSearchCliente->setGeometry(QRect(10, 10, 501, 25));
+        lineEditSearchCliente->setFont(font);
+        comboBoxOrdem = new QComboBox(tabListarCliente);
+        comboBoxOrdem->addItem(QString());
+        comboBoxOrdem->addItem(QString());
+        comboBoxOrdem->setObjectName(QString::fromUtf8("comboBoxOrdem"));
+        comboBoxOrdem->setGeometry(QRect(520, 490, 164, 30));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Sitka Text")});
+        font1.setStyleStrategy(QFont::PreferDefault);
+        comboBoxOrdem->setFont(font1);
+        comboBoxOrdem->setLayoutDirection(Qt::LeftToRight);
+        comboBoxOrdem->setStyleSheet(QString::fromUtf8("QComboBox\n"
+"{\n"
+"	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));\n"
+"\n"
+"width:146;\n"
+"height:30\n"
+"\n"
+"}\n"
+"\n"
+""));
+        comboBoxOrdem->setEditable(false);
+        comboBoxOrdem->setInsertPolicy(QComboBox::NoInsert);
+        comboBoxOrdem->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+        comboBoxOrdem->setDuplicatesEnabled(false);
+        comboBoxOrdem->setFrame(true);
+        fr_DadosCliente = new QFrame(tabListarCliente);
+        fr_DadosCliente->setObjectName(QString::fromUtf8("fr_DadosCliente"));
+        fr_DadosCliente->setGeometry(QRect(520, 20, 261, 321));
+        fr_DadosCliente->setStyleSheet(QString::fromUtf8("border:0;"));
+        fr_DadosCliente->setFrameShape(QFrame::StyledPanel);
+        fr_DadosCliente->setFrameShadow(QFrame::Raised);
+        pushButtonEdit = new QPushButton(fr_DadosCliente);
+        pushButtonEdit->setObjectName(QString::fromUtf8("pushButtonEdit"));
+        pushButtonEdit->setGeometry(QRect(20, 260, 93, 28));
+        pushButtonEdit->setFont(font);
+        pushButtonExcluir = new QPushButton(fr_DadosCliente);
+        pushButtonExcluir->setObjectName(QString::fromUtf8("pushButtonExcluir"));
+        pushButtonExcluir->setGeometry(QRect(150, 260, 93, 28));
+        pushButtonExcluir->setFont(font);
+        layoutWidget1 = new QWidget(fr_DadosCliente);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(10, 30, 241, 224));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_12 = new QLabel(layoutWidget1);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setFont(font);
+        label_12->setStyleSheet(QString::fromUtf8("border:0;\n"
+"border-bottom: 1px solid #F4A460;\n"
+"margin: 14px 0;\n"
+"\n"
+"\n"
+""));
+
+        horizontalLayout_2->addWidget(label_12);
+
+        lineEditNomeEdit = new QLineEdit(layoutWidget1);
+        lineEditNomeEdit->setObjectName(QString::fromUtf8("lineEditNomeEdit"));
+        lineEditNomeEdit->setFont(font);
+        lineEditNomeEdit->setStyleSheet(QString::fromUtf8(""));
+
+        horizontalLayout_2->addWidget(lineEditNomeEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        label_13 = new QLabel(layoutWidget1);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        label_13->setFont(font);
+        label_13->setStyleSheet(QString::fromUtf8("border:0;\n"
+"border-bottom: 1px solid #F4A460;\n"
+"margin: 14px 0;\n"
+""));
+
+        horizontalLayout_3->addWidget(label_13);
+
+        lineEditEnderecoEdit = new QLineEdit(layoutWidget1);
+        lineEditEnderecoEdit->setObjectName(QString::fromUtf8("lineEditEnderecoEdit"));
+        lineEditEnderecoEdit->setFont(font);
+
+        horizontalLayout_3->addWidget(lineEditEnderecoEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        label_14 = new QLabel(layoutWidget1);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setFont(font);
+        label_14->setStyleSheet(QString::fromUtf8("border:0;\n"
+"border-bottom: 1px solid #F4A460;\n"
+"margin: 14px 0;\n"
+""));
+
+        horizontalLayout_4->addWidget(label_14);
+
+        lineEditTelefoneEdit = new QLineEdit(layoutWidget1);
+        lineEditTelefoneEdit->setObjectName(QString::fromUtf8("lineEditTelefoneEdit"));
+        lineEditTelefoneEdit->setFont(font);
+
+        horizontalLayout_4->addWidget(lineEditTelefoneEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label = new QLabel(layoutWidget1);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setFont(font);
+        label->setStyleSheet(QString::fromUtf8("border:0;\n"
+"border-bottom: 1px solid #F4A460;\n"
+"margin: 14px 0;\n"
+""));
+
+        horizontalLayout->addWidget(label);
+
+        lineEditEmailEdit = new QLineEdit(layoutWidget1);
+        lineEditEmailEdit->setObjectName(QString::fromUtf8("lineEditEmailEdit"));
+        lineEditEmailEdit->setFont(font);
+
+        horizontalLayout->addWidget(lineEditEmailEdit);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+        quadradim = new QWidget(tabListarCliente);
+        quadradim->setObjectName(QString::fromUtf8("quadradim"));
+        quadradim->setEnabled(true);
+        quadradim->setGeometry(QRect(530, 50, 251, 221));
+        quadradim->setStyleSheet(QString::fromUtf8("border: 1px solid #F4A460;\n"
+""));
+        labelID = new QLabel(tabListarCliente);
+        labelID->setObjectName(QString::fromUtf8("labelID"));
+        labelID->setGeometry(QRect(700, 500, 47, 13));
         tabCliente->addTab(tabListarCliente, QString());
+        quadradim->raise();
+        twCliente->raise();
+        lineEditSearchCliente->raise();
+        comboBoxOrdem->raise();
+        fr_DadosCliente->raise();
+        labelID->raise();
 
         retranslateUi(AdicionarClientes);
 
-        tabCliente->setCurrentIndex(0);
+        tabCliente->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(AdicionarClientes);
@@ -199,31 +354,37 @@ public:
 
     void retranslateUi(QDialog *AdicionarClientes)
     {
-        AdicionarClientes->setWindowTitle(QCoreApplication::translate("AdicionarClientes", "Dialog", nullptr));
+        AdicionarClientes->setWindowTitle(QCoreApplication::translate("AdicionarClientes", "Cadastro de Clientes", nullptr));
 #if QT_CONFIG(tooltip)
         tabCliente->setToolTip(QCoreApplication::translate("AdicionarClientes", "<html><head/><body><p><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
-        label->setText(QCoreApplication::translate("AdicionarClientes", "Nome:", nullptr));
-        label_2->setText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o:", nullptr));
-        label_3->setText(QCoreApplication::translate("AdicionarClientes", "Telefone:", nullptr));
-        label_4->setText(QCoreApplication::translate("AdicionarClientes", "CPF:", nullptr));
-        btnIncluir->setText(QCoreApplication::translate("AdicionarClientes", "Incluir", nullptr));
+        pushButtonIncluir->setText(QCoreApplication::translate("AdicionarClientes", "Incluir", nullptr));
+#if QT_CONFIG(tooltip)
+        label_2->setToolTip(QCoreApplication::translate("AdicionarClientes", "<html><head/><body><p align=\"justify\"><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        label_2->setText(QCoreApplication::translate("AdicionarClientes", "               Informa\303\247\303\265es do Cliente", nullptr));
+        lineEditNomeIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Nome do Cliente", nullptr));
+        lineEditEnderecoIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o (Opcional)", nullptr));
+        lineEditTelefoneIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Telefone (Opcional)", nullptr));
+        lineEditEmail->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Email (Opcional)", nullptr));
         tabCliente->setTabText(tabCliente->indexOf(tabIncluirCliente), QCoreApplication::translate("AdicionarClientes", "Incluir", nullptr));
-        label_7->setText(QCoreApplication::translate("AdicionarClientes", "Id do Cliente:", nullptr));
-        btnPesquisar->setText(QCoreApplication::translate("AdicionarClientes", "Pesquisar", nullptr));
-        btnEdit->setText(QCoreApplication::translate("AdicionarClientes", "Editar", nullptr));
-        label_10->setText(QCoreApplication::translate("AdicionarClientes", "Nome:", nullptr));
-        label_5->setText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o:", nullptr));
-        label_6->setText(QCoreApplication::translate("AdicionarClientes", "Telefone:", nullptr));
-        label_9->setText(QCoreApplication::translate("AdicionarClientes", "CPF:", nullptr));
-        tabCliente->setTabText(tabCliente->indexOf(tabPesquisarCliente), QCoreApplication::translate("AdicionarClientes", "Pesquisar e/ou Editar", nullptr));
-        btnExcluir->setText(QCoreApplication::translate("AdicionarClientes", "Excluir", nullptr));
-        label_17->setText(QCoreApplication::translate("AdicionarClientes", "Dado Excluido:", nullptr));
-        lblDadoExcluido->setText(QString());
-        label_11->setText(QCoreApplication::translate("AdicionarClientes", "Id do Cliente:", nullptr));
-        tabCliente->setTabText(tabCliente->indexOf(tabExcluirCliente), QCoreApplication::translate("AdicionarClientes", "Excluir", nullptr));
-        btnMostrarLista->setText(QCoreApplication::translate("AdicionarClientes", "Mostrar Lista", nullptr));
-        tabCliente->setTabText(tabCliente->indexOf(tabListarCliente), QCoreApplication::translate("AdicionarClientes", "Lista de clientes", nullptr));
+        lineEditSearchCliente->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Buscar Cliente", nullptr));
+        comboBoxOrdem->setItemText(0, QCoreApplication::translate("AdicionarClientes", "Crescente por nome", nullptr));
+        comboBoxOrdem->setItemText(1, QCoreApplication::translate("AdicionarClientes", "Decrescente por nome", nullptr));
+
+        comboBoxOrdem->setPlaceholderText(QString());
+        pushButtonEdit->setText(QCoreApplication::translate("AdicionarClientes", "Editar", nullptr));
+        pushButtonExcluir->setText(QCoreApplication::translate("AdicionarClientes", "Excluir", nullptr));
+        label_12->setText(QCoreApplication::translate("AdicionarClientes", "Nome    ", nullptr));
+        lineEditNomeEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Nome do Cliente", nullptr));
+        label_13->setText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o", nullptr));
+        lineEditEnderecoEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o", nullptr));
+        label_14->setText(QCoreApplication::translate("AdicionarClientes", "Telefone", nullptr));
+        lineEditTelefoneEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Telefone", nullptr));
+        label->setText(QCoreApplication::translate("AdicionarClientes", "Email   ", nullptr));
+        lineEditEmailEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Email", nullptr));
+        labelID->setText(QCoreApplication::translate("AdicionarClientes", "id", nullptr));
+        tabCliente->setTabText(tabCliente->indexOf(tabListarCliente), QCoreApplication::translate("AdicionarClientes", "Lista de Clientes", nullptr));
     } // retranslateUi
 
 };

@@ -8,13 +8,12 @@ AdicionarProdutos::AdicionarProdutos(QWidget *parent) :
     ui->setupUi(this);
     try
     {      
-        currentOrder="";
-        produt = new HEV::PersistenciaProduto();
+        currentOrder="";    
         iniciarLista();
-    }  catch (QString erro) {
+    }  catch (QString erro)
+    {
         QMessageBox::information(this,"Erro",erro);
     }
-    ui->twProdutos->setStyleSheet("QTableView {selection-background-color: red");
 }
 
 AdicionarProdutos::~AdicionarProdutos()
@@ -34,7 +33,7 @@ void AdicionarProdutos::on_btnIncluir_clicked()
 
         HEV::Produto x(cod,nome,quant,preco, desc);
 
-        produt->incluir(x);
+        produt.incluir(x);
         QMessageBox::information(this,"Incluir Produto","O produto foi incluído!");
     } catch(QString erro)
     {
@@ -46,35 +45,41 @@ void AdicionarProdutos::on_btnExcluir_clicked()
 {
     try
     {   
-        QString key="";
-        int escolhaComboBox = ui->comboBox->currentIndex();
+        QMessageBox::StandardButton confirmacao;
 
-        if(escolhaComboBox==0)key = ui->lineEditCodigo->text();
-        else key = ui->txtEditNome->text();
+        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja excluir o produto?",QMessageBox::Yes|QMessageBox::No);
 
-        produt->excluir(key, escolhaComboBox);
-        mostrarLista(currentOrder);
-        limparDadosPesquisar();
+        if (confirmacao == QMessageBox::Yes)
+        {
+            QString key="";
+            int escolhaComboBox = ui->comboBox->currentIndex();
 
-        QMessageBox::information(this,"Excluir Produto","O produto foi excluido!");
+            if(escolhaComboBox==0)key = ui->lineEditCodigo->text();
+            else key = ui->txtEditNome->text();
 
+            produt.excluir(key, escolhaComboBox);
+            mostrarLista(currentOrder);
+            limparDadosPesquisar();
+
+            QMessageBox::information(this,"Excluir Produto","O produto foi excluido!");
+        }
     } catch (QString erro)
     {
         QMessageBox::information(this,"Erro",erro);
     }
 }
-
-void AdicionarProdutos::on_btnPesquisar_clicked()
+void AdicionarProdutos::on_txtKeySearch_3_editingFinished()
 {
     try
     {
-        QString key = ui->txtKeySearch->text();
+        QString key = ui->txtKeySearch_3->text();
+        if(key!="")
+        {        
+            int escolhaComboBox = ui->comboBox->currentIndex();
+            int row=produt.pesquisarIndex(key,escolhaComboBox, currentOrder);
 
-        int escolhaComboBox = ui->comboBox->currentIndex();
-        int row=produt->pesquisarIndex(key,escolhaComboBox, currentOrder);
-
-        ui->twProdutos->selectRow(row-1);
-
+            ui->twProdutos->selectRow(row-1);
+        }else return;
     } catch (QString erro)
     {
         QMessageBox::information(this,"Erro",erro);
@@ -90,10 +95,10 @@ void AdicionarProdutos::on_btnEdit_clicked()
         nome = ui->txtEditNome->text();
         quant = ui->txtQtdeEdit->text();
         preco = ui->txtPrecoEdit->text();
-        desc = ui->textEditDescricaoBusca->toPlainText();;
+        desc = ui->textEditDescricaoBusca_2->toPlainText();;
 
         HEV::Produto aux(cod, nome, quant, preco, desc);
-        produt->alterar(aux);
+        produt.alterar(aux);
         mostrarLista(currentOrder);
 
         QMessageBox::information(this,"Editar Produto","O dados do produto foram alterados.");
@@ -119,18 +124,20 @@ void AdicionarProdutos::iniciarLista()
     ui->twProdutos->setSelectionBehavior(QAbstractItemView::SelectRows);
     //sumir com a linha ao lado
     ui->twProdutos->verticalHeader()->setVisible(false);
-    //cor da seleçao
-    ui->twProdutos->setStyleSheet("QTableView {selection-background-color: red");
+
+    for(int i=0;i<4;i++)ui->twProdutos->setColumnWidth(i,112);
 }
 
 void AdicionarProdutos::mostrarLista(QString order)
 {
+    limparDadosPesquisar();
+    for(int i=0;i<4;i++)ui->twProdutos->setColumnWidth(i,112);
     int n = ui->twProdutos->rowCount();
     for (int i = n; i >= 0; i--){
         ui->twProdutos->removeRow(i);
     }
 
-    QSqlQuery list = produt->criarLista(order);
+    QSqlQuery list = produt.criarLista(order);
     int linha = 0;
 
     int iCod, iNome, iQuant, iPrec;
@@ -158,14 +165,15 @@ void AdicionarProdutos::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
         int linha = item->row();
         QString cod = ui->twProdutos->item(linha,0)->text();
 
-        HEV::Produto obj = produt->pesquisarProduto(cod, 0, currentOrder);
+        HEV::Produto obj = produt.pesquisarProduto(cod, 0, currentOrder);
 
         ui->frDadosEdit->setVisible(true);
+        ui->quadradim->setVisible(true);
         ui->lineEditCodigo->setText(obj.getCodigo());
         ui->txtEditNome->setText(obj.getNome());
         ui->txtQtdeEdit->setText(obj.getQuantidade());
         ui->txtPrecoEdit->setText(obj.getPreco());
-        ui->textEditDescricaoBusca->setText(obj.getDescricao());
+        ui->textEditDescricaoBusca_2->setText(obj.getDescricao());
 
     }  catch (QString erro) {
         QMessageBox::information(this,"Erro",erro);
@@ -184,11 +192,12 @@ void AdicionarProdutos::limparDadosIncluir()
 void AdicionarProdutos::limparDadosPesquisar()
 {
     ui->lineEditCodigo->setText("");
-    ui->txtKeySearch->setText("");
+    ui->txtKeySearch_3->setText("");
     ui->txtEditNome->setText("");
     ui->txtQtdeEdit->setText("");
     ui->txtPrecoEdit->setText("");
     ui->frDadosEdit->setVisible(false);
+    ui->quadradim->setVisible(false);
 }
 
 void AdicionarProdutos::on_tabProdutos_currentChanged(int index)
@@ -209,3 +218,4 @@ void AdicionarProdutos::organizeOrder()
     else if(ui->comboBoxOrdem->currentIndex()==3)currentOrder="order by nome desc";
     mostrarLista(currentOrder);
 }
+

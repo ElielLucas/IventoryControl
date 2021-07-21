@@ -1,12 +1,15 @@
 #ifndef ADICIONARPEDIDO_H
 #define ADICIONARPEDIDO_H
 
-
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
+#include<persistenciacliente.h>
+#include<cliente.h>
+#include<list>
 #include<QMessageBox>
 #include<QInputDialog>
 #include <QDialog>
+
 
 namespace Ui {
 class AdicionarPedido;
@@ -23,8 +26,6 @@ public:
 private slots:
     void on_btnPesquisarCliente_clicked();
 
-    void on_btnNovoPedido_clicked();
-
     void on_btnAdicionar_clicked();
 
     void on_btnExcluir_clicked();
@@ -37,19 +38,26 @@ private slots:
 
     void on_btnMostrarPedido_clicked();
 
-    void on_tabWidget_currentChanged(int index);
-
     void on_btnPesquisarPesqC_clicked();
 
     void on_btnMostrarPesqC_clicked();
 
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_lineEditSearchProduto_textEdited(const QString &arg1);
+
+    void on_tabPedido_currentChanged(int index);
+
 private:
     Ui::AdicionarPedido *ui;
-//    HEV::List<HEV::Produto> comprarProduto;
-//    HEV::List<HEV::Produto> escolhidos;
-//    HEV::List<HEV::Produto> mostrar;
-//    HEV::List<HEV::PedidoVenda> pedidovenda;
-//    HEV::List<HEV::PedidoVenda> pedidoporcliente;
+    HEV::PersistenciaPedidoVenda persistPedido;
+    HEV::PersistenciaProduto produt;
+
+    list<HEV::Produto> comprarProduto;
+    list<HEV::Produto> escolhidos;
+    list<HEV::Produto> mostrar;
+    list<HEV::PedidoVenda> pedidovenda;
+    list<HEV::PedidoVenda> pedidoporcliente;
 
     QString valorDuasCasa(QString aux);
 
@@ -58,10 +66,12 @@ private:
     void limparListar();
     void limparAsLista();
     void limparListaPorCliente();
+    void organize();
 
     void iniciarListas();
     void criarLista();
-    void gerarLista();
+    void gerarListaProdutosEstoque();
+    void gerarListaProdutosEstoqueProvisorio();
     void gerarListaDeCompra();
     void gerarListaDePesquisa();
     void gerarListaDePedido();

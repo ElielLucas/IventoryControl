@@ -6,17 +6,27 @@ Cliente::Cliente():
     nome(""),
     endereco(""),
     telefone(""),
-    cpf("")
+    email("")
 {
 
 }
-Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString cpf)
+
+Cliente::Cliente(QString nome, QString endereco, QString telefone, QString email)
+{
+    id="";
+    setNome(nome);
+    setEndereco(endereco);
+    setTelefone(telefone);
+    setEmail(email);
+}
+
+Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString email)
 {
     setID(id);
     setNome(nome);
     setEndereco(endereco);
     setTelefone(telefone);
-    setCpf(cpf);
+    setEmail(email);
 }
 
 void Cliente::setNome(QString nome)
@@ -38,17 +48,19 @@ void Cliente::setNome(QString nome)
 
 void Cliente::setEndereco(QString endereco)
 {
-    if (endereco == "")
-        throw QString("Endereco invalido");
-    QString aux="";
-    QChar p=endereco[0];
-    aux+=p.toUpper();
-    for(int i=1;i<endereco.size();i++)
+    if (endereco == "")this->endereco = endereco;
+    else
     {
-        aux+=endereco[i].toLower();
-    }
+        QString aux="";
+        QChar p=endereco[0];
+        aux+=p.toUpper();
+        for(int i=1;i<endereco.size();i++)
+        {
+            aux+=endereco[i].toLower();
+        }
 
-    this->endereco = aux;
+        this->endereco = aux;
+    }
 }
 
 void Cliente::setTelefone(QString telefone)
@@ -59,56 +71,5 @@ void Cliente::setTelefone(QString telefone)
     if (i != telefone.size())
         throw QString("Telefone invalido");
     this->telefone = telefone;
-
 }
-
-void Cliente::setCpf(QString CPF)
-{
-    QString aux;
-    // Elimina CPFs invalidos conhecidos
-    if (CPF.length() != 11   ||
-        CPF == "00000000000" ||
-        CPF == "11111111111" ||
-        CPF == "22222222222" ||
-        CPF == "33333333333" ||
-        CPF == "44444444444" ||
-        CPF == "55555555555" ||
-        CPF == "66666666666" ||
-        CPF == "77777777777" ||
-        CPF == "88888888888" ||
-        CPF == "99999999999" ||
-        CPF == "")
-        throw QString("CPF inválido!");
-
-    int digito1=0;
-    int digito2=0;
-    /*/////////////////////Digito1//////////////////////////////////*/
-    for(int i = 0, j = 10; i < CPF.length()-2; i++, j--)
-    {
-        aux=CPF[i];
-        digito1+=aux.toInt()*j;
-    }
-    digito1%=11;
-    if(digito1 < 2) digito1 = 0;
-    else digito1 = 11 - digito1%11;
-
-    aux=CPF[9];
-    if((aux.toInt()) != digito1) throw QString("CPF inválido!");
-
-    /*//////////////////////Digito2/////////////////////////////////*/
-    for(int i = 0, j = 11; i < CPF.length()-1; i++, j--)
-    {
-        aux=CPF[i];
-        digito2+=aux.toInt()*j;
-    }
-    digito2%=11;
-    if(digito2 < 2) digito2 = 0;
-    else digito2 = 11 - digito2%11;
-
-    aux=CPF[10];
-    if((aux.toInt()) != digito2) throw QString("CPF inválido!");
-
-    cpf=CPF;
-}
-
 }

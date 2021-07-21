@@ -9,9 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>504</height>
+    <width>860</width>
+    <height>598</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>860</width>
+    <height>598</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -27,19 +33,19 @@
      </colorrole>
      <colorrole role="Button">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -110,19 +116,19 @@
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -130,19 +136,19 @@
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -206,19 +212,19 @@
      </colorrole>
      <colorrole role="Button">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -289,19 +295,19 @@
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -309,19 +315,19 @@
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -385,19 +391,19 @@
      </colorrole>
      <colorrole role="Button">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -468,19 +474,19 @@
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -488,19 +494,19 @@
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="LinearGradientPattern">
-       <gradient startx="1.000000000000000" starty="0.494409000000000" endx="1.000000000000000" endy="0.942727000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-        <gradientstop position="0.198864000000000">
-         <color alpha="251">
-          <red>243</red>
-          <green>112</green>
-          <blue>25</blue>
+       <gradient startx="0.000000000000000" starty="1.000000000000000" endx="1.000000000000000" endy="0.000000000000000" type="LinearGradient" spread="PadSpread" coordinatemode="ObjectBoundingMode">
+        <gradientstop position="0.000000000000000">
+         <color alpha="255">
+          <red>2</red>
+          <green>0</green>
+          <blue>36</blue>
          </color>
         </gradientstop>
-        <gradientstop position="0.738636000000000">
+        <gradientstop position="1.000000000000000">
          <color alpha="255">
-          <red>221</red>
+          <red>239</red>
           <green>77</green>
-          <blue>48</blue>
+          <blue>18</blue>
          </color>
         </gradientstop>
        </gradient>
@@ -557,13 +563,81 @@
   <property name="font">
    <font>
     <family>Courier</family>
+    <pointsize>8</pointsize>
    </font>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::NoContextMenu</enum>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>Estoque de Produtos</string>
   </property>
+  <property name="accessibleName">
+   <string/>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true">QDialog{background:qlineargradient(spread:reflect, x1:1, y1:0.494409, x2:1, y2:0.942727, stop:0.198864 rgba(243, 112, 25, 251), stop:0.738636 rgba(221, 77, 48, 255))}</string>
+   <string notr="true">QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));
+font-family: Courier;
+}
+
+QPushButton{
+  font-size:15px;
+  border-width:1px;
+  border-color:#1f2f47;
+  border-radius:6px;
+  height:25px
+}
+
+QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+margin-top:1px;
+margin-bottom:-1px;
+
+}
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}
+
+QComboBox{
+  border-color:#1f2f47;
+  border-radius:4px
+}
+
+QLineEdit{
+height:23px;
+}
+
+QTextEdit{
+  background:#b5b5b5;
+  border:6px;
+}
+
+#twProdutos
+{	
+	 selection-background-color: rgb(250, 128, 114);
+	 background:#b5b5b5;
+	 border-bottom-right-radius:20px;
+     border-bottom-left-radius:20px;
+     border: 1px solid #F4A460;
+}
+
+</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -577,10 +651,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>20</y>
-     <width>611</width>
-     <height>461</height>
+     <width>811</width>
+     <height>551</height>
     </rect>
    </property>
    <property name="palette">
@@ -1028,6 +1102,7 @@
    <property name="font">
     <font>
      <family>Courier</family>
+     <pointsize>8</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -1039,11 +1114,14 @@
    <property name="toolTip">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
+   <property name="accessibleName">
+    <string notr="true"/>
+   </property>
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">QMainWindow{background:qlineargradient(spread:reflect, x1:1, y1:0.494409, x2:1, y2:0.942727, stop:0.198864 rgba(243, 112, 25, 251), stop:0.738636 rgba(221, 77, 48, 255))}</string>
+    <string notr="true"/>
    </property>
    <property name="tabPosition">
     <enum>QTabWidget::North</enum>
@@ -1052,7 +1130,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideLeft</enum>
@@ -1078,14 +1156,17 @@
       <family>Courier</family>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <attribute name="title">
-     <string>Cadastrar</string>
+     <string>Cadastro</string>
     </attribute>
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
+       <x>110</x>
+       <y>80</y>
        <width>571</width>
        <height>411</height>
       </rect>
@@ -1532,6 +1613,19 @@
        </disabled>
       </palette>
      </property>
+     <property name="whatsThis">
+      <string notr="true"/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+  border-width:1px;
+  border-radius:4px;
+  border-color:#fff;
+  background:#b5b5b5
+}
+
+</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -1571,9 +1665,9 @@
                   <colorrole role="Button">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -1643,18 +1737,18 @@
                   <colorrole role="Base">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
                   <colorrole role="Window">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -1717,9 +1811,9 @@
                   <colorrole role="Button">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -1789,18 +1883,18 @@
                   <colorrole role="Base">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
                   <colorrole role="Window">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -1863,9 +1957,9 @@
                   <colorrole role="Button">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -1935,18 +2029,18 @@
                   <colorrole role="Base">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
                   <colorrole role="Window">
                    <brush brushstyle="SolidPattern">
                     <color alpha="255">
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
+                     <red>181</red>
+                     <green>181</green>
+                     <blue>181</blue>
                     </color>
                    </brush>
                   </colorrole>
@@ -2121,249 +2215,290 @@
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="QPushButton" name="btnIncluir">
-         <property name="palette">
-          <palette>
-           <active>
-            <colorrole role="Button">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Base">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Window">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-           </active>
-           <inactive>
-            <colorrole role="Button">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Base">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Window">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-           </inactive>
-           <disabled>
-            <colorrole role="Button">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Base">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-            <colorrole role="Window">
-             <brush brushstyle="LinearGradientPattern">
-              <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-               <gradientstop position="0.187500000000000">
-                <color alpha="255">
-                 <red>128</red>
-                 <green>128</green>
-                 <blue>128</blue>
-                </color>
-               </gradientstop>
-               <gradientstop position="1.000000000000000">
-                <color alpha="255">
-                 <red>211</red>
-                 <green>211</green>
-                 <blue>211</blue>
-                </color>
-               </gradientstop>
-              </gradient>
-             </brush>
-            </colorrole>
-           </disabled>
-          </palette>
-         </property>
-         <property name="font">
-          <font>
-           <family>Courier</family>
-           <stylestrategy>PreferDefault</stylestrategy>
-           <kerning>true</kerning>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
-
-</string>
-         </property>
-         <property name="text">
-          <string>Incluir</string>
-         </property>
-         <property name="shortcut">
-          <string notr="true"/>
-         </property>
-         <property name="checkable">
-          <bool>false</bool>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="btnIncluir">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>549</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="LinearGradientPattern">
+           <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
+            <gradientstop position="0.187500000000000">
+             <color alpha="255">
+              <red>128</red>
+              <green>128</green>
+              <blue>128</blue>
+             </color>
+            </gradientstop>
+            <gradientstop position="1.000000000000000">
+             <color alpha="255">
+              <red>211</red>
+              <green>211</green>
+              <blue>211</blue>
+             </color>
+            </gradientstop>
+           </gradient>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>-1</pointsize>
+        <stylestrategy>PreferDefault</stylestrategy>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Incluir</string>
+      </property>
+      <property name="shortcut">
+       <string notr="true"/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>20</y>
+       <width>431</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	background:#ff9318;
+	border-top-right-radius:50px;
+	border-bottom-left-radius:50px;
+	font-family: Courier;
+}</string>
+     </property>
+     <property name="text">
+      <string>               Informações do Produto</string>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tabListar">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <attribute name="title">
      <string>Lista de Produtos</string>
     </attribute>
     <widget class="QFrame" name="frDadosEdit">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>500</x>
        <y>40</y>
-       <width>551</width>
-       <height>261</height>
+       <width>291</width>
+       <height>351</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+  border-width:1px;
+  border-radius:4px;
+  border-color:#fff;
+  background:#b5b5b5
+}
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -2375,179 +2510,256 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>191</width>
-        <height>251</height>
+        <y>-6</y>
+        <width>291</width>
+        <height>305</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
-           <item>
-            <widget class="QLineEdit" name="lineEditCodigo">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-              </font>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="placeholderText">
-              <string>Código</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_14">
-             <item>
-              <widget class="QLineEdit" name="txtEditNome">
-               <property name="font">
-                <font>
-                 <family>Courier</family>
-                </font>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="placeholderText">
-                <string>Nome</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_15">
-             <item>
-              <widget class="QLineEdit" name="txtQtdeEdit">
-               <property name="font">
-                <font>
-                 <family>Courier</family>
-                </font>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="placeholderText">
-                <string>Quantidade               </string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_16">
-             <item>
-              <widget class="QLineEdit" name="txtPrecoEdit">
-               <property name="font">
-                <font>
-                 <family>Courier</family>
-                 <pointsize>8</pointsize>
-                 <weight>50</weight>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                 <underline>false</underline>
-                 <strikeout>false</strikeout>
-                 <kerning>true</kerning>
-                </font>
-               </property>
-               <property name="autoFillBackground">
-                <bool>false</bool>
-               </property>
-               <property name="placeholderText">
-                <string>Preço Unitário R$      </string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_6">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:0;
+border-bottom: 1px solid #F4A460;
+margin: 14px 0;
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Código    </string>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
-           <item>
-            <widget class="QPushButton" name="btnEdit">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-              </font>
-             </property>
-             <property name="acceptDrops">
-              <bool>false</bool>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
-
+          <widget class="QLineEdit" name="lineEditCodigo">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+  border-width:1px;
+  border-radius:4px;
+  border-color:#fff;
+  background:#b5b5b5
+}
 </string>
-             </property>
-             <property name="text">
-              <string>Editar</string>
-             </property>
-             <property name="checkable">
-              <bool>false</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-             <property name="default">
-              <bool>false</bool>
-             </property>
-             <property name="flat">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnExcluir">
-             <property name="font">
-              <font>
-               <family>Courier</family>
-              </font>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
-
-</string>
-             </property>
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+           </property>
+           <property name="placeholderText">
+            <string>Código</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_17">
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
          <item>
-          <widget class="QTextEdit" name="textEditDescricaoBusca">
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:0;
+border-bottom: 1px solid #F4A460;
+margin: 14px 0;
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Nome      </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtEditNome">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Nome</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:0;
+border-bottom: 1px solid #F4A460;
+margin: 14px 0;
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Quantidade</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtQtdeEdit">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Quantidade               </string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:0;
+border-bottom: 1px solid #F4A460;
+margin: 14px 0;
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Preço     </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="txtPrecoEdit">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+             <pointsize>8</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Preço Unitário R$      </string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="font">
+            <font>
+             <family>Courier</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:0;
+border-bottom: 1px solid #F4A460;
+margin: 35px 0;
+</string>
+           </property>
+           <property name="text">
+            <string>Descrição </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextEdit" name="textEditDescricaoBusca_2">
            <property name="palette">
             <palette>
              <active>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
               <colorrole role="BrightText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
                  <red>255</red>
                  <green>85</green>
                  <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
                 </color>
                </brush>
               </colorrole>
              </active>
              <inactive>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
               <colorrole role="BrightText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
@@ -2557,14 +2769,59 @@
                 </color>
                </brush>
               </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
              </inactive>
              <disabled>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
               <colorrole role="BrightText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
                  <red>255</red>
                  <green>85</green>
                  <blue>0</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>181</red>
+                 <green>181</green>
+                 <blue>181</blue>
                 </color>
                </brush>
               </colorrole>
@@ -2583,6 +2840,9 @@
            <property name="autoFillBackground">
             <bool>true</bool>
            </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="placeholderText">
             <string>Descrição do Produto</string>
            </property>
@@ -2592,462 +2852,109 @@
        </item>
       </layout>
      </widget>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>10</y>
-       <width>401</width>
-       <height>421</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_7">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_12">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="sizeConstraint">
-         <enum>QLayout::SetMinimumSize</enum>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QComboBox" name="comboBox">
-          <property name="maximumSize">
-           <size>
-            <width>59</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Sitka Text</family>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QComboBox{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}</string>
-          </property>
-          <property name="sizeAdjustPolicy">
-           <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-          </property>
-          <item>
-           <property name="text">
-            <string>Código</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Nome</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="txtKeySearch">
-          <property name="font">
-           <font>
-            <family>Courier</family>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnPesquisar">
-          <property name="palette">
-           <palette>
-            <active>
-             <colorrole role="Button">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Base">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Window">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-            </active>
-            <inactive>
-             <colorrole role="Button">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Base">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Window">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-            </inactive>
-            <disabled>
-             <colorrole role="Button">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Base">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-             <colorrole role="Window">
-              <brush brushstyle="LinearGradientPattern">
-               <gradient startx="0.994318000000000" starty="0.915000000000000" endx="0.994318000000000" endy="0.488000000000000" type="LinearGradient" spread="ReflectSpread" coordinatemode="ObjectBoundingMode">
-                <gradientstop position="0.187500000000000">
-                 <color alpha="255">
-                  <red>128</red>
-                  <green>128</green>
-                  <blue>128</blue>
-                 </color>
-                </gradientstop>
-                <gradientstop position="1.000000000000000">
-                 <color alpha="255">
-                  <red>211</red>
-                  <green>211</green>
-                  <blue>211</blue>
-                 </color>
-                </gradientstop>
-               </gradient>
-              </brush>
-             </colorrole>
-            </disabled>
-           </palette>
-          </property>
-          <property name="font">
-           <font>
-            <family>Courier</family>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+     <widget class="QPushButton" name="btnExcluir">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>310</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));
+font-size:14px;
+weight:20px
+}
 
-</string>
-          </property>
-          <property name="text">
-           <string>Pesquisar</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QTableWidget" name="twProdutos">
-        <property name="palette">
-         <palette>
-          <active>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>85</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Highlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>250</red>
-              <green>128</green>
-              <blue>114</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="HighlightedText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>127</green>
-              <blue>63</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>85</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Highlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>250</red>
-              <green>128</green>
-              <blue>114</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="HighlightedText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>127</green>
-              <blue>63</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>85</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>85</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Highlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>250</red>
-              <green>128</green>
-              <blue>114</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="HighlightedText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>127</green>
-              <blue>63</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font">
-         <font>
-          <family>Courier</family>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>true</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">selection-background-color: rgb(250, 128, 114);
-</string>
-        </property>
-        <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
+
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255))
+}
+
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}</string>
+      </property>
+      <property name="text">
+       <string>Excluir</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnEdit">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>310</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));
+font-size:14px
+}
+
+
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255))
+}
+
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QComboBox" name="comboBoxOrdem">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>410</y>
-       <width>139</width>
-       <height>20</height>
+       <x>500</x>
+       <y>480</y>
+       <width>164</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="font">
@@ -3060,15 +2967,28 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">QComboBox{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+      <string notr="true">QComboBox
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));
+
+width:146;
+height:30
+
+}
 
 </string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
      </property>
      <property name="insertPolicy">
       <enum>QComboBox::NoInsert</enum>
      </property>
      <property name="sizeAdjustPolicy">
       <enum>QComboBox::AdjustToContents</enum>
+     </property>
+     <property name="placeholderText">
+      <string/>
      </property>
      <property name="duplicatesEnabled">
       <bool>false</bool>
@@ -3097,6 +3017,129 @@
       </property>
      </item>
     </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>71</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>1000</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Courier</family>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}</string>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+     </property>
+     <item>
+      <property name="text">
+       <string>Código</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Nome</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="txtKeySearch_3">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>10</y>
+       <width>381</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Courier</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+  border-width:1px;
+  border-top-right-radius:6px;
+  border-bottom-right-radius:6px;
+  border-color:#fff;
+  background:#b5b5b5
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Buscar Produto</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="quadradim" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>40</y>
+       <width>301</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #F4A460;
+</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="twProdutos">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>451</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <zorder>quadradim</zorder>
+    <zorder>txtKeySearch_3</zorder>
+    <zorder>comboBox</zorder>
+    <zorder>frDadosEdit</zorder>
+    <zorder>comboBoxOrdem</zorder>
+    <zorder>lineEditCodigo</zorder>
+    <zorder>label_6</zorder>
+    <zorder>label_5</zorder>
+    <zorder>textEditDescricaoBusca</zorder>
+    <zorder>layoutWidget_3</zorder>
+    <zorder></zorder>
+    <zorder></zorder>
+    <zorder>txtPrecoEdit</zorder>
+    <zorder>label_3</zorder>
+    <zorder>label_6</zorder>
+    <zorder>lineEditCodigo</zorder>
+    <zorder>twProdutos</zorder>
    </widget>
   </widget>
  </widget>

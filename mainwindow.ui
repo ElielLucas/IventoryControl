@@ -26,10 +26,27 @@
    <string>eComerce</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{background:qlineargradient(spread:pad, x1:0.994, y1:0, x2:1, y2:1, stop:0.198864 rgba(255, 127, 34, 251), stop:1 rgba(0, 0, 0, 255))}
+   <string notr="true">QMainWindow{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255))}
+
+
+
+
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+  font-size:15px;
+  border-width:1px;
+  border-color:#1f2f47;
+  border-top-left-radius:17px;
+  border-top-right-radius:17px;
+  border-bottom-left-radius:17px;
+  border-bottom-right-radius:17px;
+}
+
+</string>
+   </property>
    <widget class="QPushButton" name="btnProdutos">
     <property name="geometry">
      <rect>
@@ -42,11 +59,22 @@
     <property name="font">
      <font>
       <family>Courier</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+margin-top:1px;
+margin-bottom:-1px;
+}
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}
 
 </string>
     </property>
@@ -66,13 +94,22 @@
     <property name="font">
      <font>
       <family>Courier</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+     <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));}
 
-</string>
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+margin-top:1px;
+margin-bottom:-1px;
+}
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}</string>
     </property>
     <property name="text">
      <string>Clientes</string>
@@ -90,11 +127,22 @@
     <property name="font">
      <font>
       <family>Courier</family>
-      <pointsize>15</pointsize>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}
+     <string notr="true">QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));}
+
+QPushButton::pressed
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+margin-top:1px;
+margin-bottom:-1px;
+}
+QPushButton::hover
+{
+	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));
+}
 
 </string>
     </property>

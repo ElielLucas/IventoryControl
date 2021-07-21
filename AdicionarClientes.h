@@ -2,8 +2,8 @@
 #define ADICIONARCLIENTES_H
 
 #include <QDialog>
-#include<persistenciapedidovenda.h>
-#include<persistenciaproduto.h>
+#include<persistenciacliente.h>
+#include<QTableWidgetItem>
 #include<QMessageBox>
 
 namespace Ui {
@@ -19,27 +19,31 @@ public:
     ~AdicionarClientes();
 
 private slots:
-    void on_btnIncluir_clicked();
-
-    void on_btnPesquisar_clicked();
-
-    void on_btnEdit_clicked();
-
-    void on_btnExcluir_clicked();
 
     void on_tabCliente_currentChanged(int index);
 
-    void on_btnMostrarLista_clicked();
+    void on_pushButtonIncluir_clicked();
+
+    //void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
+
+    void on_lineEditSearchCliente_textEdited(const QString &arg1);
+
+    void on_twCliente_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_pushButtonEdit_clicked();
+
+    void on_pushButtonExcluir_clicked();
 
 private:
     Ui::AdicionarClientes *ui;
+    HEV::PersistenciaCliente client;
+    QString currentOrder;
 
     void limparDadosIncluir();
-    void limparDadosPesquisar();
-    void limparDadosExcluir();
     void limparDadosLista();
     void iniciarLista();
-    void mostrarLista();
+    void mostrarLista(QString order);
+    void organizeOrder();
 };
 
 #endif // ADICIONARCLIENTES_H

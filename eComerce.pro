@@ -23,10 +23,10 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     pedidovenda.cpp \
+    persistenciacliente.cpp \
     persistenciapedidovenda.cpp \
     persistenciaproduto.cpp \
-    produto.cpp \
-    treeavl.cpp
+    produto.cpp
 
 HEADERS += \
     AdicionarClientes.h \
@@ -34,12 +34,11 @@ HEADERS += \
     AdicionarProdutos.h \
     cliente.h \
     mainwindow.h \
-    node.h \
     pedidovenda.h \
+    persistenciacliente.h \
     persistenciapedidovenda.h \
     persistenciaproduto.h \
-    produto.h \
-    treeavl.h
+    produto.h
 
 FORMS += \
     AdicionarClientes.ui \

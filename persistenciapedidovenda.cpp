@@ -1,8 +1,33 @@
 #include "persistenciapedidovenda.h"
 namespace HEV
 {
-    void PersistenciaPedidoVenda::incluir(QString valor)
+    PersistenciaPedidoVenda::PersistenciaPedidoVenda()
     {
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("dbInventoryControl.db");
+        if(!db.open())throw QString("Falha ao conectar ao banco de dados!");
+    }
+    void PersistenciaPedidoVenda::incluir(PedidoVenda obj, QString id_cliente)
+    {
+          QSqlQuery insert;
+
+          QString organizeDate=QString::number(obj.getDataHorasCompra().date().year())+"-"+QString::number(obj.getDataHorasCompra().date().month())+"-"+QString::number(obj.getDataHorasCompra().date().day());
+          insert.prepare("insert into tb_pedidos(dataCompra, valorTotal, id_cliente) values('"+organizeDate+"',"+obj.getValorTotal()+","+id_cliente+")");
+
+          if(!insert.exec())
+            throw QString("Falha no cadastro do pedido!");
+
+          list<Produto> listAux = obj.getListaCurso();
+          for(auto i=listAux.begin();i!=listAux.end();i++)
+          {
+               insert.prepare("insert into produto_cliente(id_produto, id_cliente) values("+i->getCodigo()+","+id_cliente+")");
+               if(!insert.exec())
+                 throw QString("Falha no cadastro do pedido!");
+               insert.prepare("insert into produto_pedido(id_produto, id_pedido) values("+i->getCodigo()+","+QString::number(idMax())+")");
+               if(!insert.exec())
+                 throw QString("Falha no cadastro do pedido!");
+          }
+
 //       QString id="1";
 //       fstream arquivoPV;
 //       arquivoPV.open(nomeDoArquivoPV.toStdString().c_str(), std::ios::in |std::ios::out | std::ios::app);
@@ -124,8 +149,31 @@ namespace HEV
 //        return lista;
 //    }
 
-//    void PersistenciaPedidoVenda::atualizarEstoque(List<Produto> * listProd)
-//    {
+    QSqlQuery PersistenciaPedidoVenda::currentPosition(QString key, int opcao)
+    {
+        QSqlQuery codSelect("SELECT * from tb_products WHERE LOWER(nome) like'"+key.toLower()+"%'");
+
+        if(!codSelect.exec())
+          throw QString("Falha ao pesquisar o produto!");
+
+        return codSelect;
+    }
+
+    void PersistenciaPedidoVenda::atualizarEstoque(list<Produto> &listProd)
+    {
+
+        for(auto i=listProd.begin(); i!=listProd.end();i++)
+        {
+            QSqlQuery codUpdate("UPDATE tb_products SET id='"+i->getCodigo()+"'"+
+                                                    ", nome='"+i->getNome()+"'"+
+                                                    ", descricao='"+i->getDescricao()+"'"+
+                                                    ", quantidade='"+i->getQuantidade()+"'"+
+                                                    ", preco='"+i->getPreco()+"'"+
+                                                    " WHERE id="+i->getCodigo()+";");
+            if(!codUpdate.exec())
+              throw QString("Falha ao atualizar o estoque!");
+        }
+
 //           ofstream tempP;
 //           tempP.open("tempP.txt", std::ios::out | std::ios::app);
 
@@ -143,5 +191,15 @@ namespace HEV
 
 //           remove("arquivoProdutos.txt");
 //           rename("tempP.txt", "arquivoProdutos.txt");
-//    }
+    }
+
+    int PersistenciaPedidoVenda::idMax()
+    {
+        QSqlQuery pesquisa("select MAX(id) as id from tb_pedidos");
+        if(!pesquisa.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        pesquisa.next();
+        int id = pesquisa.record().indexOf("id");
+        return pesquisa.value(id).toInt();
+    }
 }

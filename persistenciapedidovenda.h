@@ -2,26 +2,38 @@
 #define PERSISTENCIAPEDIDOVENDA_H
 #include<fstream>
 #include<QString>
+#include<QSql>
+#include<QSqlDatabase>
+#include<QSqlQuery>
+#include<QSqlRecord>
+#include<QVariant>
+#include<vector>
 #include<pedidovenda.h>
+#include<persistenciacliente.h>
 
-using std::ifstream;
-using std::ofstream;
 using std::string;
 namespace HEV
 {
     class PersistenciaPedidoVenda
-    {
-        private:
-            QString nomeDoArquivoPV;
+    {    
         public:
-            PersistenciaPedidoVenda(QString nomeDoArquivo): nomeDoArquivoPV(nomeDoArquivo){}
-            virtual void incluir(QString valor);
-            virtual QString pesquisar(QString valor);
-            virtual QString  excluir(QString valor){}//podem ser inseridas em uma atualizacao
-            virtual void alterar(QString obj){}//podem ser inseridas em uma atualizacao
+            PersistenciaPedidoVenda();
+            void incluir(PedidoVenda obj, QString id_cliente);
+            QString pesquisar(QString valor);
+            QSqlQuery currentPosition(QString key, int opcao);
+
+            //pesquisar por data
+            //pesquisar valores de compra menores que X
+            //pesquisar valores de compra maiores que X
+            //pesquisar valores de compra entre X e Y
+            //pesquisar por comprar que tenham o produto X
+
 //            List<PedidoVenda> criarLista();
 //            List<PedidoVenda> criarListaporCliente(QString n);
-//            void atualizarEstoque(List<Produto>* listProd);
+            void atualizarEstoque(list<Produto> &listProd);
+
+
+            int idMax();
     };
 }
 

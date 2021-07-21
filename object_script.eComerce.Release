@@ -5,10 +5,10 @@ release/cliente.o
 release/main.o
 release/mainwindow.o
 release/pedidovenda.o
+release/persistenciacliente.o
 release/persistenciapedidovenda.o
 release/persistenciaproduto.o
 release/produto.o
-release/treeavl.o
 release/moc_AdicionarClientes.o
 release/moc_AdicionarPedido.o
 release/moc_AdicionarProdutos.o

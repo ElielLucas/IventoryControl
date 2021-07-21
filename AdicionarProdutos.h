@@ -5,7 +5,6 @@
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<QTableWidgetItem>
-#include<treeavl.h>
 #include<QMessageBox>
 
 namespace Ui {
@@ -23,8 +22,6 @@ public:
 private slots:
     void on_btnIncluir_clicked();
 
-    void on_btnPesquisar_clicked();
-
     void on_btnEdit_clicked();
 
     void on_btnExcluir_clicked();
@@ -35,9 +32,11 @@ private slots:
 
     void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
 
+    void on_txtKeySearch_3_editingFinished();
+
 private:
     Ui::AdicionarProdutos *ui;
-    HEV::PersistenciaProduto * produt;
+    HEV::PersistenciaProduto produt;
     QString currentOrder;
 
     void limparDadosIncluir();

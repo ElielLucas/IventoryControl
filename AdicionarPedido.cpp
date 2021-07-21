@@ -6,17 +6,61 @@ AdicionarPedido::AdicionarPedido(QWidget *parent) :
     ui(new Ui::AdicionarPedido)
 {
     ui->setupUi(this);
+
     iniciarListas();
-    limparIncluir();
-    limparListar();
-    limparPesquisar();
-    limparListaPorCliente();
+//    limparIncluir();
+//    limparListar();
+//    limparPesquisar();
+//    limparListaPorCliente();
+
+    on_comboBox_currentIndexChanged(0);
 }
 
 AdicionarPedido::~AdicionarPedido()
 {
     limparAsLista();
     delete ui;
+}
+
+void AdicionarPedido::on_lineEditSearchProduto_textEdited(const QString &arg1)
+{
+    try
+    {
+        QStringList key = ui->lineEditSearchProduto->text().split(' ');
+
+        int n = ui->twProdutos->rowCount();
+        for (int i = n; i >= 0; i--){
+            ui->twProdutos->removeRow(i);
+        }
+
+        QString x="";
+        for(int i=0;i<key.size();i++)x+=key[i];
+
+        QSqlQuery list = persistPedido.currentPosition(x, ui->comboBoxSearch->currentIndex());
+        int linha = 0;
+
+        int iCod, iNome, iQuantidade, iPreco;
+        iCod = list.record().indexOf("id");
+        iNome = list.record().indexOf("nome");
+        iQuantidade = list.record().indexOf("quantidade");
+        iPreco = list.record().indexOf("preco");
+
+        while (list.next())
+        {
+            ui->twProdutos->insertRow(linha);
+            ui->twProdutos->setItem(linha,0,new QTableWidgetItem(list.value(iCod).toString()));
+            ui->twProdutos->setItem(linha,1,new QTableWidgetItem(list.value(iNome).toString()));
+            ui->twProdutos->setItem(linha,2,new QTableWidgetItem(list.value(iQuantidade).toString()));
+            ui->twProdutos->setItem(linha,3,new QTableWidgetItem(list.value(iPreco).toString()));
+            linha++;
+        }
+
+        ui->twPedido->setRowCount(linha);
+
+    } catch (QString erro)
+    {
+        QMessageBox::information(this,"Erro",erro);
+    }
 }
 
 void AdicionarPedido::on_btnPesquisarCliente_clicked()
@@ -45,63 +89,41 @@ void AdicionarPedido::on_btnPesquisarCliente_clicked()
     }
 }
 
-void AdicionarPedido::on_btnNovoPedido_clicked()
+void AdicionarPedido::on_btnAdicionar_clicked()
 {
     try
     {
-//        limparAsLista();
-//        int id = ui->lblIdClienteNovo->text().toUInt();
-//        if (id > 0){
-//            ui->frNovoPedido->setVisible(true);
-//            criarLista();
-//            gerarLista();
-//        }else{
-//            QMessageBox::information(this,"Novo Pedido","Encontre um cliente");
-//        }
+        if (ui->twProdutos->currentRow() >= 0)
+        {
+            bool ok;
+            int linha = ui->twProdutos->currentRow();
+            int id = ui->twProdutos->item(linha, 0)->text().toUInt();
+            double qtde = ui->twProdutos->item(linha, 2)->text().toDouble();
+            double num = (QInputDialog::getText(this, "Quantidade de produto", "Digite a quantidade que deseja desse produto: ",QLineEdit::Normal,QString(),&ok)).toDouble();
 
-    }
-    catch (QString erro)
-    {
-        QMessageBox::information(this,"Erro",erro);
-    }
-}
+            if (ok)
+            {
+                if (num > qtde || num < 0)QMessageBox::information(this, "Inválido", "Quantidade invalida");
+                else
+                {
+                    list<HEV::Produto>::iterator IT;
+                    for(IT = comprarProduto.begin();IT!=comprarProduto.end() && IT->getCodigo() != QString::number(id);IT++);
 
-void AdicionarPedido::on_btnAdicionar_clicked()
-{
-    try {
-//        if (ui->twProdutos->currentRow() >= 0){
-//            int linha = ui->twProdutos->currentRow();
-//            int id = ui->twProdutos->item(linha, 0)->text().toUInt();
-//            double qtde = ui->twProdutos->item(linha, 2)->text().toDouble();
-//            bool ok;
-//            double num = (QInputDialog::getText(this, "Quantidade de produto", "Digite a quantidade que deseja desse produto: ",QLineEdit::Normal,QString(),&ok)).toDouble();
-//            if (ok){
-//                if (num > qtde || num < 0){
-//                    QMessageBox::information(this, "Invalido", "Quantidade invalida");
-//                }else
-//                {
-//                    HEV::Produto aux;
-//                    HEV::Produto cacar;
-//                    cacar.setCodigo(QString::number(id));
-//                    comprarProduto.remove(cacar, &aux);
-//                    if ((qtde - num) > 0){
-//                        aux.setQuantidade(QString::number(qtde-num));
-//                        comprarProduto.insert(&aux);
-//                    }
-//                    HEV::Produto novo = aux;
-//                    if (escolhidos.remove(cacar, &novo)){
-//                        int n = novo.getQuantidade().toUInt();
-//                        novo.setQuantidade(QString::number(n + num));
-//                    }else{
-//                        novo.setQuantidade(QString::number(num));
-//                    }
-//                    escolhidos.insert(&novo);
-//                    gerarLista();
-//                    gerarListaDeCompra();
-//                }
-//            }
-//        }
+                    if ((qtde - num) > 0)IT->setQuantidade(QString::number(qtde-num));
 
+                    HEV::Produto novo = *IT;
+                    for(IT = escolhidos.begin();IT!=escolhidos.end() && IT->getCodigo() != QString::number(id);IT++);
+
+                    if (IT->getCodigo()==QString::number(id))novo.setQuantidade(QString::number(novo.getQuantidade().toUInt() + num));
+                    else
+                        novo.setQuantidade(QString::number(num));
+
+                    escolhidos.push_back(novo);
+                    gerarListaProdutosEstoqueProvisorio();
+                    gerarListaDeCompra();
+                }
+            }
+        }
     }
     catch (QString erro)
     {
@@ -112,22 +134,30 @@ void AdicionarPedido::on_btnAdicionar_clicked()
 void AdicionarPedido::on_btnExcluir_clicked()
 {
     try {
-//        if (ui->twPedido->currentRow() >= 0){
-//            int linha = ui->twPedido->currentRow();
-//            int id = ui->twPedido->item(linha, 0)->text().toUInt();
-//            HEV::Produto aux, procurar;
-//            HEV::Produto cacar;
-//            cacar.setCodigo(QString::number(id));
-//            escolhidos.remove(cacar, &aux);
-//            if (comprarProduto.remove(cacar, &procurar)){
-//                int qtde = procurar.getQuantidade().toInt() + aux.getQuantidade().toInt();
-//                aux.setQuantidade(QString::number(qtde));
+        if (ui->twPedido->currentRow() >= 0)
+        {
+            int linha = ui->twPedido->currentRow();
+            int id = ui->twPedido->item(linha, 0)->text().toUInt();
+            int quantAux = ui->twPedido->item(linha, 2)->text().toUInt();
 
-//            }
-//            comprarProduto.insert(&aux);
-//            gerarLista();
-//            gerarListaDeCompra();
-//       }
+            HEV::Produto key;
+            key.setCodigo(QString::number(id));
+
+            list<HEV::Produto>::iterator IT;
+            for(IT = comprarProduto.begin();IT!=comprarProduto.end() && IT->getCodigo() != QString::number(id);IT++);
+            if (IT->getCodigo()==QString::number(id))
+            {
+                int qtde = IT->getQuantidade().toInt() + quantAux;
+                IT->setQuantidade(QString::number(qtde));
+            }
+
+            int i=0;
+            for(IT = escolhidos.begin(); IT!=escolhidos.end() && IT->getCodigo() != QString::number(id);IT++, i++);
+            escolhidos.erase(IT);
+
+            gerarListaProdutosEstoqueProvisorio();
+            gerarListaDeCompra();
+       }
 
     }
     catch (QString erro)
@@ -138,20 +168,27 @@ void AdicionarPedido::on_btnExcluir_clicked()
 
 void AdicionarPedido::on_btnFinalizarPedido_clicked()
 {
-    try {
+    try
+    {
+        HEV::PersistenciaPedidoVenda baixa;
+        HEV::PersistenciaCliente x;
+        if(ui->comboBox->currentIndex()==0)
+        {
+            HEV::Cliente novoCliente(ui->lineEditNome->text(),ui->lineEditEndereco->text(),ui->lineEditTelefone->text(),"");
 
-//        HEV::PedidoVenda novo;
-//        QString data;
-//        novo.setIDCliente(ui->lblIdClienteNovo->text());
-//        novo.setDataCompra(ui->txtDia->text().toUInt(),ui->txtMes->text().toUInt(),ui->txtAno->text().toUInt());
-//        novo.setValorTotal(ui->lblValorTotal->text());
-//        novo.setLista(&escolhidos);
-//        HEV::PersistenciaPedidoVenda pedido("arquivoPedidosVendas.txt");
-//        pedido.incluir(novo.desmontarDados());
+            int id = x.incluir(novoCliente);
 
-//        pedido.atualizarEstoque(&comprarProduto);
-//        QMessageBox::information(this,"Compra", "Compra realizada com sucesso.");
-//        limparIncluir();
+            HEV::PedidoVenda novoPedido(ui->dateTimeEdit->dateTime(), ui->lblValorTotal->text());
+            novoPedido.setLista(escolhidos);
+
+            baixa.incluir(novoPedido, QString::number(id));
+            baixa.atualizarEstoque(comprarProduto);
+
+            QMessageBox::information(this,"Compra", "Compra realizada com sucesso.");
+
+            limparIncluir();
+            gerarListaProdutosEstoque();
+        }
     }
     catch (QString erro)
     {
@@ -242,30 +279,78 @@ void AdicionarPedido::on_btnMostrarPedido_clicked()
     }
 }
 
+void AdicionarPedido::on_btnMostrarPesqC_clicked()
+{
+
+    try
+    {
+//        int linha = ui->twPedidoPesqC->currentRow();
+//        QString id = ui->twPedidoPesqC->item(linha, 0)->text();
+//        HEV::PersistenciaPedidoVenda pedido("arquivoPedidosVendas.txt");
+//        HEV::PedidoVenda pesquisa;
+//        pesquisa.montarDados(pedido.pesquisar(id).toStdString());
+
+//        ui->frMostrarListaPesqC->setVisible(true);
+//        ui->lblIdPedidoPesqC->setText(pesquisa.getKey());
+//        ui->lblDataPesqC->setText(pesquisa.getDataCompra());
+//        ui->lblValorTotalPesqC->setText(pesquisa.getValorTotal());
+//        mostrar = pesquisa.getListaCurso();
+//        gerarListaMostrarPorCliente();
+
+    }
+    catch (QString erro)
+    {
+        QMessageBox::information(this,"Erro",erro);
+    }
+}
+
+void AdicionarPedido::on_btnPesquisarPesqC_clicked()
+{
+    try {
+//        QString id = ui->txtIdClientePesqC->text();
+//        HEV::PersistenciaPedidoVenda pedido("arquivoPedidosVendas.txt");
+//        pedidoporcliente = pedido.criarListaporCliente(id);
+//        HEV::PersistenciaCliente aux("ArquivoCliente.txt");
+//        HEV::Cliente busca;
+//        busca.montarDados(aux.pesquisar(id).toStdString());
+//        ui->lblIdClientePesqC->setText(busca.getKey());
+//        ui->lblNomePesqC->setText(busca.getNome());
+//        ui->lblEnderecoPesqC->setText(busca.getEndereco());
+//        ui->lblTelefonePesqC->setText(busca.getTelefone());
+//        ui->lblCPFPesqC->setText(busca.getCPF());
+//        ui->frPedidoClientePesqC->setVisible(true);
+//        ui->frMostrarPesqC->setVisible(true);
+//        ui->frMostrarListaPesqC->setVisible(false);
+//        gerarListaDePedidoPorCliente();
+    }
+    catch (QString erro)
+    {
+        QMessageBox::information(this,"Erro",erro);
+    }
+
+}
+
 void AdicionarPedido::iniciarListas()
 {
     //Lista de produtos
     ui->twProdutos->setColumnCount(4);
     //definir o cabecalho da tabela
-    QStringList cabecalhos = {"Código", "Descrição", "Qtde em Estoque", "Preço unitário"};
+    QStringList cabecalhos = {"Código", "Nome", "Quantidade", "Preço Unit."};
     ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
     //nao poder editar os itens da tabela
     ui->twProdutos->setEditTriggers(QAbstractItemView::NoEditTriggers);
     //selecionar a linha toda
     ui->twProdutos->setSelectionBehavior(QAbstractItemView::SelectRows);
     //sumir com a linha ao lado
-    //ui->twProdutos->verticalHeader()->setVisible(false);
-    //cor da seleçao
-    ui->twProdutos->setStyleSheet("QTableView {selection-background-color:blue}");
+    ui->twProdutos->verticalHeader()->setVisible(false);
+
     //definir tamanho das colunas
-    ui->twProdutos->setColumnWidth(0,70);
-    ui->twProdutos->setColumnWidth(1,170);
-    ui->twProdutos->setColumnWidth(2,140);
-    ui->twProdutos->setColumnWidth(3,110);
+    for(int i=0;i<4;i++)ui->twProdutos->setColumnWidth(i,100);
+
 
     //Lista de inserir produtos
     ui->twPedido->setColumnCount(5);
-    QStringList cabecalho = {"Código", "Descrição", "Qtde", "Preço unitário", "valor total"};
+    QStringList cabecalho = {"Código", "Nome", "Qtde", "Preço Unit.", "Total"};
     ui->twPedido->setHorizontalHeaderLabels(cabecalho);
     //nao poder editar os itens da tabela
     ui->twPedido->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -276,11 +361,9 @@ void AdicionarPedido::iniciarListas()
     //cor da seleçao
     ui->twPedido->setStyleSheet("QTableView {selection-background-color:blue}");
     //definir tamanho das colunas
-    ui->twPedido->setColumnWidth(0,70);
-    ui->twPedido->setColumnWidth(1,170);
-    ui->twPedido->setColumnWidth(2,140);
-    ui->twPedido->setColumnWidth(3,110);
-    ui->twPedido->setColumnWidth(4,110);
+    for(int i=0;i<5;i++)ui->twPedido->setColumnWidth(i,80);
+    ui->twPedido->setColumnWidth(2,65);
+    ui->twPedido->setColumnWidth(3,95);
 
     //Lista de inserir pesquisar
     ui->twProdutosPedido->setColumnCount(5);
@@ -294,11 +377,7 @@ void AdicionarPedido::iniciarListas()
     //cor da seleçao
     ui->twProdutosPedido->setStyleSheet("QTableView {selection-background-color:blue}");
     //definir tamanho das colunas
-    ui->twProdutosPedido->setColumnWidth(0,70);
-    ui->twProdutosPedido->setColumnWidth(1,170);
-    ui->twProdutosPedido->setColumnWidth(2,140);
-    ui->twProdutosPedido->setColumnWidth(3,110);
-    ui->twProdutosPedido->setColumnWidth(4,110);
+    for(int i=0;i<4;i++)ui->twProdutos->setColumnWidth(i,100);
 
     //Lista Mostrar pedido marcado
     ui->twProdutosLista->setColumnCount(5);
@@ -384,26 +463,68 @@ void AdicionarPedido::criarLista()
     }
 }
 
-void AdicionarPedido::gerarLista()
+void AdicionarPedido::gerarListaProdutosEstoque()
 {
-    try {
-//        int n = ui->twProdutos->rowCount();
-//        for (int i = n; i >= 0; i--){
-//            ui->twProdutos->removeRow(i);
-//        }
-//        int linha = 0;
-//        comprarProduto.definirIT();
-//        int tam = comprarProduto.size();
-//        for (int i = 0; i < tam; i++, linha++){
-//            ui->twProdutos->insertRow(linha);
-//            HEV::Produto n = comprarProduto.mostrarIT();
-//            ui->twProdutos->setItem(linha,0,new QTableWidgetItem(n.getKey()));
-//            ui->twProdutos->setItem(linha,1,new QTableWidgetItem(n.getDescricao()));
-//            ui->twProdutos->setItem(linha,2,new QTableWidgetItem(n.getQuantidade()));
-//            ui->twProdutos->setItem(linha,3,new QTableWidgetItem(n.getPreco()));
-//            ui->twProdutos->setCurrentCell(0,0);
-//        }
-//        ui->twProdutos->setRowCount(linha);
+    try
+    {
+        int n = ui->twProdutos->rowCount();
+        for (int i = n; i >= 0; i--)ui->twProdutos->removeRow(i);
+
+        list<HEV::Produto> aux;
+
+        QSqlQuery list = produt.criarLista("order by id");
+        int linha = 0;
+
+        int iCod, iNome, iQuant, iPrec;
+        iCod = list.record().indexOf("id");
+        iNome = list.record().indexOf("nome");
+        iQuant = list.record().indexOf("quantidade");
+        iPrec = list.record().indexOf("preco");
+        while (list.next())
+        {
+            ui->twProdutos->insertRow(linha);
+            QString cod = list.value(iCod).toString();
+            QString nome = list.value(iNome).toString();
+            QString quant = list.value(iQuant).toString();
+            QString prec = list.value(iPrec).toString();
+
+            ui->twProdutos->setItem(linha,0,new QTableWidgetItem(cod));
+            ui->twProdutos->setItem(linha,1,new QTableWidgetItem(nome));
+            ui->twProdutos->setItem(linha,2,new QTableWidgetItem(quant));
+            ui->twProdutos->setItem(linha,3,new QTableWidgetItem(valorDuasCasa(prec)));
+
+            aux.push_back(HEV::Produto(cod, nome, quant, prec, ""));
+            linha++;
+        }
+
+        comprarProduto = aux;
+
+        ui->twProdutos->setRowCount(linha);
+    }
+    catch (QString erro)
+    {
+        QMessageBox::information(this,"Erro",erro);
+    }
+}
+
+void AdicionarPedido::gerarListaProdutosEstoqueProvisorio()
+{
+    try
+    {
+        int n = ui->twProdutos->rowCount();
+        for (int i = n; i >= 0; i--)ui->twProdutos->removeRow(i);
+
+        int linha=0;
+
+        for(auto i=comprarProduto.begin(); i!=comprarProduto.end();i++, linha++)
+        {
+            ui->twProdutos->insertRow(linha);
+            ui->twProdutos->setItem(linha,0,new QTableWidgetItem(i->getCodigo()));
+            ui->twProdutos->setItem(linha,1,new QTableWidgetItem(i->getNome()));
+            ui->twProdutos->setItem(linha,2,new QTableWidgetItem(i->getQuantidade()));
+            ui->twProdutos->setItem(linha,3,new QTableWidgetItem(i->getPreco()));
+        }
+        ui->twProdutos->setRowCount(linha);
     }
     catch (QString erro)
     {
@@ -413,31 +534,34 @@ void AdicionarPedido::gerarLista()
 
 void AdicionarPedido::gerarListaDeCompra()
 {
-    try {
-//        int n = ui->twPedido->rowCount();
-//        for (int i = n; i >= 0; i--){
-//            ui->twPedido->removeRow(i);
-//        }
-//        int linha = 0;
-//        double total = 0;
-//        escolhidos.definirIT();
-//        int tam = escolhidos.size();
-//        for (int i = 0; i < tam; i++, linha++){
-//            ui->twPedido->insertRow(linha);
-//            HEV::Produto n = escolhidos.mostrarIT();
-//            ui->twPedido->setItem(linha,0,new QTableWidgetItem(n.getKey()));
-//            ui->twPedido->setItem(linha,1,new QTableWidgetItem(n.getDescricao()));
-//            ui->twPedido->setItem(linha,2,new QTableWidgetItem(n.getQuantidade()));
-//            ui->twPedido->setItem(linha,3,new QTableWidgetItem(n.getPreco()));
-//            double valor = n.getQuantidade().toDouble() * n.getPreco().toDouble();
-//            total += valor;
-//            QString v = valorDuasCasa(QString::number(valor));
-//            ui->twPedido->setItem(linha,4,new QTableWidgetItem(v));
-//            ui->twPedido->setCurrentCell(0,0);
-//        }
-//        QString t = valorDuasCasa(QString::number(total));
-//        ui->lblValorTotal->setText(t);
-//        ui->twPedido->setRowCount(linha);
+    try
+    {
+        int n = ui->twPedido->rowCount();
+        for (int i = n; i >= 0; i--)ui->twPedido->removeRow(i);
+
+        int linha = 0;
+        double total = 0;
+
+        for (auto IT = escolhidos.begin(); IT != escolhidos.end(); IT++, linha++)
+        {
+            ui->twPedido->insertRow(linha);
+
+            HEV::Produto n = *IT;
+            ui->twPedido->setItem(linha,0,new QTableWidgetItem(n.getCodigo()));
+            ui->twPedido->setItem(linha,1,new QTableWidgetItem(n.getNome()));
+            ui->twPedido->setItem(linha,2,new QTableWidgetItem(n.getQuantidade()));
+            ui->twPedido->setItem(linha,3,new QTableWidgetItem(valorDuasCasa(n.getPreco())));
+
+            double valor = n.getQuantidade().toDouble() * n.getPreco().toDouble();
+            total += valor;
+
+            QString v = valorDuasCasa(QString::number(valor));
+            ui->twPedido->setItem(linha,4,new QTableWidgetItem(v));
+            ui->twPedido->setCurrentCell(0,0);
+        }
+        QString t = valorDuasCasa(QString::number(total));
+        ui->lblValorTotal->setText(t);
+        ui->twPedido->setRowCount(linha);
     }
     catch (QString erro)
     {
@@ -599,32 +723,134 @@ void AdicionarPedido::gerarListaMostrarPorCliente()
 
 }
 
-void AdicionarPedido::on_tabWidget_currentChanged(int index)
+void AdicionarPedido::limparIncluir()
 {
-    if (index == 0){
-        limparAsLista();
-        limparIncluir();
-        limparListar();
-        limparPesquisar();
-        limparListaPorCliente();
-    }else if (index == 1){
-        limparAsLista();
-        limparIncluir();
-        limparListar();
-        limparPesquisar();
-        limparListaPorCliente();
-    }else if (index == 2){
-        limparAsLista();
-        limparIncluir();
-        limparListar();
-        limparPesquisar();
-        limparListaPorCliente();
-    }else if (index == 3){
-        limparAsLista();
-        limparIncluir();
-        limparListar();
-        limparPesquisar();
-        limparListaPorCliente();
+     ui->lineEditSearchProduto->clear();
+     ui->lblNomeNovo->clear();
+     ui->lblEnderecoNovo->clear();
+     ui->lblTelefoneNovo->clear();
+     ui->lineEditNome->clear();
+     ui->lineEditEndereco->clear();
+     ui->lineEditTelefone->clear();
+     ui->lblValorTotal->clear();
+
+     int n = ui->twProdutos->rowCount();
+     for (int i = n; i >= 0; i--){
+         ui->twProdutos->removeRow(i);
+     }
+
+     n = ui->twPedido->rowCount();
+     for (int i = n; i >= 0; i--){
+         ui->twPedido->removeRow(i);
+     }
+}
+
+void AdicionarPedido::limparPesquisar()
+{
+    ui->frDadosPedido->setVisible(false);
+    ui->frClientePesquisar->setVisible(false);
+
+    ui->txtIdPedido->clear();
+    ui->lblIdPedidoPesquisar->clear();
+    ui->lblIdClientePesquisar->clear();
+    ui->lblNomePesquisar->clear();
+    ui->lblEnderecopesquisar->clear();
+    ui->lblTelefonePesquisar->clear();
+    ui->lblDataPesquisar->clear();
+    ui->lblValorTotalPesquisar->clear();
+
+    int n = ui->twProdutosPedido->rowCount();
+    for (int i = n; i >= 0; i--)ui->twProdutosPedido->removeRow(i);
+}
+
+void AdicionarPedido::limparAsLista()
+{
+    comprarProduto.clear();
+    escolhidos.clear();
+}
+
+void AdicionarPedido::limparListaPorCliente()
+{
+    ui->frPedidoClientePesqC->setVisible(false);
+    ui->frMostrarPesqC->setVisible(false);
+    ui->frMostrarListaPesqC->setVisible(false);
+
+    ui->txtIdClientePesqC->clear();
+    ui->lblIdClientePesqC->clear();
+    ui->lblNomePesqC->clear();
+    ui->lblEnderecoPesqC->clear();
+    ui->lblTelefonePesqC->clear();
+    ui->lblIdPedidoPesqC->clear();
+    ui->lblDataPesqC->clear();
+    ui->lblValorTotalPesqC->clear();
+
+    int n = ui->twPedidoPesqC->rowCount();
+    for (int i = n; i >= 0; i--)ui->twPedidoPesqC->removeRow(i);
+}
+
+void AdicionarPedido::limparListar()
+{
+    ui->frClienteMostrar->setVisible(false);
+    ui->frMostrarLista->setVisible(false);
+
+    ui->lblIdPedidoMostrar->setText("");
+    ui->lblNomeMostrar->setText("");
+    ui->lblEnderecoMostrar->setText("");
+    ui->lblTelefoneMostrar->setText("");
+    ui->lblDataMostrar->setText("");
+    ui->lblValorTotalMostrar->setText("");
+
+    int n = ui->twListarPedido->rowCount();
+    for (int i = n; i >= 0; i--)ui->twListarPedido->removeRow(i);
+
+    n = ui->twProdutosLista->rowCount();
+    for (int i = n; i >= 0; i--)ui->twProdutosLista->removeRow(i);
+}
+
+void AdicionarPedido::on_comboBox_currentIndexChanged(int index)
+{
+    try
+    {
+        if(index==0)
+        {
+            ui->lineEditNome->clear();
+            ui->lineEditEndereco->clear();
+            ui->lineEditTelefone->clear();
+            ui->frBuscaCliente->setVisible(false);
+            ui->frCadastroCliente->setVisible(true);
+        }else if(index==1)
+        {
+            ui->txtSearchCliente->clear();
+            ui->label_11->setVisible(false);
+            ui->label_12->setVisible(false);
+            ui->label_13->setVisible(false);
+            ui->frBuscaCliente->setVisible(true);
+            ui->frCadastroCliente->setVisible(false);
+        }
+
+
+
+    }  catch (QString erro) {
+        QMessageBox::information(this, "Erro", erro);
+    }
+}
+
+
+void AdicionarPedido::on_tabPedido_currentChanged(int index)
+{
+    try
+    {
+        if (index == 0)
+        {
+            limparAsLista();
+            limparIncluir();
+            gerarListaProdutosEstoque();
+        }else if (index == 1)limparPesquisar();
+         else if (index == 2)limparListaPorCliente();
+         else if (index == 3)limparListar();
+
+    }  catch (QString erro) {
+        QMessageBox::information(this,"Erro", erro);
     }
 }
 
@@ -647,150 +873,4 @@ QString AdicionarPedido::valorDuasCasa(QString aux)
         }
     }
     return nova;
-}
-
-void AdicionarPedido::limparIncluir()
-{
-////     ui->frNovoPedido->setVisible(false);
-////     ui->frClienteNovo->setVisible(false);
-
-//     ui->txtIdCliente->setText("");
-//     ui->lblIdClienteNovo->setText("");
-//     ui->lblNomeNovo->setText("");
-//     ui->lblEnderecoNovo->setText("");
-//     ui->lblTelefoneNovo->setText("");
-//     ui->lblCPFNovo->setText("");
-
-//     int n = ui->twProdutos->rowCount();
-//     for (int i = n; i >= 0; i--){
-//         ui->twProdutos->removeRow(i);
-//     }
-
-//     n = ui->twPedido->rowCount();
-//     for (int i = n; i >= 0; i--){
-//         ui->twPedido->removeRow(i);
-//     }
-}
-
-void AdicionarPedido::limparPesquisar()
-{
-//    ui->frDadosPedido->setVisible(false);
-//    ui->frClientePesquisar->setVisible(false);
-
-    ui->txtIdPedido->setText("");
-    ui->lblIdPedidoPesquisar->setText("");
-    ui->lblIdClientePesquisar->setText("");
-    ui->lblNomePesquisar->setText("");
-    ui->lblEnderecopesquisar->setText("");
-    ui->lblTelefonePesquisar->setText("");
-    ui->lblCPFpesquisar->setText("");
-    ui->lblDataPesquisar->setText("");
-    ui->lblValorTotalPesquisar->setText("");
-    int n = ui->twProdutosPedido->rowCount();
-    for (int i = n; i >= 0; i--){
-        ui->twProdutosPedido->removeRow(i);
-    }
-}
-
-void AdicionarPedido::limparListar()
-{
-//    ui->frClienteMostrar->setVisible(false);
-//    ui->frMostrarLista->setVisible(false);
-
-    ui->lblIdPedidoMostrar->setText("");
-    ui->lblIdClienteMostrar->setText("");
-    ui->lblNomeMostrar->setText("");
-    ui->lblEnderecoMostrar->setText("");
-    ui->lblTelefoneMostrar->setText("");
-    ui->lblCPFMostrar->setText("");
-    ui->lblDataMostrar->setText("");
-    ui->lblValorTotalMostrar->setText("");
-    int n = ui->twListarPedido->rowCount();
-    for (int i = n; i >= 0; i--){
-        ui->twListarPedido->removeRow(i);
-    }
-    n = ui->twProdutosLista->rowCount();
-    for (int i = n; i >= 0; i--){
-        ui->twProdutosLista->removeRow(i);
-    }
-}
-
-void AdicionarPedido::limparAsLista()
-{
-//    while (!comprarProduto.isEmpty()){
-//        comprarProduto.pegarPrimeiro();
-//    }
-//    while (!escolhidos.isEmpty()){
-//        escolhidos.pegarPrimeiro();
-//    }
-}
-
-void AdicionarPedido::limparListaPorCliente()
-{
-    ui->txtIdClientePesqC->setText("");
-    ui->lblIdClientePesqC->setText("");
-    ui->lblNomePesqC->setText("");
-    ui->lblEnderecoPesqC->setText("");
-    ui->lblTelefonePesqC->setText("");
-    ui->lblCPFPesqC->setText("");
-    ui->lblIdPedidoPesqC->setText("");
-    ui->lblDataPesqC->setText("");
-    ui->lblValorTotalPesqC->setText("");
-//    ui->frPedidoClientePesqC->setVisible(false);
-//    ui->frMostrarPesqC->setVisible(false);
-//    ui->frMostrarListaPesqC->setVisible(false);
-    int n = ui->twPedidoPesqC->rowCount();
-    for (int i = n; i >= 0; i--){
-        ui->twPedidoPesqC->removeRow(i);
-    }
-
-}
-
-void AdicionarPedido::on_btnPesquisarPesqC_clicked()
-{
-    try {
-//        QString id = ui->txtIdClientePesqC->text();
-//        HEV::PersistenciaPedidoVenda pedido("arquivoPedidosVendas.txt");
-//        pedidoporcliente = pedido.criarListaporCliente(id);
-//        HEV::PersistenciaCliente aux("ArquivoCliente.txt");
-//        HEV::Cliente busca;
-//        busca.montarDados(aux.pesquisar(id).toStdString());
-//        ui->lblIdClientePesqC->setText(busca.getKey());
-//        ui->lblNomePesqC->setText(busca.getNome());
-//        ui->lblEnderecoPesqC->setText(busca.getEndereco());
-//        ui->lblTelefonePesqC->setText(busca.getTelefone());
-//        ui->lblCPFPesqC->setText(busca.getCPF());
-//        ui->frPedidoClientePesqC->setVisible(true);
-//        ui->frMostrarPesqC->setVisible(true);
-//        ui->frMostrarListaPesqC->setVisible(false);
-//        gerarListaDePedidoPorCliente();
-    }
-    catch (QString erro)
-    {
-        QMessageBox::information(this,"Erro",erro);
-    }
-
-}
-
-void AdicionarPedido::on_btnMostrarPesqC_clicked()
-{
-
-    try {
-//        int linha = ui->twPedidoPesqC->currentRow();
-//        QString id = ui->twPedidoPesqC->item(linha, 0)->text();
-//        HEV::PersistenciaPedidoVenda pedido("arquivoPedidosVendas.txt");
-//        HEV::PedidoVenda pesquisa;
-//        pesquisa.montarDados(pedido.pesquisar(id).toStdString());
-//        ui->frMostrarListaPesqC->setVisible(true);
-//        ui->lblIdPedidoPesqC->setText(pesquisa.getKey());
-//        ui->lblDataPesqC->setText(pesquisa.getDataCompra());
-//        ui->lblValorTotalPesqC->setText(pesquisa.getValorTotal());
-//        mostrar = pesquisa.getListaCurso();
-//        gerarListaMostrarPorCliente();
-
-    }
-    catch (QString erro)
-    {
-        QMessageBox::information(this,"Erro",erro);
-    }
 }
