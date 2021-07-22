@@ -4,6 +4,8 @@
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<persistenciacliente.h>
+#include<QTableWidgetItem>
+#include<QDate>
 #include<cliente.h>
 #include<list>
 #include<QMessageBox>
@@ -44,14 +46,27 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
-    void on_lineEditSearchProduto_textEdited(const QString &arg1);
+    void on_lineEditSearchProduto_textEdited();
 
     void on_tabPedido_currentChanged(int index);
+
+    void on_lineEditSearchPedidos_textEdited();
+
+    void on_comboBoxTipoOrdenacao_currentIndexChanged(){organizeOrder();}
+
+    void on_lineEditSearchPedido_textEdited();
+
+    void on_comboBoxTipoPesquisa_currentIndexChanged(int index);
+
+    void on_lineEditValorY_textEdited();
+
+    void on_twListarPedidos_itemDoubleClicked(QTableWidgetItem *item);
 
 private:
     Ui::AdicionarPedido *ui;
     HEV::PersistenciaPedidoVenda persistPedido;
     HEV::PersistenciaProduto produt;
+    QString currentOrder;
 
     list<HEV::Produto> comprarProduto;
     list<HEV::Produto> escolhidos;
@@ -61,21 +76,23 @@ private:
 
     QString valorDuasCasa(QString aux);
 
-    void limparIncluir();
-    void limparPesquisar();
-    void limparListar();
-    void limparAsLista();
+    void limparIncluirPedido();
+    void limparListaMestre();
+    void limparListsSTL();
     void limparListaPorCliente();
-    void organize();
+    void organizeOrder();
 
     void iniciarListas();
     void criarLista();
     void gerarListaProdutosEstoque();
     void gerarListaProdutosEstoqueProvisorio();
+
+
     void gerarListaDeCompra();
     void gerarListaDePesquisa();
-    void gerarListaDePedido();
-    void gerarListaDeMostrar();
+    void gerarListaDePedidos(QString order);
+
+
     void gerarListaDePedidoPorCliente();
     void gerarListaMostrarPorCliente();
 };

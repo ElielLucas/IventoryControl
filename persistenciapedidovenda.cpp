@@ -20,10 +20,10 @@ namespace HEV
           list<Produto> listAux = obj.getListaCurso();
           for(auto i=listAux.begin();i!=listAux.end();i++)
           {
-               insert.prepare("insert into produto_cliente(id_produto, id_cliente) values("+i->getCodigo()+","+id_cliente+")");
+               insert.prepare("insert into produto_cliente(id_produto, id_cliente, dataCompraInstanciaDeProduto) values("+i->getCodigo()+","+id_cliente+",'"+organizeDate+"')");
                if(!insert.exec())
                  throw QString("Falha no cadastro do pedido!");
-               insert.prepare("insert into produto_pedido(id_produto, id_pedido) values("+i->getCodigo()+","+QString::number(idMax())+")");
+               insert.prepare("insert into produto_pedido(id_produto, id_pedido, quantidade_comprada) values("+i->getCodigo()+","+QString::number(idMax())+","+i->getQuantidade()+")");
                if(!insert.exec())
                  throw QString("Falha no cadastro do pedido!");
           }
@@ -64,6 +64,71 @@ namespace HEV
 
 //       remove(nomeDoArquivoPV.toStdString().c_str());
 //       rename("tempPV.txt", nomeDoArquivoPV.toStdString().c_str());
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::tabelaCompleta(QString order)
+    {
+        QSqlQuery select("select * from tb_pedidos "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::searchDate(QString key, QString order)
+    {
+        QSqlQuery select("select * from tb_pedidos WHERE dataCompra like '"+key+"%' "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::searchForValuesLessThan(QString key, QString order)
+    {
+        QSqlQuery select("select * from tb_pedidos WHERE valorTotal < "+key+" "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::searchForValuesGreaterThan(QString key, QString order)
+    {
+        QSqlQuery select("select * from tb_pedidos WHERE valorTotal > "+key+" "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::searchForValuesBetween(QString key1, QString key2, QString order)
+    {
+        QSqlQuery select("select * from tb_pedidos WHERE valorTotal BETWEEN "+key1+" and "+key2+" "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+
+    QSqlQuery PersistenciaPedidoVenda::searchForPurchasesByProduct(QString key, QString order)
+    {
+        QSqlQuery select;
+        if(key[0]>='0' && key[0]<='9')select.prepare("select * from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) WHERE p.id like '"+key+"%' "+order);
+        else select.prepare("select * from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) WHERE LOWER(p.nome) like '"+key.toLower()+"%' "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
+    }
+    QSqlQuery PersistenciaPedidoVenda::searchForSalesRelatedInformation(QString key, QString order)
+    {
+        QSqlQuery select;
+        select.prepare("select ped.id as id_pedido, dataCompra, valorTotal, p.id as id_produto, p.nome as nome_produto, p.preco,pp.quantidade_comprada, c.id as id_cliente, c.nome as nome_cliente, c.endereco, c.telefone, c.email from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) inner join produto_cliente pc on (pc.id_produto = p.id) inner join tb_cliente c on (c.id = pc.id_cliente) WHERE ped.id = "+key+" "+order);
+
+        if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
+
+        return select;
     }
 
     QString PersistenciaPedidoVenda::pesquisar(QString valor)

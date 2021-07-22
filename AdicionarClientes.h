@@ -24,7 +24,7 @@ private slots:
 
     void on_pushButtonIncluir_clicked();
 
-    //void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
+    void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
 
     void on_lineEditSearchCliente_textEdited(const QString &arg1);
 

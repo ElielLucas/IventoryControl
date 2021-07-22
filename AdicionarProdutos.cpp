@@ -79,7 +79,7 @@ void AdicionarProdutos::on_txtKeySearch_3_editingFinished()
             int row=produt.pesquisarIndex(key,escolhaComboBox, currentOrder);
 
             ui->twProdutos->selectRow(row-1);
-        }else return;
+        }
     } catch (QString erro)
     {
         QMessageBox::information(this,"Erro",erro);

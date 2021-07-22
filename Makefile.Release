@@ -415,15 +415,19 @@ release/moc_AdicionarPedido.cpp: AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
-		persistenciaproduto.h \
+		persistenciacliente.h \
 		cliente.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
+		persistenciaproduto.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidgetItem \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtablewidget.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtableview.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtguiglobal.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtgui-config.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgets-config.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qdialog.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qframe.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qwidget.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qwindowdefs.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
@@ -467,10 +471,26 @@ release/moc_AdicionarPedido.cpp: AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/QSize \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/QSizeF \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/QTransform \
+		F:/Qt/6.1.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtCore/qitemselectionmodel.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qstyleoption.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qvalidator.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtCore/qregularexpression.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qicon.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qslider.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractslider.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qstyle.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabbar.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabwidget.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qdialog.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qframe.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpen.h \
@@ -626,6 +646,8 @@ release/moc_AdicionarProdutos.cpp: AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
+		persistenciacliente.h \
+		cliente.h \
 		persistenciaproduto.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidgetItem \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtablewidget.h \
@@ -809,6 +831,8 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
+		persistenciacliente.h \
+		cliente.h \
 		persistenciaproduto.h \
 		AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDialog \
@@ -831,8 +855,6 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabbar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
 		AdicionarClientes.h \
-		persistenciacliente.h \
-		cliente.h \
 		AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
@@ -1042,40 +1064,7 @@ release/AdicionarClientes.o: AdicionarClientes.cpp AdicionarClientes.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
-		ui_AdicionarClientes.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qinputmethod.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QComboBox \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qcombobox.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QFrame \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QHBoxLayout \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qboxlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qgridlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QHeaderView \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qheaderview.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlabel.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpicture.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLineEdit \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpen.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextoption.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QPushButton \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTabWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QVBoxLayout \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QWidget
+		ui_AdicionarClientes.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\AdicionarClientes.o AdicionarClientes.cpp
 
 release/AdicionarPedido.o: AdicionarPedido.cpp AdicionarPedido.h \
@@ -1175,15 +1164,19 @@ release/AdicionarPedido.o: AdicionarPedido.cpp AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
-		persistenciaproduto.h \
+		persistenciacliente.h \
 		cliente.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
+		persistenciaproduto.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidgetItem \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtablewidget.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtableview.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtguiglobal.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtgui-config.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgets-config.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qdialog.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qframe.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qwidget.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qwindowdefs.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qwindowdefs_win.h \
@@ -1227,24 +1220,8 @@ release/AdicionarPedido.o: AdicionarPedido.cpp AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/QSize \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/QSizeF \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/QTransform \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qframe.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpen.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextoption.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDialog \
-		ui_AdicionarPedido.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qinputmethod.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QComboBox \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qcombobox.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtCore/qitemselectionmodel.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qstyleoption.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
@@ -1257,33 +1234,18 @@ release/AdicionarPedido.o: AdicionarPedido.cpp AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabbar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabwidget.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDateTimeEdit \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QFrame \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QHeaderView \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qheaderview.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qitemselectionmodel.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlabel.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpicture.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLineEdit \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QPushButton \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTabWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtablewidget.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtableview.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QVBoxLayout \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qboxlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qgridlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QWidget
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qdialog.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpen.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextoption.h \
+		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDialog \
+		ui_AdicionarPedido.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\AdicionarPedido.o AdicionarPedido.cpp
 
 release/AdicionarProdutos.o: AdicionarProdutos.cpp AdicionarProdutos.h \
@@ -1432,6 +1394,8 @@ release/AdicionarProdutos.o: AdicionarProdutos.cpp AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
+		persistenciacliente.h \
+		cliente.h \
 		persistenciaproduto.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidgetItem \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtablewidget.h \
@@ -1455,42 +1419,7 @@ release/AdicionarProdutos.o: AdicionarProdutos.cpp AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QMessageBox \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qmessagebox.h \
-		ui_AdicionarProdutos.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qinputmethod.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QComboBox \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qcombobox.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QFrame \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QHBoxLayout \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qboxlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qgridlayout.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QHeaderView \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qheaderview.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlabel.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpicture.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QLineEdit \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qpen.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextoption.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QPushButton \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTabWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTableWidget \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QTextEdit \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtextedit.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QVBoxLayout \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QWidget
+		ui_AdicionarProdutos.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\AdicionarProdutos.o AdicionarProdutos.cpp
 
 release/cliente.o: cliente.cpp cliente.h \
@@ -1694,6 +1623,8 @@ release/main.o: main.cpp mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
+		persistenciacliente.h \
+		cliente.h \
 		persistenciaproduto.h \
 		AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDialog \
@@ -1716,8 +1647,6 @@ release/main.o: main.cpp mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabbar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
 		AdicionarClientes.h \
-		persistenciacliente.h \
-		cliente.h \
 		AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
@@ -1888,6 +1817,8 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
 		produto.h \
+		persistenciacliente.h \
+		cliente.h \
 		persistenciaproduto.h \
 		AdicionarProdutos.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QDialog \
@@ -1910,25 +1841,13 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qtabbar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qrubberband.h \
 		AdicionarClientes.h \
-		persistenciacliente.h \
-		cliente.h \
 		AdicionarPedido.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QInputDialog \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qinputdialog.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextcursor.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtGui/qtextformat.h \
-		ui_mainwindow.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtGui/qinputmethod.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QPushButton \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/6.1.2/mingw81_64/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/pedidovenda.o: pedidovenda.cpp pedidovenda.h \
@@ -2206,7 +2125,9 @@ release/persistenciapedidovenda.o: persistenciapedidovenda.cpp persistenciapedid
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qdatetime.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qcalendar.h \
 		F:/Qt/6.1.2/mingw81_64/include/QtCore/qlocale.h \
-		produto.h
+		produto.h \
+		persistenciacliente.h \
+		cliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\persistenciapedidovenda.o persistenciapedidovenda.cpp
 
 release/persistenciaproduto.o: persistenciaproduto.cpp persistenciaproduto.h \

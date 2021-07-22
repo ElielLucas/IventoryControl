@@ -1,13 +1,11 @@
 #ifndef PERSISTENCIAPEDIDOVENDA_H
 #define PERSISTENCIAPEDIDOVENDA_H
-#include<fstream>
 #include<QString>
 #include<QSql>
 #include<QSqlDatabase>
 #include<QSqlQuery>
 #include<QSqlRecord>
 #include<QVariant>
-#include<vector>
 #include<pedidovenda.h>
 #include<persistenciacliente.h>
 
@@ -21,15 +19,17 @@ namespace HEV
             void incluir(PedidoVenda obj, QString id_cliente);
             QString pesquisar(QString valor);
             QSqlQuery currentPosition(QString key, int opcao);
+            QSqlQuery searchDate(QString key, QString order);
+            QSqlQuery searchForValuesLessThan(QString key, QString order);
+            QSqlQuery searchForValuesGreaterThan(QString key, QString order);
+            QSqlQuery searchForValuesBetween(QString key1, QString key2, QString order);
+            QSqlQuery searchForPurchasesByProduct(QString key, QString order);
+            QSqlQuery searchForSalesRelatedInformation(QString key, QString order);
 
-            //pesquisar por data
-            //pesquisar valores de compra menores que X
-            //pesquisar valores de compra maiores que X
-            //pesquisar valores de compra entre X e Y
-            //pesquisar por comprar que tenham o produto X
 
 //            List<PedidoVenda> criarLista();
 //            List<PedidoVenda> criarListaporCliente(QString n);
+            QSqlQuery tabelaCompleta(QString order);
             void atualizarEstoque(list<Produto> &listProd);
 
 

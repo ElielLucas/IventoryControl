@@ -45,15 +45,12 @@ void AdicionarClientes::on_lineEditSearchCliente_textEdited(const QString &arg1)
 {
     try
     {
-        QStringList key = ui->lineEditSearchCliente->text().split(' ');
+        QString key = ui->lineEditSearchCliente->text();
 
         int n = ui->twCliente->rowCount();
         for (int i = n; i >= 0; i--)ui->twCliente->removeRow(i);
 
-        QString x="";
-        for(int i=0;i<key.size();i++)x+=key[i];
-
-        QSqlQuery list = client.currentPosition(x);
+        QSqlQuery list = client.currentPosition(key);
         int linha = 0;
 
         int iCod, iNome, iEndereco, iTelefone, iEmail;
