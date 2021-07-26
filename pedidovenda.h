@@ -19,12 +19,15 @@ namespace HEV
     public:
         PedidoVenda();
         PedidoVenda(QDateTime dataHoras, QString total);
+        PedidoVenda(QString idPedido, QString total);
+        PedidoVenda(QDateTime dataHoras, QString total, list<Produto> listaProduto);
 
         void setDataHorasCompra(QDateTime dateTime){dataHoras=dateTime;}
-        void setValorTotal(QString total);
+        void setValorTotal(QString total){valorTotal=total;}
 
         QDateTime getDataHorasCompra(){return dataHoras;}
         QString getValorTotal(){return valorTotal;}
+        QString getID()const{return idPedido;}
 
         void setLista(list<Produto> &lista){listaProduto=lista;}
         list<Produto>getListaCurso()const {return listaProduto;}

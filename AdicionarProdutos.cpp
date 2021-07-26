@@ -6,8 +6,10 @@ AdicionarProdutos::AdicionarProdutos(QWidget *parent) :
     ui(new Ui::AdicionarProdutos)
 {
     ui->setupUi(this);
+
     try
     {      
+        setWindowIcon(QIcon(":/imgs/images/icone.png"));
         currentOrder="";    
         iniciarLista();
     }  catch (QString erro)
@@ -25,83 +27,86 @@ void AdicionarProdutos::on_btnIncluir_clicked()
 {
     try
     {
-        QString cod=ui->txtCodigoIncluir->text();
-        QString nome=ui->txtNomeIncluir->text();
-        QString quant=ui->txtQtdeIncluir->text();
-        QString preco=ui->txtPrecoIncluir->text();
-        QString desc=ui->textEditCadastroDescricao->toPlainText();
-
-        HEV::Produto x(cod,nome,quant,preco, desc);
-
-        produt.incluir(x);
-        QMessageBox::information(this,"Incluir Produto","O produto foi incluído!");
-    } catch(QString erro)
-    {
-            QMessageBox::information(this,"Erro",erro);
-    }
-}
-
-void AdicionarProdutos::on_btnExcluir_clicked()
-{
-    try
-    {   
         QMessageBox::StandardButton confirmacao;
-
-        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja excluir o produto?",QMessageBox::Yes|QMessageBox::No);
+        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja cadastrar o produto?",QMessageBox::Yes|QMessageBox::No);
 
         if (confirmacao == QMessageBox::Yes)
         {
-            QString key="";
-            int escolhaComboBox = ui->comboBox->currentIndex();
+            QString nome=ui->txtNomeIncluir->text();
+            QString quant=ui->txtQtdeIncluir->text();
+            QString preco=ui->txtPrecoIncluir->text();
+            QString desc=ui->textEditCadastroDescricao->toPlainText();
 
-            if(escolhaComboBox==0)key = ui->lineEditCodigo->text();
-            else key = ui->txtEditNome->text();
+            HEV::Produto x(nome,quant,preco, desc);
 
-            produt.excluir(key, escolhaComboBox);
-            mostrarLista(currentOrder);
-            limparDadosPesquisar();
-
-            QMessageBox::information(this,"Excluir Produto","O produto foi excluido!");
-        }
-    } catch (QString erro)
+            produt.incluir(x);
+            QMessageBox::information(this,"Incluir Produto","O produto foi incluído!");
+       }
+    } catch(QString erro)
     {
         QMessageBox::information(this,"Erro",erro);
     }
 }
-void AdicionarProdutos::on_txtKeySearch_3_editingFinished()
+
+void AdicionarProdutos::on_txtKeySearch_3_textEdited()
 {
     try
     {
         QString key = ui->txtKeySearch_3->text();
-        if(key!="")
-        {        
-            int escolhaComboBox = ui->comboBox->currentIndex();
-            int row=produt.pesquisarIndex(key,escolhaComboBox, currentOrder);
 
-            ui->twProdutos->selectRow(row-1);
+        int n = ui->twProdutos->rowCount();
+        for (int i = n; i >= 0; i--)ui->twProdutos->removeRow(i);
+
+        QSqlQuery list = produt.filteredSearch(key);
+        int linha = 0;
+
+        int iCod, iNome, iQuantidade, iPreco;
+        iCod = list.record().indexOf("id");
+        iNome = list.record().indexOf("nome");
+        iQuantidade = list.record().indexOf("quantidade");
+        iPreco = list.record().indexOf("preco");
+
+        while (list.next())
+        {
+            ui->twProdutos->insertRow(linha);
+            ui->twProdutos->setItem(linha,0,new QTableWidgetItem(list.value(iCod).toString()));
+            ui->twProdutos->setItem(linha,1,new QTableWidgetItem(list.value(iNome).toString()));
+            ui->twProdutos->setItem(linha,2,new QTableWidgetItem(list.value(iQuantidade).toString()));
+            ui->twProdutos->setItem(linha,3,new QTableWidgetItem(list.value(iPreco).toString()));
+            linha++;
         }
+
+        ui->twProdutos->setRowCount(linha);
+
     } catch (QString erro)
     {
         QMessageBox::information(this,"Erro",erro);
     }
 }
+
 
 void AdicionarProdutos::on_btnEdit_clicked()
 {
     try
     {
-        QString cod, nome, quant, preco, desc;
-        cod = ui->lineEditCodigo->text();
-        nome = ui->txtEditNome->text();
-        quant = ui->txtQtdeEdit->text();
-        preco = ui->txtPrecoEdit->text();
-        desc = ui->textEditDescricaoBusca_2->toPlainText();;
+        QMessageBox::StandardButton confirmacao;
+        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja editar o produto?",QMessageBox::Yes|QMessageBox::No);
 
-        HEV::Produto aux(cod, nome, quant, preco, desc);
-        produt.alterar(aux);
-        mostrarLista(currentOrder);
+        if (confirmacao == QMessageBox::Yes)
+        {
+            QString cod, nome, quant, preco, desc;
+            cod = ui->lineEditCodigo->text();
+            nome = ui->txtEditNome->text();
+            quant = ui->txtQtdeEdit->text();
+            preco = ui->txtPrecoEdit->text();
+            desc = ui->textEditDescricaoBusca_2->toPlainText();;
 
-        QMessageBox::information(this,"Editar Produto","O dados do produto foram alterados.");
+            HEV::Produto aux(cod, nome, quant, preco, desc);
+            produt.alterar(aux);
+            mostrarLista(currentOrder);
+
+            QMessageBox::information(this,"Editar Produto","O dados do produto foram alterados.");
+        }
 
     } catch (QString erro)
     {
@@ -116,7 +121,7 @@ void AdicionarProdutos::iniciarLista()
     ui->twProdutos->setColumnCount(4);
 
     //definir o cabecalho da tabela
-    QStringList cabecalhos = {"Código", "Nome", "Qtde Estoque", "Preço Unitário"};
+    QStringList cabecalhos = {"ID Produto", "Nome", "Qtde Estoque", "Preço Unitário"};
     ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
     //nao poder editar os itens da tabela
     ui->twProdutos->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -126,6 +131,9 @@ void AdicionarProdutos::iniciarLista()
     ui->twProdutos->verticalHeader()->setVisible(false);
 
     for(int i=0;i<4;i++)ui->twProdutos->setColumnWidth(i,112);
+
+    ui->lineEditCodigo->setDisabled(1);
+    mostrarLista(currentOrder);
 }
 
 void AdicionarProdutos::mostrarLista(QString order)
@@ -137,7 +145,7 @@ void AdicionarProdutos::mostrarLista(QString order)
         ui->twProdutos->removeRow(i);
     }
 
-    QSqlQuery list = produt.criarLista(order);
+    QSqlQuery list = produt.criarListaCadastrados(order);
     int linha = 0;
 
     int iCod, iNome, iQuant, iPrec;
@@ -182,7 +190,6 @@ void AdicionarProdutos::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
 
 void AdicionarProdutos::limparDadosIncluir()
 {
-    ui->txtCodigoIncluir->setText("");
     ui->txtNomeIncluir->setText("");
     ui->txtQtdeIncluir->setText("");
     ui->txtPrecoIncluir->setText("");
@@ -218,4 +225,3 @@ void AdicionarProdutos::organizeOrder()
     else if(ui->comboBoxOrdem->currentIndex()==3)currentOrder="order by nome desc";
     mostrarLista(currentOrder);
 }
-

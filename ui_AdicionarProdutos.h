@@ -37,8 +37,6 @@ public:
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_5;
-    QLineEdit *txtCodigoIncluir;
     QHBoxLayout *horizontalLayout_6;
     QLineEdit *txtNomeIncluir;
     QHBoxLayout *horizontalLayout_7;
@@ -68,10 +66,8 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_7;
     QTextEdit *textEditDescricaoBusca_2;
-    QPushButton *btnExcluir;
     QPushButton *btnEdit;
     QComboBox *comboBoxOrdem;
-    QComboBox *comboBox;
     QLineEdit *txtKeySearch_3;
     QWidget *quadradim;
     QTableWidget *twProdutos;
@@ -81,8 +77,8 @@ public:
         if (AdicionarProdutos->objectName().isEmpty())
             AdicionarProdutos->setObjectName(QString::fromUtf8("AdicionarProdutos"));
         AdicionarProdutos->setWindowModality(Qt::ApplicationModal);
-        AdicionarProdutos->resize(860, 598);
-        AdicionarProdutos->setMaximumSize(QSize(860, 598));
+        AdicionarProdutos->resize(870, 598);
+        AdicionarProdutos->setMaximumSize(QSize(870, 598));
         QPalette palette;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -277,6 +273,7 @@ public:
         tabProdutos->setObjectName(QString::fromUtf8("tabProdutos"));
         tabProdutos->setEnabled(true);
         tabProdutos->setGeometry(QRect(30, 20, 811, 551));
+        tabProdutos->setMaximumSize(QSize(811, 551));
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Button, brush17);
@@ -437,79 +434,6 @@ public:
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        txtCodigoIncluir = new QLineEdit(layoutWidget);
-        txtCodigoIncluir->setObjectName(QString::fromUtf8("txtCodigoIncluir"));
-        QPalette palette3;
-        palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        QBrush brush18(QColor(181, 181, 181, 255));
-        brush18.setStyle(Qt::SolidPattern);
-        palette3.setBrush(QPalette::Active, QPalette::Button, brush18);
-        palette3.setBrush(QPalette::Active, QPalette::Light, brush6);
-        palette3.setBrush(QPalette::Active, QPalette::Midlight, brush6);
-        QBrush brush19(QColor(127, 127, 127, 255));
-        brush19.setStyle(Qt::SolidPattern);
-        palette3.setBrush(QPalette::Active, QPalette::Dark, brush19);
-        QBrush brush20(QColor(170, 170, 170, 255));
-        brush20.setStyle(Qt::SolidPattern);
-        palette3.setBrush(QPalette::Active, QPalette::Mid, brush20);
-        palette3.setBrush(QPalette::Active, QPalette::Text, brush);
-        palette3.setBrush(QPalette::Active, QPalette::BrightText, brush6);
-        palette3.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette3.setBrush(QPalette::Active, QPalette::Base, brush18);
-        palette3.setBrush(QPalette::Active, QPalette::Window, brush18);
-        palette3.setBrush(QPalette::Active, QPalette::Shadow, brush);
-        palette3.setBrush(QPalette::Active, QPalette::AlternateBase, brush6);
-        palette3.setBrush(QPalette::Active, QPalette::ToolTipBase, brush9);
-        palette3.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette::Active, QPalette::PlaceholderText, brush10);
-#endif
-        palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette3.setBrush(QPalette::Inactive, QPalette::Button, brush18);
-        palette3.setBrush(QPalette::Inactive, QPalette::Light, brush6);
-        palette3.setBrush(QPalette::Inactive, QPalette::Midlight, brush6);
-        palette3.setBrush(QPalette::Inactive, QPalette::Dark, brush19);
-        palette3.setBrush(QPalette::Inactive, QPalette::Mid, brush20);
-        palette3.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        palette3.setBrush(QPalette::Inactive, QPalette::BrightText, brush6);
-        palette3.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette3.setBrush(QPalette::Inactive, QPalette::Base, brush18);
-        palette3.setBrush(QPalette::Inactive, QPalette::Window, brush18);
-        palette3.setBrush(QPalette::Inactive, QPalette::Shadow, brush);
-        palette3.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush6);
-        palette3.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush9);
-        palette3.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette::Inactive, QPalette::PlaceholderText, brush10);
-#endif
-        palette3.setBrush(QPalette::Disabled, QPalette::WindowText, brush19);
-        palette3.setBrush(QPalette::Disabled, QPalette::Button, brush18);
-        palette3.setBrush(QPalette::Disabled, QPalette::Light, brush6);
-        palette3.setBrush(QPalette::Disabled, QPalette::Midlight, brush6);
-        palette3.setBrush(QPalette::Disabled, QPalette::Dark, brush19);
-        palette3.setBrush(QPalette::Disabled, QPalette::Mid, brush20);
-        palette3.setBrush(QPalette::Disabled, QPalette::Text, brush19);
-        palette3.setBrush(QPalette::Disabled, QPalette::BrightText, brush6);
-        palette3.setBrush(QPalette::Disabled, QPalette::ButtonText, brush19);
-        palette3.setBrush(QPalette::Disabled, QPalette::Base, brush18);
-        palette3.setBrush(QPalette::Disabled, QPalette::Window, brush18);
-        palette3.setBrush(QPalette::Disabled, QPalette::Shadow, brush);
-        palette3.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush6);
-        palette3.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush9);
-        palette3.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette::Disabled, QPalette::PlaceholderText, brush10);
-#endif
-        txtCodigoIncluir->setPalette(palette3);
-        txtCodigoIncluir->setFont(font1);
-
-        horizontalLayout_5->addWidget(txtCodigoIncluir);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_5);
-
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         txtNomeIncluir = new QLineEdit(layoutWidget);
@@ -580,71 +504,71 @@ public:
         btnIncluir = new QPushButton(frame);
         btnIncluir->setObjectName(QString::fromUtf8("btnIncluir"));
         btnIncluir->setGeometry(QRect(10, 370, 549, 28));
-        QPalette palette4;
+        QPalette palette3;
         QLinearGradient gradient9(0.994318, 0.915, 0.994318, 0.488);
         gradient9.setSpread(QGradient::ReflectSpread);
         gradient9.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient9.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient9.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush21(gradient9);
-        palette4.setBrush(QPalette::Active, QPalette::Button, brush21);
+        QBrush brush18(gradient9);
+        palette3.setBrush(QPalette::Active, QPalette::Button, brush18);
         QLinearGradient gradient10(0.994318, 0.915, 0.994318, 0.488);
         gradient10.setSpread(QGradient::ReflectSpread);
         gradient10.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient10.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient10.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush22(gradient10);
-        palette4.setBrush(QPalette::Active, QPalette::Base, brush22);
+        QBrush brush19(gradient10);
+        palette3.setBrush(QPalette::Active, QPalette::Base, brush19);
         QLinearGradient gradient11(0.994318, 0.915, 0.994318, 0.488);
         gradient11.setSpread(QGradient::ReflectSpread);
         gradient11.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient11.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient11.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush23(gradient11);
-        palette4.setBrush(QPalette::Active, QPalette::Window, brush23);
+        QBrush brush20(gradient11);
+        palette3.setBrush(QPalette::Active, QPalette::Window, brush20);
         QLinearGradient gradient12(0.994318, 0.915, 0.994318, 0.488);
         gradient12.setSpread(QGradient::ReflectSpread);
         gradient12.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient12.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient12.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush24(gradient12);
-        palette4.setBrush(QPalette::Inactive, QPalette::Button, brush24);
+        QBrush brush21(gradient12);
+        palette3.setBrush(QPalette::Inactive, QPalette::Button, brush21);
         QLinearGradient gradient13(0.994318, 0.915, 0.994318, 0.488);
         gradient13.setSpread(QGradient::ReflectSpread);
         gradient13.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient13.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient13.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush25(gradient13);
-        palette4.setBrush(QPalette::Inactive, QPalette::Base, brush25);
+        QBrush brush22(gradient13);
+        palette3.setBrush(QPalette::Inactive, QPalette::Base, brush22);
         QLinearGradient gradient14(0.994318, 0.915, 0.994318, 0.488);
         gradient14.setSpread(QGradient::ReflectSpread);
         gradient14.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient14.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient14.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush26(gradient14);
-        palette4.setBrush(QPalette::Inactive, QPalette::Window, brush26);
+        QBrush brush23(gradient14);
+        palette3.setBrush(QPalette::Inactive, QPalette::Window, brush23);
         QLinearGradient gradient15(0.994318, 0.915, 0.994318, 0.488);
         gradient15.setSpread(QGradient::ReflectSpread);
         gradient15.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient15.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient15.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush27(gradient15);
-        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush27);
+        QBrush brush24(gradient15);
+        palette3.setBrush(QPalette::Disabled, QPalette::Button, brush24);
         QLinearGradient gradient16(0.994318, 0.915, 0.994318, 0.488);
         gradient16.setSpread(QGradient::ReflectSpread);
         gradient16.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient16.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient16.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush28(gradient16);
-        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush28);
+        QBrush brush25(gradient16);
+        palette3.setBrush(QPalette::Disabled, QPalette::Base, brush25);
         QLinearGradient gradient17(0.994318, 0.915, 0.994318, 0.488);
         gradient17.setSpread(QGradient::ReflectSpread);
         gradient17.setCoordinateMode(QGradient::ObjectBoundingMode);
         gradient17.setColorAt(0.1875, QColor(128, 128, 128, 255));
         gradient17.setColorAt(1, QColor(211, 211, 211, 255));
-        QBrush brush29(gradient17);
-        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush29);
-        btnIncluir->setPalette(palette4);
+        QBrush brush26(gradient17);
+        palette3.setBrush(QPalette::Disabled, QPalette::Window, brush26);
+        btnIncluir->setPalette(palette3);
         QFont font3;
         font3.setFamilies({QString::fromUtf8("Courier")});
         font3.setKerning(true);
@@ -663,17 +587,19 @@ public:
         label_2->setGeometry(QRect(180, 20, 431, 51));
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	background:#ff9318;\n"
-"	border-top-right-radius:50px;\n"
-"	border-bottom-left-radius:50px;\n"
+"	border-top-right-radius:40px;\n"
+"	border-bottom-left-radius:40px;\n"
 "	font-family: Courier;\n"
 "}"));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/imgs/images/infProduto.png")));
+        label_2->setScaledContents(true);
         tabProdutos->addTab(tabIncluir, QString());
         tabListar = new QWidget();
         tabListar->setObjectName(QString::fromUtf8("tabListar"));
         tabListar->setStyleSheet(QString::fromUtf8(""));
         frDadosEdit = new QFrame(tabListar);
         frDadosEdit->setObjectName(QString::fromUtf8("frDadosEdit"));
-        frDadosEdit->setGeometry(QRect(500, 40, 291, 351));
+        frDadosEdit->setGeometry(QRect(500, 40, 301, 351));
         frDadosEdit->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "  border-width:1px;\n"
 "  border-radius:4px;\n"
@@ -814,20 +740,22 @@ public:
 
         textEditDescricaoBusca_2 = new QTextEdit(layoutWidget_2);
         textEditDescricaoBusca_2->setObjectName(QString::fromUtf8("textEditDescricaoBusca_2"));
-        QPalette palette5;
-        palette5.setBrush(QPalette::Active, QPalette::Button, brush18);
-        palette5.setBrush(QPalette::Active, QPalette::BrightText, brush17);
-        palette5.setBrush(QPalette::Active, QPalette::Base, brush18);
-        palette5.setBrush(QPalette::Active, QPalette::Window, brush18);
-        palette5.setBrush(QPalette::Inactive, QPalette::Button, brush18);
-        palette5.setBrush(QPalette::Inactive, QPalette::BrightText, brush17);
-        palette5.setBrush(QPalette::Inactive, QPalette::Base, brush18);
-        palette5.setBrush(QPalette::Inactive, QPalette::Window, brush18);
-        palette5.setBrush(QPalette::Disabled, QPalette::Button, brush18);
-        palette5.setBrush(QPalette::Disabled, QPalette::BrightText, brush17);
-        palette5.setBrush(QPalette::Disabled, QPalette::Base, brush18);
-        palette5.setBrush(QPalette::Disabled, QPalette::Window, brush18);
-        textEditDescricaoBusca_2->setPalette(palette5);
+        QPalette palette4;
+        QBrush brush27(QColor(181, 181, 181, 255));
+        brush27.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Button, brush27);
+        palette4.setBrush(QPalette::Active, QPalette::BrightText, brush17);
+        palette4.setBrush(QPalette::Active, QPalette::Base, brush27);
+        palette4.setBrush(QPalette::Active, QPalette::Window, brush27);
+        palette4.setBrush(QPalette::Inactive, QPalette::Button, brush27);
+        palette4.setBrush(QPalette::Inactive, QPalette::BrightText, brush17);
+        palette4.setBrush(QPalette::Inactive, QPalette::Base, brush27);
+        palette4.setBrush(QPalette::Inactive, QPalette::Window, brush27);
+        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush27);
+        palette4.setBrush(QPalette::Disabled, QPalette::BrightText, brush17);
+        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush27);
+        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush27);
+        textEditDescricaoBusca_2->setPalette(palette4);
         textEditDescricaoBusca_2->setFont(font);
         textEditDescricaoBusca_2->setAutoFillBackground(true);
         textEditDescricaoBusca_2->setStyleSheet(QString::fromUtf8(""));
@@ -837,29 +765,9 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_3);
 
-        btnExcluir = new QPushButton(frDadosEdit);
-        btnExcluir->setObjectName(QString::fromUtf8("btnExcluir"));
-        btnExcluir->setGeometry(QRect(200, 310, 81, 31));
-        btnExcluir->setFont(font1);
-        btnExcluir->setAutoFillBackground(false);
-        btnExcluir->setStyleSheet(QString::fromUtf8("QPushButton{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));\n"
-"font-size:14px;\n"
-"weight:20px\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255))\n"
-"}\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(227, 156, 41, 255), stop:1 rgba(211, 211, 211, 255));\n"
-"}"));
         btnEdit = new QPushButton(frDadosEdit);
         btnEdit->setObjectName(QString::fromUtf8("btnEdit"));
-        btnEdit->setGeometry(QRect(30, 310, 81, 31));
+        btnEdit->setGeometry(QRect(0, 310, 301, 31));
         btnEdit->setFont(font1);
         btnEdit->setAcceptDrops(false);
         btnEdit->setAutoFillBackground(false);
@@ -908,29 +816,13 @@ public:
         comboBoxOrdem->setSizeAdjustPolicy(QComboBox::AdjustToContents);
         comboBoxOrdem->setDuplicatesEnabled(false);
         comboBoxOrdem->setFrame(true);
-        comboBox = new QComboBox(tabListar);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(10, 10, 71, 22));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Ignored);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy);
-        comboBox->setMaximumSize(QSize(1000, 16777215));
-        comboBox->setFont(font1);
-        comboBox->setAutoFillBackground(false);
-        comboBox->setStyleSheet(QString::fromUtf8("QComboBox{background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))}"));
-        comboBox->setSizeAdjustPolicy(QComboBox::AdjustToContentsOnFirstShow);
         txtKeySearch_3 = new QLineEdit(tabListar);
         txtKeySearch_3->setObjectName(QString::fromUtf8("txtKeySearch_3"));
-        txtKeySearch_3->setGeometry(QRect(80, 10, 381, 22));
+        txtKeySearch_3->setGeometry(QRect(10, 10, 451, 22));
         txtKeySearch_3->setFont(font1);
         txtKeySearch_3->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "  border-width:1px;\n"
-"  border-top-right-radius:6px;\n"
-"  border-bottom-right-radius:6px;\n"
+"  border-radius:6px;\n"
 "  border-color:#fff;\n"
 "  background:#b5b5b5\n"
 "}"));
@@ -939,28 +831,22 @@ public:
         quadradim->setEnabled(true);
         quadradim->setGeometry(QRect(500, 40, 301, 301));
         quadradim->setStyleSheet(QString::fromUtf8("border: 1px solid #F4A460;\n"
-""));
+"border-radius:8px;"));
         twProdutos = new QTableWidget(tabListar);
         twProdutos->setObjectName(QString::fromUtf8("twProdutos"));
         twProdutos->setGeometry(QRect(10, 40, 451, 471));
+        twProdutos->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         twProdutos->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         tabProdutos->addTab(tabListar, QString());
         quadradim->raise();
         txtKeySearch_3->raise();
-        comboBox->raise();
         frDadosEdit->raise();
         comboBoxOrdem->raise();
-        lineEditCodigo->raise();
-        label_6->raise();
-        txtPrecoEdit->raise();
-        label_3->raise();
-        label_6->raise();
-        lineEditCodigo->raise();
         twProdutos->raise();
 
         retranslateUi(AdicionarProdutos);
 
-        tabProdutos->setCurrentIndex(1);
+        tabProdutos->setCurrentIndex(0);
         btnIncluir->setDefault(false);
         btnEdit->setDefault(false);
 
@@ -977,7 +863,6 @@ public:
 #if QT_CONFIG(tooltip)
         tabProdutos->setToolTip(QCoreApplication::translate("AdicionarProdutos", "<html><head/><body><p><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
-        txtCodigoIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "C\303\263digo do Produto", nullptr));
         txtNomeIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Nome do Produto", nullptr));
         txtPrecoIncluir->setInputMask(QString());
         txtPrecoIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Pre\303\247o Unit\303\241rio R$", nullptr));
@@ -989,22 +874,21 @@ public:
 #if QT_CONFIG(tooltip)
         label_2->setToolTip(QCoreApplication::translate("AdicionarProdutos", "<html><head/><body><p align=\"justify\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
-        label_2->setText(QCoreApplication::translate("AdicionarProdutos", "               Informa\303\247\303\265es do Produto", nullptr));
+        label_2->setText(QString());
         tabProdutos->setTabText(tabProdutos->indexOf(tabIncluir), QCoreApplication::translate("AdicionarProdutos", "Cadastro", nullptr));
-        label_6->setText(QCoreApplication::translate("AdicionarProdutos", "C\303\263digo    ", nullptr));
+        label_6->setText(QCoreApplication::translate("AdicionarProdutos", "ID Produto  ", nullptr));
         lineEditCodigo->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "C\303\263digo", nullptr));
-        label_4->setText(QCoreApplication::translate("AdicionarProdutos", "Nome      ", nullptr));
+        label_4->setText(QCoreApplication::translate("AdicionarProdutos", "Nome        ", nullptr));
         txtEditNome->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Nome", nullptr));
-        label->setText(QCoreApplication::translate("AdicionarProdutos", "Quantidade", nullptr));
+        label->setText(QCoreApplication::translate("AdicionarProdutos", "Quantidade  ", nullptr));
         txtQtdeEdit->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Quantidade               ", nullptr));
-        label_3->setText(QCoreApplication::translate("AdicionarProdutos", "Pre\303\247o     ", nullptr));
+        label_3->setText(QCoreApplication::translate("AdicionarProdutos", "Pre\303\247o       ", nullptr));
         txtPrecoEdit->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Pre\303\247o Unit\303\241rio R$      ", nullptr));
-        label_7->setText(QCoreApplication::translate("AdicionarProdutos", "Descri\303\247\303\243o ", nullptr));
+        label_7->setText(QCoreApplication::translate("AdicionarProdutos", "Descri\303\247\303\243o   ", nullptr));
 #if QT_CONFIG(tooltip)
         textEditDescricaoBusca_2->setToolTip(QCoreApplication::translate("AdicionarProdutos", "<html><head/><body><p align=\"justify\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         textEditDescricaoBusca_2->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Descri\303\247\303\243o do Produto", nullptr));
-        btnExcluir->setText(QCoreApplication::translate("AdicionarProdutos", "Excluir", nullptr));
         btnEdit->setText(QCoreApplication::translate("AdicionarProdutos", "Editar", nullptr));
         comboBoxOrdem->setItemText(0, QCoreApplication::translate("AdicionarProdutos", "Crescente por c\303\263digo", nullptr));
         comboBoxOrdem->setItemText(1, QCoreApplication::translate("AdicionarProdutos", "Crescente por nome", nullptr));
@@ -1012,13 +896,7 @@ public:
         comboBoxOrdem->setItemText(3, QCoreApplication::translate("AdicionarProdutos", "Decrescente por nome", nullptr));
 
         comboBoxOrdem->setPlaceholderText(QString());
-        comboBox->setItemText(0, QCoreApplication::translate("AdicionarProdutos", "C\303\263digo", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("AdicionarProdutos", "Nome", nullptr));
-
-#if QT_CONFIG(tooltip)
-        comboBox->setToolTip(QCoreApplication::translate("AdicionarProdutos", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
-#endif // QT_CONFIG(tooltip)
-        txtKeySearch_3->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Buscar Produto", nullptr));
+        txtKeySearch_3->setPlaceholderText(QCoreApplication::translate("AdicionarProdutos", "Digite o c\303\263digo ou nome do produto", nullptr));
         tabProdutos->setTabText(tabProdutos->indexOf(tabListar), QCoreApplication::translate("AdicionarProdutos", "Lista de Produtos", nullptr));
     } // retranslateUi
 

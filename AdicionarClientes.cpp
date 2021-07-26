@@ -7,7 +7,7 @@ AdicionarClientes::AdicionarClientes(QWidget *parent) :
     ui(new Ui::AdicionarClientes)
 {
     ui->setupUi(this);
-
+    setWindowIcon(QIcon(":/imgs/images/icone.png"));
     currentOrder="";
     ui->labelID->setVisible(false);
     ui->labelID->clear();
@@ -23,17 +23,23 @@ void AdicionarClientes::on_pushButtonIncluir_clicked()
 {
     try
     {
-        QString nome, endereco, telefone, email;
+        QMessageBox::StandardButton confirmacao;
+        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja cadastrar o cliente?",QMessageBox::Yes|QMessageBox::No);
 
-        nome = ui->lineEditNomeIncluir->text();
-        endereco = ui->lineEditEnderecoIncluir->text();
-        telefone = ui->lineEditTelefoneIncluir->text();
-        email = ui->lineEditEmail->text();
+        if (confirmacao == QMessageBox::Yes)
+        {
+            QString nome, endereco, telefone, email;
 
-        HEV::Cliente obj(nome,endereco,telefone,email);
-        client.incluir(obj);
+            nome = ui->lineEditNomeIncluir->text();
+            endereco = ui->lineEditEnderecoIncluir->text();
+            telefone = ui->lineEditTelefoneIncluir->text();
+            email = ui->lineEditEmail->text();
 
-        QMessageBox::information(this,"Incluir Cliente","O cliente foi incluido.");
+            HEV::Cliente obj(nome,endereco,telefone,email);
+            client.incluir(obj);
+
+            QMessageBox::information(this,"Incluir Cliente","O cliente foi incluido.");
+        }
 
     } catch (QString erro)
     {
@@ -41,7 +47,7 @@ void AdicionarClientes::on_pushButtonIncluir_clicked()
     }
 }
 
-void AdicionarClientes::on_lineEditSearchCliente_textEdited(const QString &arg1)
+void AdicionarClientes::on_lineEditSearchCliente_textEdited()
 {
     try
     {
@@ -50,7 +56,7 @@ void AdicionarClientes::on_lineEditSearchCliente_textEdited(const QString &arg1)
         int n = ui->twCliente->rowCount();
         for (int i = n; i >= 0; i--)ui->twCliente->removeRow(i);
 
-        QSqlQuery list = client.currentPosition(key);
+        QSqlQuery list = client.filteredSearch(key);
         int linha = 0;
 
         int iCod, iNome, iEndereco, iTelefone, iEmail;
@@ -84,45 +90,24 @@ void AdicionarClientes::on_pushButtonEdit_clicked()
 {
     try
     {
-        QString id, nome, endereco, telefone, email;
-
-        id = ui->labelID->text();
-        nome = ui->lineEditNomeEdit->text();
-        endereco = ui->lineEditEnderecoEdit->text();
-        telefone = ui->lineEditTelefoneEdit->text();
-        email = ui->lineEditEmailEdit->text();
-
-        HEV::Cliente obj(id, nome, endereco, telefone, email);
-        client.alterar(obj);
-        mostrarLista(currentOrder);
-
-        QMessageBox::information(this,"Editar Cliente","O dados do cliente foram alterados.");
-
-    } catch (QString erro)
-    {
-        QMessageBox::information(this,"Erro",erro);
-    }
-}
-
-void AdicionarClientes::on_pushButtonExcluir_clicked()
-{
-    try
-    {
         QMessageBox::StandardButton confirmacao;
-
-        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja excluir o cliente?",QMessageBox::Yes|QMessageBox::No);
+        confirmacao = QMessageBox::question(this,"Confirmação!","Deseja editar o cliente?",QMessageBox::Yes|QMessageBox::No);
 
         if (confirmacao == QMessageBox::Yes)
         {
-            QString key="";
+            QString id, nome, endereco, telefone, email;
 
-            key = ui->labelID->text();
+            id = ui->labelID->text();
+            nome = ui->lineEditNomeEdit->text();
+            endereco = ui->lineEditEnderecoEdit->text();
+            telefone = ui->lineEditTelefoneEdit->text();
+            email = ui->lineEditEmailEdit->text();
 
-            client.excluir(key);
+            HEV::Cliente obj(id, nome, endereco, telefone, email);
+            client.alterar(obj);
             mostrarLista(currentOrder);
-            limparDadosLista();
 
-            QMessageBox::information(this,"Excluir Cliente","O cliente foi excluido!");
+            QMessageBox::information(this,"Editar Cliente","O dados do cliente foram alterados.");
         }
 
     } catch (QString erro)
@@ -131,7 +116,6 @@ void AdicionarClientes::on_pushButtonExcluir_clicked()
     }
 }
 
-
 void AdicionarClientes::mostrarLista(QString order)
 {
     limparDadosLista();
@@ -139,7 +123,7 @@ void AdicionarClientes::mostrarLista(QString order)
     int n = ui->twCliente->rowCount();
     for (int i = n; i >= 0; i--)ui->twCliente->removeRow(i);
 
-    QSqlQuery list = client.criarLista(order);
+    QSqlQuery list = client.criarListaCadastrados(order);
     int linha = 0;
 
     int iCod, iNome, iEndereco, iTelefone, iEmail;
@@ -186,6 +170,138 @@ void AdicionarClientes::on_twCliente_itemDoubleClicked(QTableWidgetItem *item)
     }
 }
 
+void AdicionarClientes::on_twPedidosCliente_itemDoubleClicked(QTableWidgetItem *item)
+{
+    try
+    {
+        int linha = item->row();
+        QString cod = ui->twPedidosCliente->item(linha,0)->text();
+
+        QSqlQuery tabela = persistPedido.searchForSalesRelatedInformation(cod, currentOrder);
+
+        int n = ui->twProdutosCliente->rowCount();
+        for (int i = n; i >= 0; i--)ui->twProdutosCliente->removeRow(i);
+
+        int idProd = tabela.record().indexOf("id_produto");
+        int nomeProduto = tabela.record().indexOf("nome_produto");
+        int preco = tabela.record().indexOf("preco");
+        int quantidadeComprada = tabela.record().indexOf("quantidade_comprada");
+
+
+        linha=0;
+        int qnt;
+        float valorUnitario;
+
+        while (tabela.next())
+        {
+            qnt = tabela.value(quantidadeComprada).toInt();
+            valorUnitario = tabela.value(preco).toFloat();
+            ui->twProdutosCliente->insertRow(linha);
+            ui->twProdutosCliente->setItem(linha,0,new QTableWidgetItem(tabela.value(idProd).toString()));
+            ui->twProdutosCliente->setItem(linha,1,new QTableWidgetItem(tabela.value(nomeProduto).toString()));
+            ui->twProdutosCliente->setItem(linha,2,new QTableWidgetItem(QString::number(qnt)));
+            ui->twProdutosCliente->setItem(linha,3,new QTableWidgetItem(valorDuasCasa(QString::number(valorUnitario))));
+            linha++;
+        }
+        ui->twProdutosCliente->setRowCount(linha);
+    } catch (QString erro) {
+        QMessageBox::information(this,"Erro",erro);
+    }
+}
+
+void AdicionarClientes::on_pushButtonComprasCliente_clicked()
+{
+    try
+    {     
+        ui->esconderPedidosCliente->setVisible(true);
+        ui->esconderListaClientes->setVisible(false);
+
+        int n = ui->twPedidosCliente->rowCount();
+        for (int i = n; i >= 0; i--)ui->twPedidosCliente->removeRow(i);
+
+        QString key = ui->labelID->text();
+
+        QSqlQuery list = client.searchCustomerPurchases(key);
+        int linha = 0;
+
+        int iCod, iDat, iValorTotal;
+        iCod = list.record().indexOf("id_pedido");
+        iDat = list.record().indexOf("dataCompra");
+        iValorTotal = list.record().indexOf("valorTotal");
+
+        while (list.next())
+        {
+            ui->twPedidosCliente->insertRow(linha);
+            ui->twPedidosCliente->setItem(linha,0,new QTableWidgetItem(list.value(iCod).toString()));
+            ui->twPedidosCliente->setItem(linha,1,new QTableWidgetItem(prepareDate(list.value(iDat).toString())));
+            ui->twPedidosCliente->setItem(linha,2,new QTableWidgetItem(valorDuasCasa(list.value(iValorTotal).toString())));
+            linha++;
+        }
+
+        ui->twPedidosCliente->setRowCount(linha);
+
+    }  catch (QString erro) {
+        QMessageBox::information(this,"Erro",erro);
+    }
+}
+
+QString AdicionarClientes::prepareDate(QString date)
+{
+    QLocale local;
+    QDate data;
+    QString aux="";
+
+    int day, month, year, i=0;
+    for(int cont=0;i<date.size();i++)
+    {
+        if(date[i]!='-' && date[i]!=' ')aux+=date[i];
+        else
+        {
+            if(cont==0)day = aux.toInt();
+            else if(cont==1)month = aux.toInt();
+            else if(cont==2)year = aux.toInt();
+            cont++;
+            aux="";
+        }
+    }
+    data.setDate(day,month,year);
+
+    for(;i<date.size();i++)aux+=date[i];
+    return QString(local.toString(data,"ddd | dd MMMM yyyy |")+" "+aux);
+}
+
+QString AdicionarClientes::valorDuasCasa(QString aux)
+{
+    int i = 0;
+    QString nova ="";
+    for (; i < aux.size() && aux[i] != '.'; i++)nova+=aux[i];
+
+    nova += ".";
+    if (i == aux.size())nova += "00";
+    else
+    {
+        nova += aux[i+1];
+        if (i+ 2 == aux.size())nova += "0";
+        else nova += aux[i+2];
+    }
+    return nova;
+}
+
+void AdicionarClientes::on_pushButtonVoltar_clicked()
+{
+    try
+    {
+        ui->esconderPedidosCliente->setVisible(false);
+        ui->esconderListaClientes->setVisible(true);
+        int n = ui->twProdutosCliente->rowCount();
+        for (int i = n; i >= 0; i--)ui->twProdutosCliente->removeRow(i);
+        limparDadosLista();
+
+    }  catch (QString erro) {
+        QMessageBox::information(this,"Erro",erro);
+    }
+}
+
 
 void AdicionarClientes::iniciarLista()
 {
@@ -193,16 +309,34 @@ void AdicionarClientes::iniciarLista()
     ui->twCliente->clearContents();
     ui->twCliente->setColumnCount(5);
 
-    //definir o cabecalho da tabela
+
     QStringList cabecalhos = {"ID Cliente", "Nome", "Endereco", "Telefone", "Email"};
     ui->twCliente->setHorizontalHeaderLabels(cabecalhos);
-    //nao poder editar os itens da tabela
     ui->twCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    //selecionar a linha toda
     ui->twCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
-    //sumir com a linha ao lado
     ui->twCliente->verticalHeader()->setVisible(false);
     for(int i=0;i<4;i++)ui->twCliente->setColumnWidth(i,100);
+
+    ui->twPedidosCliente->clear();
+    ui->twPedidosCliente->clearContents();
+    ui->twPedidosCliente->setColumnCount(3);
+
+    cabecalhos = {"ID Pedido", "Data", "Valor Total"};
+    ui->twPedidosCliente->setHorizontalHeaderLabels(cabecalhos);
+    ui->twPedidosCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->twPedidosCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->twPedidosCliente->verticalHeader()->setVisible(false);
+    for(int i=0;i<3;i++)ui->twPedidosCliente->setColumnWidth(i,167);
+
+    ui->twProdutosCliente->setColumnCount(4);
+    cabecalhos = {"ID Produto", "Nome", "Qtde Comprada", "Preço Unitário"};
+    ui->twProdutosCliente->setHorizontalHeaderLabels(cabecalhos);
+    ui->twProdutosCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->twProdutosCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->twProdutosCliente->verticalHeader()->setVisible(false);
+
+    for(int i=0;i<4;i++)ui->twProdutosCliente->setColumnWidth(i,125);
+    mostrarLista(currentOrder);
 }
 
 void AdicionarClientes::on_tabCliente_currentChanged(int index)
@@ -237,5 +371,7 @@ void AdicionarClientes::limparDadosLista()
     ui->lineEditTelefoneEdit->clear();
     ui->lineEditEmailEdit->clear();
     ui->fr_DadosCliente->setVisible(false);
+    ui->esconderPedidosCliente->setVisible(false);
+    ui->esconderListaClientes->setVisible(true);
     ui->quadradim->setVisible(false);
 }

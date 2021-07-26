@@ -10,8 +10,11 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -20,24 +23,40 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionExportar_para_Excel;
+    QAction *actionDeletar_Dados;
     QWidget *centralwidget;
     QPushButton *btnProdutos;
     QPushButton *btnClientes;
     QPushButton *btnPedidos;
+    QMenuBar *menuBar;
+    QMenu *menuDados;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(262, 313);
+        MainWindow->resize(262, 340);
         MainWindow->setMinimumSize(QSize(262, 313));
-        MainWindow->setMaximumSize(QSize(262, 313));
-        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255))}\n"
+        MainWindow->setMaximumSize(QSize(262, 340));
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255))\n"
+"}\n"
+"\n"
 "\n"
 "\n"
 "\n"
 "\n"
 ""));
+        actionExportar_para_Excel = new QAction(MainWindow);
+        actionExportar_para_Excel->setObjectName(QString::fromUtf8("actionExportar_para_Excel"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/imgs/images/iconExport.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionExportar_para_Excel->setIcon(icon);
+        actionDeletar_Dados = new QAction(MainWindow);
+        actionDeletar_Dados->setObjectName(QString::fromUtf8("actionDeletar_Dados"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/imgs/images/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionDeletar_Dados->setIcon(icon1);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("QPushButton{\n"
@@ -106,6 +125,16 @@ public:
 "\n"
 ""));
         MainWindow->setCentralWidget(centralwidget);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QString::fromUtf8("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 262, 21));
+        menuDados = new QMenu(menuBar);
+        menuDados->setObjectName(QString::fromUtf8("menuDados"));
+        MainWindow->setMenuBar(menuBar);
+
+        menuBar->addAction(menuDados->menuAction());
+        menuDados->addAction(actionExportar_para_Excel);
+        menuDados->addAction(actionDeletar_Dados);
 
         retranslateUi(MainWindow);
 
@@ -115,9 +144,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "eComerce", nullptr));
+        actionExportar_para_Excel->setText(QCoreApplication::translate("MainWindow", "Exportar para Excel", nullptr));
+#if QT_CONFIG(tooltip)
+        actionExportar_para_Excel->setToolTip(QCoreApplication::translate("MainWindow", "Exportar", nullptr));
+#endif // QT_CONFIG(tooltip)
+        actionDeletar_Dados->setText(QCoreApplication::translate("MainWindow", "Deletar Dados", nullptr));
         btnProdutos->setText(QCoreApplication::translate("MainWindow", "Produtos", nullptr));
         btnClientes->setText(QCoreApplication::translate("MainWindow", "Clientes", nullptr));
         btnPedidos->setText(QCoreApplication::translate("MainWindow", "Pedidos", nullptr));
+        menuDados->setTitle(QCoreApplication::translate("MainWindow", "Dados", nullptr));
     } // retranslateUi
 
 };

@@ -10,8 +10,14 @@
     <height>690</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>940</width>
+    <height>690</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Vendas</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));
@@ -69,6 +75,14 @@ QTextEdit{
      border: 1px solid #F4A460;
 }
 
+#tbWidgetInformacoesCliente
+{
+	 selection-background-color: rgb(250, 128, 114);
+	 background:#b5b5b5;
+	 border-bottom-right-radius:5px;
+     border-bottom-left-radius:5px;
+     border: 1px solid #F4A460;
+}
 
 #twPedido
 {	
@@ -118,7 +132,7 @@ QTextEdit{
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="novoPedido">
     <property name="styleSheet">
@@ -165,6 +179,9 @@ QTextEdit{
       <property name="styleSheet">
        <string notr="true"/>
       </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
@@ -186,6 +203,9 @@ QTextEdit{
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -267,9 +287,9 @@ QTextEdit{
      <widget class="QLineEdit" name="lineEditSearchProduto">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>20</x>
         <y>20</y>
-        <width>321</width>
+        <width>401</width>
         <height>22</height>
        </rect>
       </property>
@@ -282,16 +302,13 @@ QTextEdit{
        <string notr="true">#lineEditSearchProduto{
   border-width:1px;
   border:0;
-  border-top-right-radius:6px;
-  border-bottom-right-radius:6px;
-  border-top-left-radius:0px;
-  border-bottom-left-radius:0px;
+ border-radius:6px;
   border-color:#fff;
   background:#b5b5b5
 }</string>
       </property>
       <property name="placeholderText">
-       <string>Buscar Produto</string>
+       <string>Digite o código ou nome do Produto</string>
       </property>
      </widget>
      <widget class="QDateTimeEdit" name="dateTimeEdit">
@@ -319,40 +336,8 @@ QTextEdit{
   background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))
 }
 
-QDateTimeEdit::place{
-
-  background:#fff;
-}
-
 </string>
       </property>
-     </widget>
-     <widget class="QComboBox" name="comboBoxSearch">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>81</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QComboBox
-{
-	background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255));
-}
-</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Código</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nome</string>
-       </property>
-      </item>
      </widget>
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
@@ -384,6 +369,11 @@ QDateTimeEdit::place{
         <string>Cliente Cadastrado</string>
        </property>
       </item>
+      <item>
+       <property name="text">
+        <string>Sem Informar Cliente</string>
+       </property>
+      </item>
      </widget>
      <zorder>lineEditSearchProduto</zorder>
      <zorder>twProdutos</zorder>
@@ -392,7 +382,6 @@ QDateTimeEdit::place{
      <zorder>lblValorTotal</zorder>
      <zorder>btnFinalizarPedido</zorder>
      <zorder>dateTimeEdit</zorder>
-     <zorder>comboBoxSearch</zorder>
      <zorder>comboBox</zorder>
     </widget>
     <widget class="QFrame" name="frCliente">
@@ -480,7 +469,7 @@ QDateTimeEdit::place{
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="lineEditCadastroEmailCliente">
             <property name="placeholderText">
              <string>Email</string>
             </property>
@@ -511,7 +500,13 @@ QDateTimeEdit::place{
 }</string>
        </property>
        <property name="text">
-        <string>               Informações do Cliente</string>
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="Arquivo_De_Recursos.qrc">:/imgs/images/infCliente.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
@@ -520,7 +515,7 @@ QDateTimeEdit::place{
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>411</width>
+        <width>831</width>
         <height>171</height>
        </rect>
       </property>
@@ -553,7 +548,7 @@ QDateTimeEdit::place{
         <rect>
          <x>0</x>
          <y>40</y>
-         <width>411</width>
+         <width>831</width>
          <height>131</height>
         </rect>
        </property>
@@ -568,507 +563,22 @@ QDateTimeEdit::place{
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QTableWidget" name="tbWidgetInformacoesCliente">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>10</y>
-          <width>401</width>
-          <height>111</height>
+          <y>0</y>
+          <width>821</width>
+          <height>131</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
-           <item>
-            <widget class="QLabel" name="label_11">
-             <property name="font">
-              <font>
-               <family>courier</family>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:0;
-border-bottom: 1px solid #F4A460;
-</string>
-             </property>
-             <property name="text">
-              <string>Nome</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblEnderecoNovo">
-             <property name="styleSheet">
-              <string notr="true">QLabel{ 
-  border-width:1px;
-  border:0;
-  border-radius:6px;
-  border-color:#fff;
-  background:#b5b5b5
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
-           <item>
-            <widget class="QLabel" name="label_12">
-             <property name="font">
-              <font>
-               <family>courier</family>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:0;
-border-bottom: 1px solid #F4A460;
-</string>
-             </property>
-             <property name="text">
-              <string>Endereço</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblNomeNovo">
-             <property name="styleSheet">
-              <string notr="true">QLabel{ 
-  border-width:1px;
-  border:0;
-  border-radius:6px;
-  border-color:#fff;
-  background:#b5b5b5
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
-           <item>
-            <widget class="QLabel" name="label_13">
-             <property name="font">
-              <font>
-               <family>courier</family>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:0;
-border-bottom: 1px solid #F4A460;
-</string>
-             </property>
-             <property name="text">
-              <string>Telefone</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblTelefoneNovo">
-             <property name="styleSheet">
-              <string notr="true">QLabel{ 
-  border-width:1px;
-  border:0;
-  border-radius:6px;
-  border-color:#fff;
-  background:#b5b5b5
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="styleSheet">
-              <string notr="true">border:0;
-border-bottom: 1px solid #F4A460;
-</string>
-             </property>
-             <property name="text">
-              <string>Email</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbEmailNovo">
-             <property name="styleSheet">
-              <string notr="true">QLabel{ 
-  border-width:1px;
-  border:0;
-  border-radius:6px;
-  border-color:#fff;
-  background:#b5b5b5
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
        </widget>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="quadradim_2" native="true">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>401</width>
-        <height>129</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 1px solid #F4A460;
-border-radius: 8px;
-</string>
-      </property>
-     </widget>
-     <zorder>quadradim_2</zorder>
-     <zorder>frCadastroCliente</zorder>
-     <zorder>frBuscaCliente</zorder>
-     <zorder>label</zorder>
-     <zorder>lbEmailNovo</zorder>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab">
-    <property name="styleSheet">
-     <string notr="true">font-family: courier</string>
-    </property>
-    <attribute name="title">
-     <string>Pedido por cliente</string>
-    </attribute>
-    <widget class="QLineEdit" name="txtIdClientePesqC">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>20</y>
-       <width>151</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btnPesquisarPesqC">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>20</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Pesquisar</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_40">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>71</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Id Cliente:</string>
-     </property>
-    </widget>
-    <widget class="QFrame" name="frPedidoClientePesqC">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>411</width>
-       <height>501</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_32">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Id Cliente:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_33">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nome:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_34">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Endereco:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_35">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>71</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Telefone:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblIdClientePesqC">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>0</y>
-        <width>281</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblNomePesqC">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>60</y>
-        <width>301</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblEnderecoPesqC">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>40</y>
-        <width>301</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblTelefonePesqC">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>20</y>
-        <width>301</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QTableWidget" name="twPedidoPesqC">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>100</y>
-        <width>401</width>
-        <height>361</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QFrame" name="frMostrarPesqC">
-     <property name="geometry">
-      <rect>
-       <x>430</x>
-       <y>150</y>
-       <width>431</width>
-       <height>421</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_31">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Informações do Cliente:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnMostrarPesqC">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>10</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Mostrar</string>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frMostrarListaPesqC">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>50</y>
-        <width>421</width>
-        <height>351</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QTableWidget" name="twMostrarPesqC">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>90</y>
-         <width>401</width>
-         <height>241</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_39">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>70</y>
-         <width>71</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Valor total:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblValorTotalPesqC">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>70</y>
-         <width>301</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_38">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>71</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Data:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblDataPesqC">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>40</y>
-         <width>301</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_37">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>71</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Id pedido:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblIdPedidoPesqC">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>10</y>
-         <width>281</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
       </widget>
      </widget>
     </widget>
@@ -1109,6 +619,9 @@ border-radius: 8px;
         <height>161</height>
        </rect>
       </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
@@ -1126,18 +639,19 @@ border-radius: 8px;
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">QLabel{
-	background:#ff9318;
-	border-top-right-radius:35px;
-	border-bottom-left-radius:35px;
-	font-family: Courier;
-}</string>
+       <string notr="true"/>
       </property>
       <property name="text">
-       <string>    Informações detalhadas do pedido</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Arquivo_De_Recursos.qrc">:/imgs/images/infDetalhadaDoPedido.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1254,7 +768,7 @@ border-bottom: 1px solid #F4A460;
 </string>
            </property>
            <property name="text">
-            <string>Endereco</string>
+            <string>Endereço</string>
            </property>
           </widget>
          </item>
@@ -1382,7 +896,7 @@ border-bottom: 1px solid #F4A460;
 </string>
            </property>
            <property name="text">
-            <string>Valor Total</string>
+            <string>Valor Total da Compra</string>
            </property>
           </widget>
          </item>
@@ -1394,7 +908,7 @@ border-bottom: 1px solid #F4A460;
   border:0;
   border-radius:6px;
   border-color:#fff;
-  background:#b5b5b5
+  background:#b5b5b5;
 }</string>
            </property>
            <property name="text">
@@ -1466,6 +980,9 @@ font-family:courier;
        <width>381</width>
        <height>531</height>
       </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -1611,23 +1128,53 @@ font-family:courier;
      </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid #F4A460;
+border-radius:8px;
 </string>
      </property>
     </widget>
+    <widget class="QWidget" name="widgetSearchForDate" native="true">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>20</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <widget class="QDateEdit" name="dateEditSearchPedido">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QDateEdit{
+  border-width:1px;
+  border-radius:6px;
+  border-color:#fff;
+  background:qlineargradient(spread:reflect, x1:0.994318, y1:0.915, x2:0.994318, y2:0.488, stop:0.1875 rgba(128, 128, 128, 255), stop:1 rgba(211, 211, 211, 255))
+}
+
+</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>widgetSearchForDate</zorder>
     <zorder>quadradim</zorder>
     <zorder>widgetPesquisaTwoLines</zorder>
     <zorder>frMostrarLista</zorder>
     <zorder>twListarPedidos</zorder>
-    <zorder>lineEditValorY</zorder>
-    <zorder>lineEditValorX</zorder>
     <zorder>widgetPesquisaOneLine</zorder>
     <zorder>comboBoxTipoPesquisa</zorder>
     <zorder>comboBoxTipoOrdenacao</zorder>
-    <zorder>label_4</zorder>
-    <zorder>labelEmailCliente</zorder>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Arquivo_De_Recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

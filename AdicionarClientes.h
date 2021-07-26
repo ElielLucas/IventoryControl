@@ -2,7 +2,9 @@
 #define ADICIONARCLIENTES_H
 
 #include <QDialog>
+#include<QDateTime>
 #include<persistenciacliente.h>
+#include<persistenciapedidovenda.h>
 #include<QTableWidgetItem>
 #include<QMessageBox>
 
@@ -20,23 +22,28 @@ public:
 
 private slots:
 
-    void on_tabCliente_currentChanged(int index);
-
     void on_pushButtonIncluir_clicked();
-
-    void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
-
-    void on_lineEditSearchCliente_textEdited(const QString &arg1);
-
-    void on_twCliente_itemDoubleClicked(QTableWidgetItem *item);
 
     void on_pushButtonEdit_clicked();
 
-    void on_pushButtonExcluir_clicked();
+    void on_tabCliente_currentChanged(int index);
+
+    void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
+
+    void on_lineEditSearchCliente_textEdited();
+
+    void on_twCliente_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_pushButtonComprasCliente_clicked();
+
+    void on_pushButtonVoltar_clicked();
+
+    void on_twPedidosCliente_itemDoubleClicked(QTableWidgetItem *item);
 
 private:
     Ui::AdicionarClientes *ui;
     HEV::PersistenciaCliente client;
+    HEV::PersistenciaPedidoVenda persistPedido;
     QString currentOrder;
 
     void limparDadosIncluir();
@@ -44,6 +51,8 @@ private:
     void iniciarLista();
     void mostrarLista(QString order);
     void organizeOrder();
+    QString prepareDate(QString date);
+    QString valorDuasCasa(QString aux);
 };
 
 #endif // ADICIONARCLIENTES_H

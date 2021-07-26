@@ -40,12 +40,9 @@ public:
     QLineEdit *lineEditTelefoneIncluir;
     QLineEdit *lineEditEmail;
     QWidget *tabListarCliente;
-    QTableWidget *twCliente;
-    QLineEdit *lineEditSearchCliente;
     QComboBox *comboBoxOrdem;
     QFrame *fr_DadosCliente;
     QPushButton *pushButtonEdit;
-    QPushButton *pushButtonExcluir;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
@@ -60,8 +57,18 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *lineEditEmailEdit;
+    QPushButton *pushButtonComprasCliente;
     QWidget *quadradim;
     QLabel *labelID;
+    QWidget *esconderListaClientes;
+    QLineEdit *lineEditSearchCliente;
+    QTableWidget *twCliente;
+    QWidget *esconderPedidosCliente;
+    QTableWidget *twPedidosCliente;
+    QPushButton *pushButtonVoltar;
+    QTableWidget *twProdutosCliente;
+    QLabel *label_3;
+    QLabel *label_4;
 
     void setupUi(QDialog *AdicionarClientes)
     {
@@ -69,7 +76,8 @@ public:
             AdicionarClientes->setObjectName(QString::fromUtf8("AdicionarClientes"));
         AdicionarClientes->resize(860, 598);
         AdicionarClientes->setMaximumSize(QSize(860, 598));
-        AdicionarClientes->setStyleSheet(QString::fromUtf8("QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));\n"
+        AdicionarClientes->setStyleSheet(QString::fromUtf8("\n"
+"QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));\n"
 "font-family: Courier;\n"
 "}\n"
 "\n"
@@ -98,9 +106,9 @@ public:
 "QComboBox{\n"
 "  border-color:#1f2f47;\n"
 "  border-radius:4px\n"
-"}\n"
 ""
-                        "\n"
+                        "}\n"
+"\n"
 "QLineEdit{\n"
 "  height:22px;\n"
 "  border-width:1px;\n"
@@ -120,6 +128,25 @@ public:
 "	 background:#b5b5b5;\n"
 "	 border-bottom-right-radius:20px;\n"
 "     border-bottom-left-radius:20px;\n"
+"     border: 1px solid #F4A460;\n"
+"}\n"
+"\n"
+"\n"
+"#twPedidosCliente\n"
+"{	\n"
+"	 selection-background-color: rgb(250, 128, 114);\n"
+"	 background:#b5b5b5;\n"
+"	 border-bottom-right-radius:14px;\n"
+"     border-bottom-left-radius:14px;\n"
+"     border: 1px solid #F4A460;\n"
+"}\n"
+"\n"
+"#twProdutosCliente\n"
+"{	\n"
+"	 selection-background-color: rgb(250, 128, 114);\n"
+"	 background:#b5b5b5;\n"
+"	 border-bottom-right-radius:14px;\n"
+"     border-bottom-left-radius:14px;\n"
 "     border: 1px solid #F4A460;\n"
 "}\n"
 "\n"
@@ -148,10 +175,12 @@ public:
         label_2->setGeometry(QRect(180, 70, 431, 51));
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	background:#ff9318;\n"
-"	border-top-right-radius:50px;\n"
-"	border-bottom-left-radius:50px;\n"
+"	border-top-right-radius:40px;\n"
+"	border-bottom-left-radius:40px;\n"
 "	font-family: Courier;\n"
 "}"));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/imgs/images/infCliente.png")));
+        label_2->setScaledContents(true);
         layoutWidget = new QWidget(tabIncluirCliente);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(150, 140, 501, 211));
@@ -185,16 +214,6 @@ public:
         tabCliente->addTab(tabIncluirCliente, QString());
         tabListarCliente = new QWidget();
         tabListarCliente->setObjectName(QString::fromUtf8("tabListarCliente"));
-        twCliente = new QTableWidget(tabListarCliente);
-        twCliente->setObjectName(QString::fromUtf8("twCliente"));
-        twCliente->setGeometry(QRect(10, 50, 501, 471));
-        twCliente->setFont(font);
-        twCliente->setStyleSheet(QString::fromUtf8(" selection-background-color: rgb(250, 128, 114);"));
-        twCliente->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        lineEditSearchCliente = new QLineEdit(tabListarCliente);
-        lineEditSearchCliente->setObjectName(QString::fromUtf8("lineEditSearchCliente"));
-        lineEditSearchCliente->setGeometry(QRect(10, 10, 501, 25));
-        lineEditSearchCliente->setFont(font);
         comboBoxOrdem = new QComboBox(tabListarCliente);
         comboBoxOrdem->addItem(QString());
         comboBoxOrdem->addItem(QString());
@@ -222,18 +241,14 @@ public:
         comboBoxOrdem->setFrame(true);
         fr_DadosCliente = new QFrame(tabListarCliente);
         fr_DadosCliente->setObjectName(QString::fromUtf8("fr_DadosCliente"));
-        fr_DadosCliente->setGeometry(QRect(520, 20, 261, 321));
+        fr_DadosCliente->setGeometry(QRect(520, 20, 261, 341));
         fr_DadosCliente->setStyleSheet(QString::fromUtf8("border:0;"));
         fr_DadosCliente->setFrameShape(QFrame::StyledPanel);
         fr_DadosCliente->setFrameShadow(QFrame::Raised);
         pushButtonEdit = new QPushButton(fr_DadosCliente);
         pushButtonEdit->setObjectName(QString::fromUtf8("pushButtonEdit"));
-        pushButtonEdit->setGeometry(QRect(20, 260, 93, 28));
+        pushButtonEdit->setGeometry(QRect(12, 260, 251, 28));
         pushButtonEdit->setFont(font);
-        pushButtonExcluir = new QPushButton(fr_DadosCliente);
-        pushButtonExcluir->setObjectName(QString::fromUtf8("pushButtonExcluir"));
-        pushButtonExcluir->setGeometry(QRect(150, 260, 93, 28));
-        pushButtonExcluir->setFont(font);
         layoutWidget1 = new QWidget(fr_DadosCliente);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(10, 30, 241, 224));
@@ -327,26 +342,73 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
+        pushButtonComprasCliente = new QPushButton(fr_DadosCliente);
+        pushButtonComprasCliente->setObjectName(QString::fromUtf8("pushButtonComprasCliente"));
+        pushButtonComprasCliente->setGeometry(QRect(10, 300, 251, 31));
         quadradim = new QWidget(tabListarCliente);
         quadradim->setObjectName(QString::fromUtf8("quadradim"));
         quadradim->setEnabled(true);
         quadradim->setGeometry(QRect(530, 50, 251, 221));
         quadradim->setStyleSheet(QString::fromUtf8("border: 1px solid #F4A460;\n"
+"border-radius:8px;\n"
 ""));
         labelID = new QLabel(tabListarCliente);
         labelID->setObjectName(QString::fromUtf8("labelID"));
         labelID->setGeometry(QRect(700, 500, 47, 13));
+        esconderListaClientes = new QWidget(tabListarCliente);
+        esconderListaClientes->setObjectName(QString::fromUtf8("esconderListaClientes"));
+        esconderListaClientes->setGeometry(QRect(9, 9, 501, 511));
+        lineEditSearchCliente = new QLineEdit(esconderListaClientes);
+        lineEditSearchCliente->setObjectName(QString::fromUtf8("lineEditSearchCliente"));
+        lineEditSearchCliente->setGeometry(QRect(0, 0, 501, 25));
+        lineEditSearchCliente->setFont(font);
+        twCliente = new QTableWidget(esconderListaClientes);
+        twCliente->setObjectName(QString::fromUtf8("twCliente"));
+        twCliente->setGeometry(QRect(0, 40, 501, 471));
+        twCliente->setFont(font);
+        twCliente->setStyleSheet(QString::fromUtf8(" selection-background-color: rgb(250, 128, 114);"));
+        twCliente->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        twCliente->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        twCliente->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContentsOnFirstShow);
+        esconderPedidosCliente = new QWidget(tabListarCliente);
+        esconderPedidosCliente->setObjectName(QString::fromUtf8("esconderPedidosCliente"));
+        esconderPedidosCliente->setGeometry(QRect(9, 10, 501, 511));
+        twPedidosCliente = new QTableWidget(esconderPedidosCliente);
+        twPedidosCliente->setObjectName(QString::fromUtf8("twPedidosCliente"));
+        twPedidosCliente->setGeometry(QRect(0, 40, 501, 251));
+        twPedidosCliente->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        twPedidosCliente->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        pushButtonVoltar = new QPushButton(esconderPedidosCliente);
+        pushButtonVoltar->setObjectName(QString::fromUtf8("pushButtonVoltar"));
+        pushButtonVoltar->setGeometry(QRect(0, 0, 75, 31));
+        pushButtonVoltar->setStyleSheet(QString::fromUtf8(""));
+        twProdutosCliente = new QTableWidget(esconderPedidosCliente);
+        twProdutosCliente->setObjectName(QString::fromUtf8("twProdutosCliente"));
+        twProdutosCliente->setGeometry(QRect(0, 340, 501, 171));
+        twProdutosCliente->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        twProdutosCliente->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        label_3 = new QLabel(esconderPedidosCliente);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(90, 0, 341, 31));
+        label_3->setStyleSheet(QString::fromUtf8(""));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/imgs/images/imgPedidosCliente.png")));
+        label_3->setScaledContents(true);
+        label_4 = new QLabel(esconderPedidosCliente);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(80, 300, 341, 31));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/imgs/images/imgProdutosCompraCliente.png")));
+        label_4->setScaledContents(true);
         tabCliente->addTab(tabListarCliente, QString());
         quadradim->raise();
-        twCliente->raise();
-        lineEditSearchCliente->raise();
         comboBoxOrdem->raise();
         fr_DadosCliente->raise();
         labelID->raise();
+        esconderListaClientes->raise();
+        esconderPedidosCliente->raise();
 
         retranslateUi(AdicionarClientes);
 
-        tabCliente->setCurrentIndex(1);
+        tabCliente->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(AdicionarClientes);
@@ -362,19 +424,17 @@ public:
 #if QT_CONFIG(tooltip)
         label_2->setToolTip(QCoreApplication::translate("AdicionarClientes", "<html><head/><body><p align=\"justify\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
-        label_2->setText(QCoreApplication::translate("AdicionarClientes", "               Informa\303\247\303\265es do Cliente", nullptr));
+        label_2->setText(QString());
         lineEditNomeIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Nome do Cliente", nullptr));
         lineEditEnderecoIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o (Opcional)", nullptr));
         lineEditTelefoneIncluir->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Telefone (Opcional)", nullptr));
         lineEditEmail->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Email (Opcional)", nullptr));
         tabCliente->setTabText(tabCliente->indexOf(tabIncluirCliente), QCoreApplication::translate("AdicionarClientes", "Incluir", nullptr));
-        lineEditSearchCliente->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Buscar Cliente", nullptr));
         comboBoxOrdem->setItemText(0, QCoreApplication::translate("AdicionarClientes", "Crescente por nome", nullptr));
         comboBoxOrdem->setItemText(1, QCoreApplication::translate("AdicionarClientes", "Decrescente por nome", nullptr));
 
         comboBoxOrdem->setPlaceholderText(QString());
         pushButtonEdit->setText(QCoreApplication::translate("AdicionarClientes", "Editar", nullptr));
-        pushButtonExcluir->setText(QCoreApplication::translate("AdicionarClientes", "Excluir", nullptr));
         label_12->setText(QCoreApplication::translate("AdicionarClientes", "Nome    ", nullptr));
         lineEditNomeEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Nome do Cliente", nullptr));
         label_13->setText(QCoreApplication::translate("AdicionarClientes", "Endere\303\247o", nullptr));
@@ -383,7 +443,15 @@ public:
         lineEditTelefoneEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Telefone", nullptr));
         label->setText(QCoreApplication::translate("AdicionarClientes", "Email   ", nullptr));
         lineEditEmailEdit->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Email", nullptr));
+        pushButtonComprasCliente->setText(QCoreApplication::translate("AdicionarClientes", "Compras do Cliente", nullptr));
         labelID->setText(QCoreApplication::translate("AdicionarClientes", "id", nullptr));
+        lineEditSearchCliente->setPlaceholderText(QCoreApplication::translate("AdicionarClientes", "Buscar Cliente", nullptr));
+        pushButtonVoltar->setText(QCoreApplication::translate("AdicionarClientes", "Voltar", nullptr));
+#if QT_CONFIG(tooltip)
+        label_3->setToolTip(QCoreApplication::translate("AdicionarClientes", "<html><head/><body><p align=\"justify\"><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        label_3->setText(QString());
+        label_4->setText(QString());
         tabCliente->setTabText(tabCliente->indexOf(tabListarCliente), QCoreApplication::translate("AdicionarClientes", "Lista de Clientes", nullptr));
     } // retranslateUi
 

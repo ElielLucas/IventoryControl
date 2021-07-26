@@ -17,22 +17,16 @@ namespace HEV
         public:
             PersistenciaPedidoVenda();
             void incluir(PedidoVenda obj, QString id_cliente);
-            QString pesquisar(QString valor);
-            QSqlQuery currentPosition(QString key, int opcao);
+            void incluir(PedidoVenda obj, QString data, QString id_cliente);
             QSqlQuery searchDate(QString key, QString order);
             QSqlQuery searchForValuesLessThan(QString key, QString order);
             QSqlQuery searchForValuesGreaterThan(QString key, QString order);
             QSqlQuery searchForValuesBetween(QString key1, QString key2, QString order);
             QSqlQuery searchForPurchasesByProduct(QString key, QString order);
             QSqlQuery searchForSalesRelatedInformation(QString key, QString order);
-
-
-//            List<PedidoVenda> criarLista();
-//            List<PedidoVenda> criarListaporCliente(QString n);
             QSqlQuery tabelaCompleta(QString order);
             void atualizarEstoque(list<Produto> &listProd);
-
-
+            void deleteTabelaPedidos();
             int idMax();
     };
 }

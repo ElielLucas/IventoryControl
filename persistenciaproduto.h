@@ -16,13 +16,14 @@ namespace HEV
     {
         public:
             PersistenciaProduto();
-            void incluir(Produto obj);
-            void excluir(QString key, int opcao);
-            int pesquisarIndex(QString key, int opcao, QString order);
+            void incluir(Produto obj);          
+            QSqlQuery filteredSearch(QString key);
             Produto pesquisarProduto(QString key, int opcao, QString order);
             int currentPosition(QString key, QString comand, int opcao);
             void alterar(Produto obj);
-            QSqlQuery criarLista(QString order);
+            QSqlQuery criarListaCadastrados(QString order);
+            QSqlQuery criarListaEstoque(QString order);
+            void deleteTabelaProduto();
     };
 }
 #endif // PERSISTENCIAPRODUTO_H

@@ -24,15 +24,13 @@ private slots:
 
     void on_btnEdit_clicked();
 
-    void on_btnExcluir_clicked();
-
     void on_tabProdutos_currentChanged(int index);
 
     void on_twProdutos_itemDoubleClicked(QTableWidgetItem *item);
 
     void on_comboBoxOrdem_currentIndexChanged(){organizeOrder();}
 
-    void on_txtKeySearch_3_editingFinished();
+    void on_txtKeySearch_3_textEdited();
 
 private:
     Ui::AdicionarProdutos *ui;

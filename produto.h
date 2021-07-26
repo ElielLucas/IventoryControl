@@ -15,6 +15,7 @@ namespace HEV
         QString descricao;
     public:
         Produto();
+        Produto(QString nome, QString quantidade, QString preco, QString descricao);
         Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao);
 
         void setCodigo(QString codigo);

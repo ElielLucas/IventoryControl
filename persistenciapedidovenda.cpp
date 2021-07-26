@@ -11,59 +11,57 @@ namespace HEV
     {
           QSqlQuery insert;
 
-          QString organizeDate=QString::number(obj.getDataHorasCompra().date().year())+"-"+QString::number(obj.getDataHorasCompra().date().month())+"-"+QString::number(obj.getDataHorasCompra().date().day());
-          insert.prepare("insert into tb_pedidos(dataCompra, valorTotal, id_cliente) values('"+organizeDate+"',"+obj.getValorTotal()+","+id_cliente+")");
+          QString organizeDate=obj.getDataHorasCompra().date().toString("yyyy-MM-dd")+" "+obj.getDataHorasCompra().time().toString();
+          if(id_cliente!="")
+          {
+              insert.prepare("insert into tb_pedidos(dataCompra, valorTotal, id_cliente) values('"+organizeDate+"',"+obj.getValorTotal()+","+id_cliente+")");
 
-          if(!insert.exec())
-            throw QString("Falha no cadastro do pedido!");
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
+
+              insert.prepare("insert into cliente_pedido(id_cliente, id_pedido) values("+id_cliente+","+QString::number(idMax())+")");
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
+          }else
+          {
+              insert.prepare("insert into tb_pedidos(dataCompra, valorTotal) values('"+organizeDate+"',"+obj.getValorTotal()+")");
+
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
+          }
 
           list<Produto> listAux = obj.getListaCurso();
-          for(auto i=listAux.begin();i!=listAux.end();i++)
+          int cont=0;
+          for(auto i=listAux.begin();i!=listAux.end();i++, cont++)
           {
-               insert.prepare("insert into produto_cliente(id_produto, id_cliente, dataCompraInstanciaDeProduto) values("+i->getCodigo()+","+id_cliente+",'"+organizeDate+"')");
-               if(!insert.exec())
-                 throw QString("Falha no cadastro do pedido!");
-               insert.prepare("insert into produto_pedido(id_produto, id_pedido, quantidade_comprada) values("+i->getCodigo()+","+QString::number(idMax())+","+i->getQuantidade()+")");
+               insert.prepare("insert into item_compra(ordem, id_pedido,id_produto, quantidade_comprada) values("+QString::number(cont)+","+QString::number(idMax())+","+i->getCodigo()+","+i->getQuantidade()+")");
                if(!insert.exec())
                  throw QString("Falha no cadastro do pedido!");
           }
 
-//       QString id="1";
-//       fstream arquivoPV;
-//       arquivoPV.open(nomeDoArquivoPV.toStdString().c_str(), std::ios::in |std::ios::out | std::ios::app);
+    }
 
-//       if(!arquivoPV.is_open())
-//           throw QString("Arquivo nao foi aberto");
+    void PersistenciaPedidoVenda::incluir(PedidoVenda obj, QString data, QString id_cliente)
+    {
+          QSqlQuery insert;
 
-//       ofstream tempPV;
-//       tempPV.open("tempPV.txt", std::ios::out | std::ios::app);
+          if(id_cliente!="")
+          {
+              insert.prepare("insert into tb_pedidos(id, dataCompra, valorTotal, id_cliente) values("+obj.getID()+",'"+data+"',"+obj.getValorTotal()+","+id_cliente+")");
 
-//       if(!tempPV.is_open())
-//           throw QString("Arquivo nao foi aberto");
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
 
-//       string linha;
-//       int novoid =0;
-//       PedidoVenda objInclud;
-//       objInclud.montarDados(valor.toStdString());
+              insert.prepare("insert into cliente_pedido(id_cliente, id_pedido) values("+id_cliente+","+QString::number(idMax())+")");
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
+          }else
+          {
+              insert.prepare("insert into tb_pedidos(id, dataCompra, valorTotal) values("+obj.getID()+",'"+data+"',"+obj.getValorTotal()+")");
 
-//       if (!arquivoPV.eof()){
-//           while(getline(arquivoPV,linha))
-//           {
-//                PedidoVenda aux;
-//                aux.montarDados(linha);
-//                tempPV<<linha+"\n";
-//                novoid=aux.getKey().toUInt();
-//                id= QString::number(novoid + 1);
-//           }
-//       }
-
-//       objInclud.setIDPedido(id);
-//       tempPV << objInclud.desmontarDados().toStdString() + "\n";
-//       arquivoPV.close();
-//       tempPV.close();
-
-//       remove(nomeDoArquivoPV.toStdString().c_str());
-//       rename("tempPV.txt", nomeDoArquivoPV.toStdString().c_str());
+              if(!insert.exec())
+                throw QString("Falha no cadastro do pedido!");
+          }
     }
 
     QSqlQuery PersistenciaPedidoVenda::tabelaCompleta(QString order)
@@ -114,8 +112,8 @@ namespace HEV
     QSqlQuery PersistenciaPedidoVenda::searchForPurchasesByProduct(QString key, QString order)
     {
         QSqlQuery select;
-        if(key[0]>='0' && key[0]<='9')select.prepare("select * from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) WHERE p.id like '"+key+"%' "+order);
-        else select.prepare("select * from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) WHERE LOWER(p.nome) like '"+key.toLower()+"%' "+order);
+        if(key[0]>='0' && key[0]<='9')select.prepare("select * from tb_pedidos ped inner join item_compra ic on (ic.id_pedido = ped.id) inner join tb_products p on (p.id = ic.id_produto) WHERE p.id like '"+key+"%' "+order);
+        else select.prepare("select * from tb_pedidos ped inner join item_compra ic on (ic.id_pedido = ped.id) inner join tb_products p on (p.id = ic.id_produto) WHERE LOWER(p.nome) like '"+key.toLower()+"%' "+order);
 
         if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
 
@@ -124,104 +122,11 @@ namespace HEV
     QSqlQuery PersistenciaPedidoVenda::searchForSalesRelatedInformation(QString key, QString order)
     {
         QSqlQuery select;
-        select.prepare("select ped.id as id_pedido, dataCompra, valorTotal, p.id as id_produto, p.nome as nome_produto, p.preco,pp.quantidade_comprada, c.id as id_cliente, c.nome as nome_cliente, c.endereco, c.telefone, c.email from tb_pedidos ped inner join produto_pedido pp on (pp.id_pedido = ped.id) inner join tb_products p on (p.id = pp.id_produto) inner join produto_cliente pc on (pc.id_produto = p.id) inner join tb_cliente c on (c.id = pc.id_cliente) WHERE ped.id = "+key+" "+order);
+        select.prepare("select ped.id as id_pedido, ped.dataCompra, valorTotal, p.id as id_produto, p.nome as nome_produto, p.preco,ic.quantidade_comprada, c.id as id_cliente, c.nome as nome_cliente, c.endereco, c.telefone, c.email from tb_pedidos ped left join tb_cliente c on (c.id = ped.id_cliente) inner join item_compra ic on (ped.id = ic.id_pedido) inner join tb_products p on(p.id = ic.id_produto) WHERE ped.id = "+key);
 
         if(!select.exec())throw QString("Falha ao acessar o banco de dados!");
 
         return select;
-    }
-
-    QString PersistenciaPedidoVenda::pesquisar(QString valor)
-    {
-//        ifstream arquivo;
-//        arquivo.open(nomeDoArquivoPV.toStdString().c_str(), std::ios::in);
-//        if(!arquivo.is_open())
-//            throw QString("Erro ao abrir o arquivo!");
-//        if(arquivo.eof())
-//            throw QString("Não tem pedidos");
-
-//        string linha;
-//        bool ok=false;
-//        PedidoVenda arm;
-//        getline(arquivo, linha);
-
-//        while(!arquivo.eof())
-//        {
-//            PedidoVenda aux;
-//            aux.montarDados(linha);
-//            if(aux.getKey() == valor)
-//            {
-//                arm=aux;
-//                ok=true;
-//            }
-//            getline(arquivo, linha);
-//        }
-//        arquivo.close();
-
-//        if(!ok)
-//            throw QString("Pedido não encontrado!");
-
-//        return arm.desmontarDados();
-    }
-
-//    List<PedidoVenda> PersistenciaPedidoVenda::criarLista()
-//    {
-//        fstream arquivo;
-//        arquivo.open(nomeDoArquivoPV.toStdString().c_str(), std::ios::in |std::ios::out | std::ios::app);
-
-//        if(!arquivo.is_open())
-//            throw QString("Arquivo nao foi aberto");
-//        if(arquivo.eof())
-//            throw QString("Arquivo esta vazio");
-
-//        string linha;
-//        List<PedidoVenda> lista;
-
-//        while(getline(arquivo,linha))
-//        {
-//            PedidoVenda p;
-//            p.montarDados(linha);
-//            lista.insert(&p);
-//        }
-//        arquivo.close();
-//        return lista;
-//    }
-
-//    List<PedidoVenda> PersistenciaPedidoVenda::criarListaporCliente(QString n)
-//    {
-//        fstream arquivo;
-//        arquivo.open(nomeDoArquivoPV.toStdString().c_str(), std::ios::in |std::ios::out | std::ios::app);
-
-//        if(!arquivo.is_open())
-//            throw QString("Arquivo nao foi aberto");
-//        if(arquivo.eof())
-//            throw QString("Arquivo esta vazio");
-
-//        string linha;
-//        List<PedidoVenda> lista;
-
-//        while(getline(arquivo,linha))
-//        {
-//            PedidoVenda p;
-//            p.montarDados(linha);
-//            if (p.getIDCliente() == n){
-//                lista.insert(&p);
-//            }
-//        }
-//        arquivo.close();
-//        if (lista.size() == 0)
-//            throw QString("O cliente não fez nenhum pedido");
-//        return lista;
-//    }
-
-    QSqlQuery PersistenciaPedidoVenda::currentPosition(QString key, int opcao)
-    {
-        QSqlQuery codSelect("SELECT * from tb_products WHERE LOWER(nome) like'"+key.toLower()+"%'");
-
-        if(!codSelect.exec())
-          throw QString("Falha ao pesquisar o produto!");
-
-        return codSelect;
     }
 
     void PersistenciaPedidoVenda::atualizarEstoque(list<Produto> &listProd)
@@ -239,23 +144,6 @@ namespace HEV
               throw QString("Falha ao atualizar o estoque!");
         }
 
-//           ofstream tempP;
-//           tempP.open("tempP.txt", std::ios::out | std::ios::app);
-
-//           if(!tempP.is_open())
-//               throw QString("Arquivo nao foi aberto");
-
-//           while(!listProd->isEmpty())
-//           {
-//               Produto aux=listProd->pegarPrimeiro();
-//               string texto=aux.desmontarDados().toStdString();
-
-//               tempP<<texto+"\n";
-//           }
-//           tempP.close();
-
-//           remove("arquivoProdutos.txt");
-//           rename("tempP.txt", "arquivoProdutos.txt");
     }
 
     int PersistenciaPedidoVenda::idMax()
@@ -266,5 +154,17 @@ namespace HEV
         pesquisa.next();
         int id = pesquisa.record().indexOf("id");
         return pesquisa.value(id).toInt();
+    }
+
+
+    void PersistenciaPedidoVenda::deleteTabelaPedidos()
+    {
+        QSqlQuery delet;
+        delet.prepare("delete from item_compra;");
+        delet.prepare("delete from cliente_pedido;");
+        delet.prepare("delete from tb_pedidos;");
+        if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
+        delet.prepare("DELETE FROM sqlite_sequence WHERE `name` = 'tb_pedidos';");
+        if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
     }
 }

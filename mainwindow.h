@@ -2,14 +2,19 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QFileDialog>
+#include<QLocale>
 #include<QMessageBox>
 #include<QLinearGradient>
 #include<QPainter>
-#include<persistenciapedidovenda.h>
-#include<persistenciaproduto.h>
+#include<QIcon>
+#include<QSqlDatabase>
 #include<AdicionarProdutos.h>
 #include<AdicionarClientes.h>
 #include<AdicionarPedido.h>
+#include<persistenciaproduto.h>
+#include<persistenciapedidovenda.h>
+#include<persistenciacliente.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,8 +36,15 @@ private slots:
 
     void on_btnPedidos_clicked();
 
+    void on_actionExportar_para_Excel_triggered();
+
+    void on_actionDeletar_Dados_triggered();
+
 private:
     Ui::MainWindow *ui;
+    HEV::PersistenciaProduto produt;
+    HEV::PersistenciaCliente client;
+    HEV::PersistenciaPedidoVenda venda;
 
 };
 #endif // MAINWINDOW_H

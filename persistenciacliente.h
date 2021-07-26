@@ -15,14 +15,13 @@ namespace HEV
     {
         public:
             PersistenciaCliente();
-            int incluir(Cliente obj);
-            void excluir(QString key);
-            int pesquisarIndex(QString key, QString order);
+            int incluir(Cliente obj);                  
+            QSqlQuery filteredSearch(QString key);
             Cliente pesquisarCliente(QString key);
-            QSqlQuery currentPosition(QString key);
+            QSqlQuery searchCustomerPurchases(QString key);
             void alterar(Cliente obj);
-            QSqlQuery criarLista(QString order);
-
+            QSqlQuery criarListaCadastrados(QString order);
+            void deleteTabelaCliente();
             int idMax();
     };
 

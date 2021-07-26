@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>images/icone.png</file>
+        <file>images/logo.png</file>
+        <file>images/imgPedidosCliente.png</file>
+        <file>images/imgProdutosCompraCliente.png</file>
+        <file>images/infDetalhadaDoPedido.png</file>
+        <file>images/infCliente.png</file>
+        <file>images/infProduto.png</file>
+        <file>images/iconExport.png</file>
+        <file>images/iconImport.png</file>
+        <file>images/delete.png</file>
+    </qresource>
+</RCC>

@@ -26,75 +26,60 @@ public:
     ~AdicionarPedido();
 
 private slots:
-    void on_btnPesquisarCliente_clicked();
-
-    void on_btnAdicionar_clicked();
-
-    void on_btnExcluir_clicked();
-
-    void on_btnFinalizarPedido_clicked();
-
-    void on_btnPesquisarPedido_clicked();
-
-    void on_btnMostrarLista_clicked();
-
-    void on_btnMostrarPedido_clicked();
-
-    void on_btnPesquisarPesqC_clicked();
-
-    void on_btnMostrarPesqC_clicked();
-
-    void on_comboBox_currentIndexChanged(int index);
-
-    void on_lineEditSearchProduto_textEdited();
 
     void on_tabPedido_currentChanged(int index);
 
-    void on_lineEditSearchPedidos_textEdited();
-
-    void on_comboBoxTipoOrdenacao_currentIndexChanged(){organizeOrder();}
+    void on_btnFinalizarPedido_clicked();
 
     void on_lineEditSearchPedido_textEdited();
 
+    void on_lineEditSearchProduto_textEdited();
+
+    void on_txtSearchCliente_textEdited();
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_comboBoxTipoOrdenacao_currentIndexChanged(){organizeOrder();}
+
     void on_comboBoxTipoPesquisa_currentIndexChanged(int index);
+
+    void on_lineEditValorX_textEdited(){on_lineEditValorY_textEdited();};
 
     void on_lineEditValorY_textEdited();
 
+    void on_dateEditSearchPedido_dateChanged(const QDate &date);
+
     void on_twListarPedidos_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_twProdutos_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_twPedido_itemDoubleClicked(QTableWidgetItem *item);
+
 
 private:
     Ui::AdicionarPedido *ui;
     HEV::PersistenciaPedidoVenda persistPedido;
     HEV::PersistenciaProduto produt;
+    HEV::PersistenciaCliente client;
     QString currentOrder;
 
     list<HEV::Produto> comprarProduto;
     list<HEV::Produto> escolhidos;
-    list<HEV::Produto> mostrar;
-    list<HEV::PedidoVenda> pedidovenda;
-    list<HEV::PedidoVenda> pedidoporcliente;
-
-    QString valorDuasCasa(QString aux);
 
     void limparIncluirPedido();
     void limparListaMestre();
     void limparListsSTL();
-    void limparListaPorCliente();
     void organizeOrder();
+    QString prepareDate(QString date);
+    QString valorDuasCasa(QString aux);
 
     void iniciarListas();
-    void criarLista();
     void gerarListaProdutosEstoque();
     void gerarListaProdutosEstoqueProvisorio();
 
-
     void gerarListaDeCompra();
-    void gerarListaDePesquisa();
     void gerarListaDePedidos(QString order);
 
-
-    void gerarListaDePedidoPorCliente();
-    void gerarListaMostrarPorCliente();
 };
 
 #endif // ADICIONARPEDIDO_H

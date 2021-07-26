@@ -20,7 +20,8 @@
    <string>Cadastro de Clientes</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));
+   <string notr="true">
+QDialog{background:qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(2, 0, 36, 255), stop:1 rgba(239, 77, 18, 255));
 font-family: Courier;
 }
 
@@ -73,6 +74,25 @@ QTextEdit{
      border: 1px solid #F4A460;
 }
 
+
+#twPedidosCliente
+{	
+	 selection-background-color: rgb(250, 128, 114);
+	 background:#b5b5b5;
+	 border-bottom-right-radius:14px;
+     border-bottom-left-radius:14px;
+     border: 1px solid #F4A460;
+}
+
+#twProdutosCliente
+{	
+	 selection-background-color: rgb(250, 128, 114);
+	 background:#b5b5b5;
+	 border-bottom-right-radius:14px;
+     border-bottom-left-radius:14px;
+     border: 1px solid #F4A460;
+}
+
 </string>
   </property>
   <widget class="QTabWidget" name="tabCliente">
@@ -96,7 +116,7 @@ QTextEdit{
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabIncluirCliente">
     <property name="font">
@@ -148,13 +168,19 @@ width: 120px;
      <property name="styleSheet">
       <string notr="true">QLabel{
 	background:#ff9318;
-	border-top-right-radius:50px;
-	border-bottom-left-radius:50px;
+	border-top-right-radius:40px;
+	border-bottom-left-radius:40px;
 	font-family: Courier;
 }</string>
      </property>
      <property name="text">
-      <string>               Informações do Cliente</string>
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Arquivo_De_Recursos.qrc">:/imgs/images/infCliente.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
@@ -222,45 +248,6 @@ width: 120px;
     <attribute name="title">
      <string>Lista de Clientes</string>
     </attribute>
-    <widget class="QTableWidget" name="twCliente">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>501</width>
-       <height>471</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Courier</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"> selection-background-color: rgb(250, 128, 114);</string>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEditSearchCliente">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>501</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Courier</family>
-      </font>
-     </property>
-     <property name="placeholderText">
-      <string>Buscar Cliente</string>
-     </property>
-    </widget>
     <widget class="QComboBox" name="comboBoxOrdem">
      <property name="geometry">
       <rect>
@@ -326,7 +313,7 @@ height:30
        <x>520</x>
        <y>20</y>
        <width>261</width>
-       <height>321</height>
+       <height>341</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -341,9 +328,9 @@ height:30
      <widget class="QPushButton" name="pushButtonEdit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>12</x>
         <y>260</y>
-        <width>93</width>
+        <width>251</width>
         <height>28</height>
        </rect>
       </property>
@@ -355,25 +342,6 @@ height:30
       </property>
       <property name="text">
        <string>Editar</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButtonExcluir">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>260</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Courier</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Excluir</string>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
@@ -529,6 +497,19 @@ margin: 14px 0;
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="pushButtonComprasCliente">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>300</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Compras do Cliente</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="quadradim" native="true">
      <property name="enabled">
@@ -544,6 +525,7 @@ margin: 14px 0;
      </property>
      <property name="styleSheet">
       <string notr="true">border: 1px solid #F4A460;
+border-radius:8px;
 </string>
      </property>
     </widget>
@@ -560,15 +542,174 @@ margin: 14px 0;
       <string>id</string>
      </property>
     </widget>
+    <widget class="QWidget" name="esconderListaClientes" native="true">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>9</y>
+       <width>501</width>
+       <height>511</height>
+      </rect>
+     </property>
+     <widget class="QLineEdit" name="lineEditSearchCliente">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>501</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="placeholderText">
+       <string>Buscar Cliente</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="twCliente">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>501</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> selection-background-color: rgb(250, 128, 114);</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="esconderPedidosCliente" native="true">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>10</y>
+       <width>501</width>
+       <height>511</height>
+      </rect>
+     </property>
+     <widget class="QTableWidget" name="twPedidosCliente">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>501</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonVoltar">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>75</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Voltar</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="twProdutosCliente">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>340</y>
+        <width>501</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>0</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Arquivo_De_Recursos.qrc">:/imgs/images/imgPedidosCliente.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>300</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Arquivo_De_Recursos.qrc">:/imgs/images/imgProdutosCompraCliente.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <zorder>quadradim</zorder>
-    <zorder>twCliente</zorder>
-    <zorder>lineEditSearchCliente</zorder>
     <zorder>comboBoxOrdem</zorder>
     <zorder>fr_DadosCliente</zorder>
     <zorder>labelID</zorder>
+    <zorder>esconderListaClientes</zorder>
+    <zorder>esconderPedidosCliente</zorder>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Arquivo_De_Recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

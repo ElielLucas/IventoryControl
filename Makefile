@@ -265,7 +265,8 @@ Makefile: eComerce.pro F:/Qt/6.1.2/mingw81_64/mkspecs/win32-g++/qmake.conf F:/Qt
 		F:/Qt/6.1.2/mingw81_64/lib/Qt6Sql.prl \
 		F:/Qt/6.1.2/mingw81_64/lib/Qt6Core.prl \
 		F:/Qt/6.1.2/mingw81_64/lib/Qt6EntryPoint.prl \
-		F:/Qt/6.1.2/mingw81_64/mkspecs/features/build_pass.prf
+		F:/Qt/6.1.2/mingw81_64/mkspecs/features/build_pass.prf \
+		Arquivo_De_Recursos.qrc
 	$(QMAKE) -o Makefile eComerce.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 F:/Qt/6.1.2/mingw81_64/mkspecs/features/spec_pre.prf:
 F:/Qt/6.1.2/mingw81_64/mkspecs/features/device_config.prf:
@@ -463,6 +464,7 @@ F:/Qt/6.1.2/mingw81_64/lib/Qt6Sql.prl:
 F:/Qt/6.1.2/mingw81_64/lib/Qt6Core.prl:
 F:/Qt/6.1.2/mingw81_64/lib/Qt6EntryPoint.prl:
 F:/Qt/6.1.2/mingw81_64/mkspecs/features/build_pass.prf:
+Arquivo_De_Recursos.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile eComerce.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

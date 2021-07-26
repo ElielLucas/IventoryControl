@@ -9,6 +9,7 @@ debug/persistenciacliente.o
 debug/persistenciapedidovenda.o
 debug/persistenciaproduto.o
 debug/produto.o
+debug/qrc_Arquivo_De_Recursos.o
 debug/moc_AdicionarClientes.o
 debug/moc_AdicionarPedido.o
 debug/moc_AdicionarProdutos.o

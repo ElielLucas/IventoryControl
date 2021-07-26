@@ -17,6 +17,14 @@ Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco
     setQuantidade(quantidade);
     setPreco(preco);
 }
+Produto::Produto(QString nome, QString quantidade, QString preco, QString descricao)
+{
+    codigo="";
+    setNome(nome);
+    setDescricao(descricao);
+    setQuantidade(quantidade);
+    setPreco(preco);
+}
 void Produto::setCodigo(QString codigo)
 {
     long long int aux=codigo.toLongLong();
@@ -39,7 +47,7 @@ void Produto::setNome(QString nome)
 void Produto::setQuantidade(QString quantidade)
 {
     int n=quantidade.toInt();
-    if(n<=0)throw QString("Essa quantidade é inválida!");
+    if(n<0)throw QString("Essa quantidade é inválida!");
     this->quantidade=quantidade;
 }
 void Produto::setPreco(QString preco)
