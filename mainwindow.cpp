@@ -42,12 +42,9 @@ void MainWindow::on_actionExportar_para_Excel_triggered()
          if(!local.open(QIODevice::WriteOnly | QIODevice::Text))
               throw QString("Não foi possível criar o arquivo!");
 
-         HEV::PersistenciaProduto produt;
-         HEV::PersistenciaCliente client;
-         HEV::PersistenciaPedidoVenda venda;
-
          //TABELA DE PRODUTOS
-         QSqlQuery lista = produt.criarListaCadastrados("order by id");
+         persistencia = new PersistenciaProduto;
+         QSqlQuery lista = persistencia->criarListaCadastrados("order by id");
 
          int iCod, iNome, iQuant, iPrec, iDesc;
 
@@ -67,9 +64,11 @@ void MainWindow::on_actionExportar_para_Excel_triggered()
              linha = lista.value(iCod).toString() +";"+ lista.value(iNome).toString() +";"+ lista.value(iQuant).toString() +";"+ lista.value(iPrec).toString() +";"+ lista.value(iDesc).toString();
              out<<linha+"\n";
          }
+         delete persistencia;
 
          //TABELA DE CLIENTES
-         lista = client.criarListaCadastrados("order by id");
+         persistencia = new PersistenciaCliente;
+         lista = persistencia->criarListaCadastrados("order by id");
 
          int  iEndereco, iTelefone, iEmail;
          iCod = lista.record().indexOf("id");
@@ -85,9 +84,11 @@ void MainWindow::on_actionExportar_para_Excel_triggered()
              linha = lista.value(iCod).toString() +";"+ lista.value(iNome).toString() +";"+ lista.value(iEndereco).toString() +";"+ lista.value(iTelefone).toString() +";"+ lista.value(iEmail).toString();
              out<<linha+"\n";
          }
+         delete persistencia;
 
          //TABELA DE VENDAS
-         lista = venda.tabelaCompleta("order by id");
+         persistencia = new PersistenciaPedidoVenda;
+         lista = persistencia->criarListaCadastrados("order by id");
 
          int iDat, iValorTotal, iIdCliente;
          iCod = lista.record().indexOf("id");
@@ -101,6 +102,7 @@ void MainWindow::on_actionExportar_para_Excel_triggered()
              linha = lista.value(iCod).toString() +";"+ lista.value(iDat).toString() +";"+ lista.value(iValorTotal).toString() +";"+ lista.value(iIdCliente).toString();
              out<<linha+"\n";
          }
+         delete persistencia;
 
          //TABELA DE RELACIONAMENTO CLIENTE-VENDA
          lista.prepare("select * from cliente_pedido order by id_pedido");
@@ -145,9 +147,14 @@ void MainWindow::on_actionDeletar_Dados_triggered()
 {
     try
     {
-        produt.deleteTabelaProduto();
-        client.deleteTabelaCliente();
-        venda.deleteTabelaPedidos();
+        persistencia = new PersistenciaProduto;
+        persistencia->deleteTabela();
+        delete persistencia;
+        persistencia = new PersistenciaCliente;
+        persistencia->deleteTabela();
+        delete persistencia;
+        persistencia = new PersistenciaPedidoVenda;
+        persistencia->deleteTabela();
         throw QString("Os dados foram apagados!");
     }  catch (QString erro) {
         QMessageBox::information(this,"Aviso!", erro);

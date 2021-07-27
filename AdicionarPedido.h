@@ -58,13 +58,12 @@ private slots:
 
 private:
     Ui::AdicionarPedido *ui;
-    HEV::PersistenciaPedidoVenda persistPedido;
-    HEV::PersistenciaProduto produt;
-    HEV::PersistenciaCliente client;
+    InterfaceCRUD *persistencia;
+
     QString currentOrder;
 
-    list<HEV::Produto> comprarProduto;
-    list<HEV::Produto> escolhidos;
+    list<Thing> comprarProduto;
+    list<Thing> escolhidos;
 
     void limparIncluirPedido();
     void limparListaMestre();

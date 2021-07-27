@@ -20,25 +20,29 @@ SOURCES += \
     AdicionarPedido.cpp \
     AdicionarProdutos.cpp \
     cliente.cpp \
+    interfacecrud.cpp \
     main.cpp \
     mainwindow.cpp \
     pedidovenda.cpp \
     persistenciacliente.cpp \
     persistenciapedidovenda.cpp \
     persistenciaproduto.cpp \
-    produto.cpp
+    produto.cpp \
+    thing.cpp
 
 HEADERS += \
     AdicionarClientes.h \
     AdicionarPedido.h \
     AdicionarProdutos.h \
     cliente.h \
+    interfacecrud.h \
     mainwindow.h \
     pedidovenda.h \
     persistenciacliente.h \
     persistenciapedidovenda.h \
     persistenciaproduto.h \
-    produto.h
+    produto.h \
+    thing.h
 
 FORMS += \
     AdicionarClientes.ui \

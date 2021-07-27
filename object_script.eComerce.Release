@@ -2,6 +2,7 @@ release/AdicionarClientes.o
 release/AdicionarPedido.o
 release/AdicionarProdutos.o
 release/cliente.o
+release/interfacecrud.o
 release/main.o
 release/mainwindow.o
 release/pedidovenda.o
@@ -9,6 +10,7 @@ release/persistenciacliente.o
 release/persistenciapedidovenda.o
 release/persistenciaproduto.o
 release/produto.o
+release/thing.o
 release/qrc_Arquivo_De_Recursos.o
 release/moc_AdicionarClientes.o
 release/moc_AdicionarPedido.o

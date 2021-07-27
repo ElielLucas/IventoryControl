@@ -1,26 +1,25 @@
 #include "produto.h"
-namespace HEV
-{
+
 Produto::Produto():
-    codigo(""),
-    nome(""),
+    Thing(),
     quantidade(""),
     preco(""),
     descricao("")
 {
 }
-Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao)
+Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao):
+    Thing()
 {
-    setCodigo(codigo);
-    setNome(nome);
+    Produto::setCodigo(codigo);
+    Produto::setNome(nome);
     setDescricao(descricao);
     setQuantidade(quantidade);
     setPreco(preco);
 }
-Produto::Produto(QString nome, QString quantidade, QString preco, QString descricao)
+Produto::Produto(QString nome, QString quantidade, QString preco, QString descricao):
+    Thing()
 {
-    codigo="";
-    setNome(nome);
+    Produto::setNome(nome);
     setDescricao(descricao);
     setQuantidade(quantidade);
     setPreco(preco);
@@ -29,7 +28,7 @@ void Produto::setCodigo(QString codigo)
 {
     long long int aux=codigo.toLongLong();
     if(aux<=0)throw QString("Código inválido!");
-    this->codigo=codigo;
+    Thing::setCodigo(codigo);
 }
 
 void Produto::setNome(QString nome)
@@ -42,7 +41,7 @@ void Produto::setNome(QString nome)
     {
         aux+=nome[i].toLower();
     }
-    this->nome=aux;
+    Thing::setNome(aux);
 }
 void Produto::setQuantidade(QString quantidade)
 {
@@ -77,10 +76,5 @@ void Produto::setPreco(QString preco)
     this->preco=preco;
 }
 
-void Produto::incQuantidade(int n)
-{
-    int aux=quantidade.toInt()+n;
-    quantidade=QString::number(aux);
-}
 
-}
+

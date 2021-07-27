@@ -1,43 +1,31 @@
 #ifndef HEV_PEDIDOVENDA_H
 #define HEV_PEDIDOVENDA_H
-#include <QString>
+#include<thing.h>
+#include<QString>
 #include<vector>
-#include<QDateTime>
 #include <produto.h>
 
-namespace HEV 
+class PedidoVenda: public Thing
 {
+private:
+    QDateTime dataHoras;
+    QString valorTotal;
+    list<Thing> listaProduto;
 
-    class PedidoVenda
-    {
-    private:
-        QString idPedido;
-        QDateTime dataHoras;
-        QString valorTotal;
-        list<Produto> listaProduto;
+public:
+    PedidoVenda();
+    PedidoVenda(QDateTime dataHoras, QString total);
+    PedidoVenda(QString idPedido, QString total);
+    PedidoVenda(QDateTime dataHoras, QString total, list<Thing> listaProduto);
 
-    public:
-        PedidoVenda();
-        PedidoVenda(QDateTime dataHoras, QString total);
-        PedidoVenda(QString idPedido, QString total);
-        PedidoVenda(QDateTime dataHoras, QString total, list<Produto> listaProduto);
+    void setDataHorasCompra(QDateTime dateTime){dataHoras=dateTime;}
+    void setValorTotal(QString total){valorTotal=total;}
+    void setLista(list<Thing> &lista){listaProduto=lista;}
 
-        void setDataHorasCompra(QDateTime dateTime){dataHoras=dateTime;}
-        void setValorTotal(QString total){valorTotal=total;}
+    QDateTime getDataHorasCompra()const{return dataHoras;}
+    QString getValorTotal()const{return valorTotal;}
+    list<Thing>getLista()const {return listaProduto;}
+};
 
-        QDateTime getDataHorasCompra(){return dataHoras;}
-        QString getValorTotal(){return valorTotal;}
-        QString getID()const{return idPedido;}
-
-        void setLista(list<Produto> &lista){listaProduto=lista;}
-        list<Produto>getListaCurso()const {return listaProduto;}
-
-        bool operator != (PedidoVenda &P){return idPedido.toLongLong()!=P.idPedido.toLongLong();}
-        bool operator == (PedidoVenda &P){return idPedido.toLongLong()==P.idPedido.toLongLong();}
-        bool operator >= (PedidoVenda &P){return idPedido.toLongLong()>=P.idPedido.toLongLong();}
-
-    };
-
-} // namespace HEV
 
 #endif // HEV_PEDIDOVENDA_H

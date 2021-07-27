@@ -1,29 +1,24 @@
 #ifndef PERSISTENCIAPRODUTO_H
 #define PERSISTENCIAPRODUTO_H
-#include<fstream>
+#include<interfacecrud.h>
 #include<QString>
 #include<produto.h>
-#include<QSql>
-#include<QSqlDatabase>
-#include<QSqlQuery>
-#include<QSqlRecord>
-#include<QVariant>
 
-using std::string;
-namespace HEV
+class PersistenciaProduto: public InterfaceCRUD
 {
-    class PersistenciaProduto
-    {
-        public:
-            PersistenciaProduto();
-            void incluir(Produto obj);          
-            QSqlQuery filteredSearch(QString key);
-            Produto pesquisarProduto(QString key, int opcao, QString order);
-            int currentPosition(QString key, QString comand, int opcao);
-            void alterar(Produto obj);
-            QSqlQuery criarListaCadastrados(QString order);
-            QSqlQuery criarListaEstoque(QString order);
-            void deleteTabelaProduto();
-    };
-}
+    public:
+        PersistenciaProduto();
+       ~PersistenciaProduto(){}
+        int incluir(Thing obj);
+        int incluir(Thing obj, QString id_cliente){}
+        int incluir(Thing obj, QString data, QString id_cliente){}
+        void alterar(Thing obj);
+        void deleteTabela();
+        QSqlQuery criarListaCadastrados(QString order);
+        QSqlQuery criarListaEstoque(QString order);
+        QSqlQuery filteredSearch(QString key);
+        Thing pesquisarThing(QString key, int opcao, QString order);
+        int idMax();            
+};
+
 #endif // PERSISTENCIAPRODUTO_H

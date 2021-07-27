@@ -35,10 +35,12 @@ void AdicionarClientes::on_pushButtonIncluir_clicked()
             telefone = ui->lineEditTelefoneIncluir->text();
             email = ui->lineEditEmail->text();
 
-            HEV::Cliente obj(nome,endereco,telefone,email);
-            client.incluir(obj);
+            persistencia = new PersistenciaCliente;
+            Cliente obj(nome,endereco,telefone,email);
+            persistencia->incluir(obj);
 
             QMessageBox::information(this,"Incluir Cliente","O cliente foi incluido.");
+            delete persistencia;
         }
 
     } catch (QString erro)
@@ -56,7 +58,8 @@ void AdicionarClientes::on_lineEditSearchCliente_textEdited()
         int n = ui->twCliente->rowCount();
         for (int i = n; i >= 0; i--)ui->twCliente->removeRow(i);
 
-        QSqlQuery list = client.filteredSearch(key);
+        persistencia = new PersistenciaCliente;
+        QSqlQuery list = persistencia->filteredSearch(key);
         int linha = 0;
 
         int iCod, iNome, iEndereco, iTelefone, iEmail;
@@ -78,6 +81,7 @@ void AdicionarClientes::on_lineEditSearchCliente_textEdited()
         }
 
         ui->twCliente->setRowCount(linha);
+        delete persistencia;
 
     } catch (QString erro)
     {
@@ -103,11 +107,13 @@ void AdicionarClientes::on_pushButtonEdit_clicked()
             telefone = ui->lineEditTelefoneEdit->text();
             email = ui->lineEditEmailEdit->text();
 
-            HEV::Cliente obj(id, nome, endereco, telefone, email);
-            client.alterar(obj);
+            persistencia = new PersistenciaCliente;
+            Cliente obj(id, nome, endereco, telefone, email);
+            persistencia->alterar(obj);
             mostrarLista(currentOrder);
 
             QMessageBox::information(this,"Editar Cliente","O dados do cliente foram alterados.");
+            delete persistencia;
         }
 
     } catch (QString erro)
@@ -123,7 +129,8 @@ void AdicionarClientes::mostrarLista(QString order)
     int n = ui->twCliente->rowCount();
     for (int i = n; i >= 0; i--)ui->twCliente->removeRow(i);
 
-    QSqlQuery list = client.criarListaCadastrados(order);
+    persistencia = new PersistenciaCliente;
+    QSqlQuery list = persistencia->criarListaCadastrados(order);
     int linha = 0;
 
     int iCod, iNome, iEndereco, iTelefone, iEmail;
@@ -145,6 +152,7 @@ void AdicionarClientes::mostrarLista(QString order)
     }
 
     ui->twCliente->setRowCount(linha);
+    delete persistencia;
 }
 
 void AdicionarClientes::on_twCliente_itemDoubleClicked(QTableWidgetItem *item)
@@ -154,16 +162,19 @@ void AdicionarClientes::on_twCliente_itemDoubleClicked(QTableWidgetItem *item)
         int linha = item->row();
         QString cod = ui->twCliente->item(linha,0)->text();
 
-        HEV::Cliente obj = client.pesquisarCliente(cod);
+        persistencia = new PersistenciaCliente;
+        Thing obj = persistencia->pesquisarThing(cod,-1,"order by id");
 
         ui->fr_DadosCliente->setVisible(true);
         ui->quadradim->setVisible(true);
 
-        ui->labelID->setText(obj.getID());
+        ui->labelID->setText(obj.getCodigo());
         ui->lineEditNomeEdit->setText(obj.getNome());
         ui->lineEditEnderecoEdit->setText(obj.getEndereco());
         ui->lineEditTelefoneEdit->setText(obj.getTelefone());
         ui->lineEditEmailEdit->setText(obj.getEmail());
+
+        delete persistencia;
 
     }  catch (QString erro) {
         QMessageBox::information(this,"Erro",erro);
@@ -177,7 +188,8 @@ void AdicionarClientes::on_twPedidosCliente_itemDoubleClicked(QTableWidgetItem *
         int linha = item->row();
         QString cod = ui->twPedidosCliente->item(linha,0)->text();
 
-        QSqlQuery tabela = persistPedido.searchForSalesRelatedInformation(cod, currentOrder);
+        persistencia = new PersistenciaCliente;
+        QSqlQuery tabela = persistencia->searchForSalesRelatedInformation(cod, currentOrder);
 
         int n = ui->twProdutosCliente->rowCount();
         for (int i = n; i >= 0; i--)ui->twProdutosCliente->removeRow(i);
@@ -204,6 +216,7 @@ void AdicionarClientes::on_twPedidosCliente_itemDoubleClicked(QTableWidgetItem *
             linha++;
         }
         ui->twProdutosCliente->setRowCount(linha);
+        delete persistencia;
     } catch (QString erro) {
         QMessageBox::information(this,"Erro",erro);
     }
@@ -221,7 +234,8 @@ void AdicionarClientes::on_pushButtonComprasCliente_clicked()
 
         QString key = ui->labelID->text();
 
-        QSqlQuery list = client.searchCustomerPurchases(key);
+        persistencia = new PersistenciaCliente;
+        QSqlQuery list = persistencia->searchCustomerPurchases(key);
         int linha = 0;
 
         int iCod, iDat, iValorTotal;
@@ -239,6 +253,7 @@ void AdicionarClientes::on_pushButtonComprasCliente_clicked()
         }
 
         ui->twPedidosCliente->setRowCount(linha);
+        delete persistencia;
 
     }  catch (QString erro) {
         QMessageBox::information(this,"Erro",erro);

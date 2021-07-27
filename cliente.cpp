@@ -1,9 +1,7 @@
 #include "cliente.h"
-namespace HEV
-{
+
 Cliente::Cliente():
-    id(""),
-    nome(""),
+    Thing(),
     endereco(""),
     telefone(""),
     email("")
@@ -11,19 +9,17 @@ Cliente::Cliente():
 
 }
 
-Cliente::Cliente(QString nome, QString endereco, QString telefone, QString email)
-{
-    id="";
-    setNome(nome);
+Cliente::Cliente(QString nome, QString endereco, QString telefone, QString email):
+    Thing(nome,"")
+{   
     setEndereco(endereco);
     setTelefone(telefone);
     setEmail(email);
 }
 
-Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString email)
+Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString email):
+    Thing(id, nome)
 {
-    setID(id);
-    setNome(nome);
     setEndereco(endereco);
     setTelefone(telefone);
     setEmail(email);
@@ -43,7 +39,7 @@ void Cliente::setNome(QString nome)
     {
         aux+=nome[i].toLower();
     }
-    this->nome = aux;
+    Thing::setNome(aux);
 }
 
 void Cliente::setEndereco(QString endereco)
@@ -72,4 +68,4 @@ void Cliente::setTelefone(QString telefone)
         throw QString("Telefone invalido");
     this->telefone = telefone;
 }
-}
+

@@ -31,18 +31,19 @@ void AdicionarPedido::on_lineEditSearchPedido_textEdited()
            {
                int escolhaComboBox = ui->comboBoxTipoPesquisa->currentIndex();
                QSqlQuery tabela;
+               persistencia = new PersistenciaPedidoVenda;
                if(escolhaComboBox==0)
                {
-                   tabela=persistPedido.searchDate(key,currentOrder);
+                   tabela=persistencia->searchDate(key,currentOrder);
                }else if(escolhaComboBox==1)
                {
-                   tabela=persistPedido.searchForValuesGreaterThan(key,currentOrder);
+                   tabela=persistencia->searchForValuesGreaterThan(key,currentOrder);
                }else if(escolhaComboBox==2)
                {
-                   tabela=persistPedido.searchForValuesLessThan(key,currentOrder);
+                   tabela=persistencia->searchForValuesLessThan(key,currentOrder);
                }else if(escolhaComboBox==4)
                {
-                   tabela=persistPedido.searchForPurchasesByProduct(key,currentOrder);
+                   tabela=persistencia->searchForPurchasesByProduct(key,currentOrder);
                }
 
                int iCod, iDat, iValorTotal;
@@ -60,6 +61,7 @@ void AdicionarPedido::on_lineEditSearchPedido_textEdited()
                    linha++;
                }
                ui->twListarPedidos->setRowCount(linha);
+               delete persistencia;
 
            }else organizeOrder();
        } catch (QString erro)
@@ -80,7 +82,8 @@ void AdicionarPedido::on_lineEditSearchProduto_textEdited()
         QString x="";
         for(int i=0;i<key.size();i++)x+=key[i];
 
-        QSqlQuery list = produt.filteredSearch(x);
+        persistencia = new PersistenciaProduto;
+        QSqlQuery list = persistencia->filteredSearch(x);
         int linha = 0;
 
         int iCod, iNome, iQuantidade, iPreco;
@@ -100,6 +103,7 @@ void AdicionarPedido::on_lineEditSearchProduto_textEdited()
         }
 
         ui->twProdutos->setRowCount(linha);
+        delete persistencia;
 
     } catch (QString erro)
     {
@@ -113,7 +117,8 @@ void AdicionarPedido::on_dateEditSearchPedido_dateChanged(const QDate &date)
     {
         QString key = date.toString("yyyy-MM-dd");
 
-        QSqlQuery tabela=persistPedido.searchDate(key,currentOrder);
+        persistencia = new PersistenciaPedidoVenda;
+        QSqlQuery tabela=persistencia->searchDate(key,currentOrder);
         int iCod, iDat, iValorTotal, iIdCliente;
         iCod = tabela.record().indexOf("id");
         iDat = tabela.record().indexOf("dataCompra");
@@ -130,6 +135,7 @@ void AdicionarPedido::on_dateEditSearchPedido_dateChanged(const QDate &date)
             linha++;
         }
         ui->twListarPedidos->setRowCount(linha);
+        delete persistencia;
 
     }catch (QString erro)
     {
@@ -154,7 +160,8 @@ void AdicionarPedido::on_lineEditValorY_textEdited()
         {
             QSqlQuery tabela;
 
-            tabela=persistPedido.searchForValuesBetween(key1, key2, currentOrder);
+            persistencia = new PersistenciaPedidoVenda;
+            tabela=persistencia->searchForValuesBetween(key1, key2, currentOrder);
 
             int iCod, iDat, iValorTotal;
             iCod = tabela.record().indexOf("id");
@@ -196,12 +203,12 @@ void AdicionarPedido::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
                 if (num > qtde || num < 0)QMessageBox::information(this, "Inválido", "Quantidade invalida");
                 else
                 {
-                    list<HEV::Produto>::iterator IT;
+                    list<Thing>::iterator IT;
                     for(IT = comprarProduto.begin();IT!=comprarProduto.end() && IT->getCodigo() != QString::number(id);IT++);
 
                     if ((qtde - num) >= 0)IT->setQuantidade(QString::number(qtde-num));
 
-                    HEV::Produto novo = *IT;
+                    Thing novo = *IT;
                     if(!escolhidos.empty())
                     {
                         for(IT = escolhidos.begin();IT!=escolhidos.end() && IT->getCodigo() != QString::number(id);IT++);
@@ -239,10 +246,10 @@ void AdicionarPedido::on_twPedido_itemDoubleClicked(QTableWidgetItem *item)
             int id = ui->twPedido->item(linha, 0)->text().toInt();
             int quantAux = ui->twPedido->item(linha, 2)->text().toInt();
 
-            HEV::Produto key;
+            Produto key;
             key.setCodigo(QString::number(id));
 
-            list<HEV::Produto>::iterator IT;
+            list<Thing>::iterator IT;
             for(IT = comprarProduto.begin();IT!=comprarProduto.end() && IT->getCodigo() != QString::number(id);IT++);
             if (IT->getCodigo()==QString::number(id))
             {
@@ -270,13 +277,13 @@ void AdicionarPedido::on_btnFinalizarPedido_clicked()
     try
     {
         int id=-1;
-        HEV::PersistenciaPedidoVenda baixa;
-        HEV::PersistenciaCliente x;     
 
         if(ui->comboBox->currentIndex()==0)
         {
-            HEV::Cliente novoCliente(ui->lineEditNome->text(),ui->lineEditEndereco->text(),ui->lineEditTelefone->text(),ui->lineEditCadastroEmailCliente->text());
-            id = x.incluir(novoCliente);         
+            Cliente novoCliente(ui->lineEditNome->text(),ui->lineEditEndereco->text(),ui->lineEditTelefone->text(),ui->lineEditCadastroEmailCliente->text());
+            persistencia = new PersistenciaCliente;
+            id = persistencia->incluir(novoCliente);
+            delete persistencia;
         }else if(ui->comboBox->currentIndex()==1)
         {
             int linha = ui->tbWidgetInformacoesCliente->currentRow();
@@ -286,11 +293,13 @@ void AdicionarPedido::on_btnFinalizarPedido_clicked()
             id = key.toInt();         
         }
 
-        HEV::PedidoVenda novoPedido(ui->dateTimeEdit->dateTime(), ui->lblValorTotal->text(),escolhidos);
+        PedidoVenda novoPedido(ui->dateTimeEdit->dateTime(), ui->lblValorTotal->text(),escolhidos);
 
-        if(id>=0)baixa.incluir(novoPedido, QString::number(id));
-        else baixa.incluir(novoPedido,"");
-        baixa.atualizarEstoque(comprarProduto);
+        persistencia = new PersistenciaPedidoVenda;
+        if(id>=0)persistencia->incluir(novoPedido, QString::number(id));
+        else persistencia->incluir(novoPedido,"");
+        persistencia->atualizarEstoque(comprarProduto);
+        delete persistencia;
 
         QMessageBox::information(this,"Compra", "Compra realizada com sucesso.");
         limparIncluirPedido();
@@ -310,7 +319,8 @@ void AdicionarPedido::on_twListarPedidos_itemDoubleClicked(QTableWidgetItem *ite
         int linha = item->row();
         QString cod = ui->twListarPedidos->item(linha,0)->text();
 
-        QSqlQuery tabela = persistPedido.searchForSalesRelatedInformation(cod, currentOrder);
+        persistencia = new PersistenciaPedidoVenda;
+        QSqlQuery tabela = persistencia->searchForSalesRelatedInformation(cod, currentOrder);
 
         ui->frMostrarLista->setVisible(true);
 
@@ -361,7 +371,7 @@ void AdicionarPedido::on_twListarPedidos_itemDoubleClicked(QTableWidgetItem *ite
         }
 
         ui->twProdutosLista->setRowCount(linha);
-
+        delete persistencia;
     }
     catch (QString erro)
     {
@@ -379,7 +389,8 @@ void AdicionarPedido::on_txtSearchCliente_textEdited()
         int n = ui->tbWidgetInformacoesCliente->rowCount();
         for (int i = n; i >= 0; i--)ui->tbWidgetInformacoesCliente->removeRow(i);
 
-        QSqlQuery list = client.filteredSearch(key);
+        persistencia = new PersistenciaCliente;
+        QSqlQuery list = persistencia->filteredSearch(key);
         int linha = 0;
 
         int iCod, iNome, iEndereco, iTelefone, iEmail;
@@ -401,6 +412,7 @@ void AdicionarPedido::on_txtSearchCliente_textEdited()
         }
 
         ui->tbWidgetInformacoesCliente->setRowCount(linha);
+        delete persistencia;
     }catch (QString erro)
     {
         QMessageBox::information(this,"Erro",erro);
@@ -415,9 +427,10 @@ void AdicionarPedido::gerarListaProdutosEstoque()
         int n = ui->twProdutos->rowCount();
         for (int i = n; i >= 0; i--)ui->twProdutos->removeRow(i);
 
-        list<HEV::Produto> aux;
+        list<Thing> aux;
 
-        QSqlQuery list = produt.criarListaEstoque("order by id");
+        persistencia= new PersistenciaProduto;
+        QSqlQuery list = persistencia->criarListaEstoque("order by id");
         int linha = 0;
 
         int iCod, iNome, iQuant, iPrec;
@@ -438,13 +451,14 @@ void AdicionarPedido::gerarListaProdutosEstoque()
             ui->twProdutos->setItem(linha,2,new QTableWidgetItem(quant));
             ui->twProdutos->setItem(linha,3,new QTableWidgetItem(valorDuasCasa(prec)));
 
-            aux.push_back(HEV::Produto(cod, nome, quant, prec, ""));
+            aux.push_back(Produto(cod, nome, quant, prec, ""));
             linha++;
         }
 
         comprarProduto = aux;
 
         ui->twProdutos->setRowCount(linha);
+        delete persistencia;
     }
     catch (QString erro)
     {
@@ -491,7 +505,7 @@ void AdicionarPedido::gerarListaDeCompra()
         {
             ui->twPedido->insertRow(linha);
 
-            HEV::Produto n = *IT;
+            Thing n = *IT;
             ui->twPedido->setItem(linha,0,new QTableWidgetItem(n.getCodigo()));
             ui->twPedido->setItem(linha,1,new QTableWidgetItem(n.getNome()));
             ui->twPedido->setItem(linha,2,new QTableWidgetItem(n.getQuantidade()));
@@ -520,7 +534,8 @@ void AdicionarPedido::gerarListaDePedidos(QString order)
     {
         for(int i=0;i<3;i++)ui->twListarPedidos->setColumnWidth(i,127);
 
-        QSqlQuery list = persistPedido.tabelaCompleta(order);
+        persistencia = new PersistenciaPedidoVenda;
+        QSqlQuery list = persistencia->criarListaCadastrados(order);
 
         int iCod, iDat, iValorTotal, iIdCliente;
         iCod = list.record().indexOf("id");
@@ -539,6 +554,7 @@ void AdicionarPedido::gerarListaDePedidos(QString order)
         }
 
         ui->twListarPedidos->setRowCount(linha);
+        delete persistencia;
     }
     catch (QString erro)
     {
