@@ -1,7 +1,8 @@
 #include "cliente.h"
 
 Cliente::Cliente():
-    Thing(),
+    codigo(""),
+    nome(""),
     endereco(""),
     telefone(""),
     email("")
@@ -9,17 +10,19 @@ Cliente::Cliente():
 
 }
 
-Cliente::Cliente(QString nome, QString endereco, QString telefone, QString email):
-    Thing(nome,"")
+Cliente::Cliente(QString nome, QString endereco, QString telefone, QString email)
 {   
+    codigo="";
+    setNome(nome);
     setEndereco(endereco);
     setTelefone(telefone);
     setEmail(email);
 }
 
-Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString email):
-    Thing(id, nome)
+Cliente::Cliente(QString id, QString nome, QString endereco, QString telefone, QString email)
 {
+    codigo=id;
+    setNome(nome);
     setEndereco(endereco);
     setTelefone(telefone);
     setEmail(email);
@@ -39,7 +42,7 @@ void Cliente::setNome(QString nome)
     {
         aux+=nome[i].toLower();
     }
-    Thing::setNome(aux);
+    this->nome=aux;
 }
 
 void Cliente::setEndereco(QString endereco)

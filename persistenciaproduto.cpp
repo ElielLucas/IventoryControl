@@ -1,9 +1,14 @@
 #include "persistenciaproduto.h"
 
-PersistenciaProduto::PersistenciaProduto(): InterfaceCRUD()
+PersistenciaProduto::PersistenciaProduto()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dir = qApp->applicationDirPath();
+    QString banco = dir + "/banco_de_dados/dbInventoryControl.db";
+    db.setDatabaseName(banco);
+    if(!db.open())throw QString("Falha ao conectar ao banco de dados!");
 }
-int PersistenciaProduto::incluir(Thing obj)
+int PersistenciaProduto::incluir(Produto obj)
 {
     QSqlQuery codInsertion;
     codInsertion.prepare("insert into tb_products(nome, descricao, quantidade, preco) values"
@@ -14,7 +19,7 @@ int PersistenciaProduto::incluir(Thing obj)
     return 0;
 }
 
-void PersistenciaProduto::alterar(Thing obj)
+void PersistenciaProduto::alterar(Produto obj)
 {
     QSqlQuery codUpdate("UPDATE tb_products SET id='"+obj.getCodigo()+"'"+
                                             ", nome='"+obj.getNome()+"'"+
@@ -47,7 +52,7 @@ QSqlQuery PersistenciaProduto::filteredSearch(QString key)
     return codSelect;
 }
 
-Thing PersistenciaProduto::pesquisarThing(QString key, int opcao, QString order)
+Produto PersistenciaProduto::pesquisarProduto(QString key, int opcao, QString order)
 {
     QSqlQuery codSelect;
     if(opcao==0)

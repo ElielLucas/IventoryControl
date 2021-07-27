@@ -1,7 +1,6 @@
 #ifndef ADICIONARPRODUTOS_H
 #define ADICIONARPRODUTOS_H
 #include <QDialog>
-#include<thing.h>
 #include<persistenciapedidovenda.h>
 #include<persistenciaproduto.h>
 #include<QTableWidgetItem>
@@ -34,7 +33,7 @@ private slots:
 
 private:
     Ui::AdicionarProdutos *ui;
-    InterfaceCRUD* persistencia;
+    PersistenciaProduto persistenciaProdutos;
     QString currentOrder;
 
     void limparDadosIncluir();

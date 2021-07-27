@@ -1,9 +1,14 @@
 #include "persistenciapedidovenda.h"
 
-PersistenciaPedidoVenda::PersistenciaPedidoVenda():InterfaceCRUD()
+PersistenciaPedidoVenda::PersistenciaPedidoVenda()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dir = qApp->applicationDirPath();
+    QString banco = dir + "/banco_de_dados/dbInventoryControl.db";
+    db.setDatabaseName(banco);
+    if(!db.open())throw QString("Falha ao conectar ao banco de dados!");
 }
-int PersistenciaPedidoVenda::incluir(Thing obj, QString id_cliente)
+int PersistenciaPedidoVenda::incluir(PedidoVenda obj, QString id_cliente)
 {
       QSqlQuery insert;
 
@@ -26,7 +31,7 @@ int PersistenciaPedidoVenda::incluir(Thing obj, QString id_cliente)
             throw QString("Falha no cadastro do pedido!");
       }
 
-      list<Thing> listAux = obj.getLista();
+      list<Produto> listAux = obj.getLista();
       int cont=0;
       for(auto i=listAux.begin();i!=listAux.end();i++, cont++)
       {
@@ -37,7 +42,7 @@ int PersistenciaPedidoVenda::incluir(Thing obj, QString id_cliente)
       return 0;
 }
 
-int PersistenciaPedidoVenda::incluir(Thing obj, QString data, QString id_cliente)
+int PersistenciaPedidoVenda::incluir(PedidoVenda obj, QString data, QString id_cliente)
 {
       QSqlQuery insert;
 
@@ -126,7 +131,7 @@ QSqlQuery PersistenciaPedidoVenda::searchForSalesRelatedInformation(QString key,
     return select;
 }
 
-void PersistenciaPedidoVenda::atualizarEstoque(list<Thing> &list)
+void PersistenciaPedidoVenda::atualizarEstoque(list<Produto> &list)
 {
 
     for(auto i=list.begin(); i!=list.end();i++)
@@ -158,7 +163,9 @@ void PersistenciaPedidoVenda::deleteTabela()
 {
     QSqlQuery delet;
     delet.prepare("delete from item_compra;");
+    if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
     delet.prepare("delete from cliente_pedido;");
+    if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
     delet.prepare("delete from tb_pedidos;");
     if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
     delet.prepare("DELETE FROM sqlite_sequence WHERE `name` = 'tb_pedidos';");

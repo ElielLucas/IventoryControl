@@ -1,9 +1,14 @@
 #include "persistenciacliente.h"
 
-PersistenciaCliente::PersistenciaCliente():InterfaceCRUD()
+PersistenciaCliente::PersistenciaCliente()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QString dir = qApp->applicationDirPath();
+    QString banco = dir + "/banco_de_dados/dbInventoryControl.db";
+    db.setDatabaseName(banco);
+    if(!db.open())throw QString("Falha ao conectar ao banco de dados!");
 }
-int PersistenciaCliente::incluir(Thing obj)
+int PersistenciaCliente::incluir(Cliente obj)
 {
     QSqlQuery codInsertion;
     codInsertion.prepare("insert into tb_cliente(nome, endereco, telefone, email) values"
@@ -23,7 +28,7 @@ int PersistenciaCliente::incluir(Thing obj)
     return codInsertion.value(id).toInt();
 }
 
-void PersistenciaCliente::alterar(Thing obj)
+void PersistenciaCliente::alterar(Cliente obj)
 {
     QSqlQuery codUpdate("UPDATE tb_cliente SET nome='"+obj.getNome()+"'"+
                                             ", endereco='"+obj.getEndereco()+"'"+
@@ -44,7 +49,7 @@ void PersistenciaCliente::deleteTabela()
     if(!delet.exec())throw QString("Falha ao deletar os dados do sistema!");
 }
 
-Thing PersistenciaCliente::pesquisarThing(QString key, int opcao, QString order)
+Cliente PersistenciaCliente::pesquisarCliente(QString key, int opcao, QString order)
 {
     QSqlQuery codSelect("select * from tb_cliente WHERE id="+key+" "+order);
 

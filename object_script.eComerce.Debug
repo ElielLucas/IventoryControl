@@ -2,7 +2,6 @@ debug/AdicionarClientes.o
 debug/AdicionarPedido.o
 debug/AdicionarProdutos.o
 debug/cliente.o
-debug/interfacecrud.o
 debug/main.o
 debug/mainwindow.o
 debug/pedidovenda.o
@@ -10,7 +9,6 @@ debug/persistenciacliente.o
 debug/persistenciapedidovenda.o
 debug/persistenciaproduto.o
 debug/produto.o
-debug/thing.o
 debug/qrc_Arquivo_De_Recursos.o
 debug/moc_AdicionarClientes.o
 debug/moc_AdicionarPedido.o

@@ -1,23 +1,25 @@
 #ifndef PERSISTENCIACLIENTE_H
 #define PERSISTENCIACLIENTE_H
-#include<interfacecrud.h>
+#include<QSql>
+#include<QSqlDatabase>
+#include<QSqlQuery>
+#include<QSqlRecord>
+#include<QVariant>
 #include<cliente.h>
 #include<QCoreApplication>
-
-class PersistenciaCliente: public InterfaceCRUD
+using namespace std;
+class PersistenciaCliente
 {
     public:
         PersistenciaCliente();
        ~PersistenciaCliente(){}
-        int incluir(Thing obj);
-        int incluir(Thing obj, QString id_cliente){}
-        int incluir(Thing obj, QString data, QString id_cliente){}
-        void alterar(Thing  obj);
+        int incluir(Cliente obj);
+        void alterar(Cliente  obj);
         void deleteTabela();
         QSqlQuery criarListaCadastrados(QString order);
         QSqlQuery filteredSearch(QString key);
         QSqlQuery searchCustomerPurchases(QString key);
-        Thing pesquisarThing(QString key, int opcao, QString order);
+        Cliente pesquisarCliente(QString key, int opcao, QString order);
         int idMax();
 };
 

@@ -12,7 +12,6 @@
 #include<AdicionarProdutos.h>
 #include<AdicionarClientes.h>
 #include<AdicionarPedido.h>
-#include<interfacecrud.h>
 #include<persistenciaproduto.h>
 #include<persistenciapedidovenda.h>
 #include<persistenciacliente.h>
@@ -43,6 +42,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    InterfaceCRUD *persistencia;
+    PersistenciaCliente persistenciaClientes;
+    PersistenciaProduto persistenciaProdutos;
+    PersistenciaPedidoVenda persistenciaVendas;
 };
 #endif // MAINWINDOW_H

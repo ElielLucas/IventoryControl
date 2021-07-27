@@ -1,23 +1,26 @@
 #ifndef PERSISTENCIAPRODUTO_H
 #define PERSISTENCIAPRODUTO_H
-#include<interfacecrud.h>
+#include<QSql>
+#include<QSqlDatabase>
+#include<QSqlQuery>
+#include<QSqlRecord>
+#include<QVariant>
 #include<QString>
+#include<QCoreApplication>
 #include<produto.h>
-
-class PersistenciaProduto: public InterfaceCRUD
+using namespace std;
+class PersistenciaProduto
 {
     public:
         PersistenciaProduto();
        ~PersistenciaProduto(){}
-        int incluir(Thing obj);
-        int incluir(Thing obj, QString id_cliente){}
-        int incluir(Thing obj, QString data, QString id_cliente){}
-        void alterar(Thing obj);
+        int incluir(Produto obj);
+        void alterar(Produto obj);
         void deleteTabela();
         QSqlQuery criarListaCadastrados(QString order);
         QSqlQuery criarListaEstoque(QString order);
         QSqlQuery filteredSearch(QString key);
-        Thing pesquisarThing(QString key, int opcao, QString order);
+        Produto pesquisarProduto(QString key, int opcao, QString order);
         int idMax();            
 };
 

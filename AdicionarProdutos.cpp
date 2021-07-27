@@ -39,10 +39,8 @@ void AdicionarProdutos::on_btnIncluir_clicked()
 
             Produto x(nome,quant,preco, desc);
 
-            persistencia = new PersistenciaProduto;
-            persistencia->incluir(x);
-            QMessageBox::information(this,"Incluir Produto","O produto foi incluído!");
-            delete persistencia;
+            persistenciaProdutos.incluir(x);
+            QMessageBox::information(this,"Incluir Produto","O produto foi incluído!");          
        }
     } catch(QString erro)
     {
@@ -59,8 +57,7 @@ void AdicionarProdutos::on_txtKeySearch_3_textEdited()
         int n = ui->twProdutos->rowCount();
         for (int i = n; i >= 0; i--)ui->twProdutos->removeRow(i);
 
-        persistencia = new PersistenciaProduto;
-        QSqlQuery list = persistencia->filteredSearch(key);
+        QSqlQuery list = persistenciaProdutos.filteredSearch(key);
         int linha = 0;
 
         int iCod, iNome, iQuantidade, iPreco;
@@ -80,7 +77,7 @@ void AdicionarProdutos::on_txtKeySearch_3_textEdited()
         }
 
         ui->twProdutos->setRowCount(linha);
-        delete persistencia;
+
 
     } catch (QString erro)
     {
@@ -105,13 +102,12 @@ void AdicionarProdutos::on_btnEdit_clicked()
             preco = ui->txtPrecoEdit->text();
             desc = ui->textEditDescricaoBusca_2->toPlainText();;
 
-            persistencia = new PersistenciaProduto;
             Produto aux(cod, nome, quant, preco, desc);
-            persistencia->alterar(aux);
+            persistenciaProdutos.alterar(aux);
             mostrarLista(currentOrder);
 
             QMessageBox::information(this,"Editar Produto","O dados do produto foram alterados.");
-            delete persistencia;
+
         }
 
     } catch (QString erro)
@@ -151,8 +147,7 @@ void AdicionarProdutos::mostrarLista(QString order)
         ui->twProdutos->removeRow(i);
     }
 
-    persistencia = new PersistenciaProduto;
-    QSqlQuery list = persistencia->criarListaCadastrados(order);
+    QSqlQuery list = persistenciaProdutos.criarListaCadastrados(order);
     int linha = 0;
 
     int iCod, iNome, iQuant, iPrec;
@@ -171,7 +166,7 @@ void AdicionarProdutos::mostrarLista(QString order)
     }
 
     ui->twProdutos->setRowCount(linha);
-    delete persistencia;
+
 }
 
 void AdicionarProdutos::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
@@ -181,8 +176,7 @@ void AdicionarProdutos::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
         int linha = item->row();
         QString cod = ui->twProdutos->item(linha,0)->text();
 
-        persistencia = new PersistenciaProduto;
-        Thing obj = persistencia->pesquisarThing(cod, 0, currentOrder);
+        Produto obj = persistenciaProdutos.pesquisarProduto(cod, 0, currentOrder);
 
         ui->frDadosEdit->setVisible(true);
         ui->quadradim->setVisible(true);
@@ -191,8 +185,6 @@ void AdicionarProdutos::on_twProdutos_itemDoubleClicked(QTableWidgetItem *item)
         ui->txtQtdeEdit->setText(obj.getQuantidade());
         ui->txtPrecoEdit->setText(obj.getPreco());
         ui->textEditDescricaoBusca_2->setText(obj.getDescricao());
-
-        delete persistencia;
 
     }  catch (QString erro) {
         QMessageBox::information(this,"Erro",erro);

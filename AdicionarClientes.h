@@ -3,7 +3,6 @@
 
 #include <QDialog>
 #include<QDateTime>
-#include<interfacecrud.h>
 #include<persistenciacliente.h>
 #include<persistenciapedidovenda.h>
 #include<QTableWidgetItem>
@@ -43,7 +42,8 @@ private slots:
 
 private:
     Ui::AdicionarClientes *ui;
-    InterfaceCRUD *persistencia;
+    PersistenciaCliente persistenciaClientes;
+    PersistenciaPedidoVenda persistenciaVendas;
     QString currentOrder;
 
     void limparDadosIncluir();

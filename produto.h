@@ -2,12 +2,13 @@
 #define PRODUTO_H
 #include<QString>
 #include<iostream>
-#include<thing.h>
 using namespace std;
 
-class Produto: public Thing
+class Produto
 {
 private:
+    QString codigo;
+    QString nome;
     QString quantidade;
     QString preco;
     QString descricao;
@@ -22,6 +23,8 @@ public:
     void setPreco(QString preco);
     void setQuantidade(QString quantidade);
 
+    QString getCodigo()const{return codigo;}
+    QString getNome()const{return nome;}
     QString getQuantidade()const{return quantidade;}
     QString getPreco()const{return preco;}
     QString getDescricao()const{return descricao;}

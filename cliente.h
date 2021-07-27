@@ -1,9 +1,11 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
-#include<thing.h>
-class Cliente:public Thing
+#include<QString>
+class Cliente
 {
 private:
+    QString codigo;
+    QString nome;
     QString endereco;
     QString telefone;
     QString email;
@@ -17,9 +19,11 @@ public:
     void setTelefone(QString telefone);
     void setEmail(QString email){this->email=email;}
 
-    virtual QString getEndereco()const{return endereco;}
-    virtual QString getTelefone()const{return telefone;}
-    virtual QString getEmail()const{return email;}
+    QString getCodigo()const{return codigo;}
+    QString getNome()const{return nome;}
+    QString getEndereco()const{return endereco;}
+    QString getTelefone()const{return telefone;}
+    QString getEmail()const{return email;}
 };
 
 #endif // CLIENTE_H

@@ -7,6 +7,7 @@
 #include<QTableWidgetItem>
 #include<QDate>
 #include<cliente.h>
+#include<produto.h>
 #include<list>
 #include<QMessageBox>
 #include<QInputDialog>
@@ -58,12 +59,14 @@ private slots:
 
 private:
     Ui::AdicionarPedido *ui;
-    InterfaceCRUD *persistencia;
+    PersistenciaPedidoVenda persistenciaVendas;
+    PersistenciaProduto persistenciaProdutos;
+    PersistenciaCliente persistenciaClientes;
 
     QString currentOrder;
 
-    list<Thing> comprarProduto;
-    list<Thing> escolhidos;
+    list<Produto> comprarProduto;
+    list<Produto> escolhidos;
 
     void limparIncluirPedido();
     void limparListaMestre();

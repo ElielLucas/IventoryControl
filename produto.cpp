@@ -1,25 +1,24 @@
 #include "produto.h"
 
 Produto::Produto():
-    Thing(),
+    codigo(""),
     quantidade(""),
     preco(""),
     descricao("")
 {
 }
-Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao):
-    Thing()
+Produto::Produto(QString codigo, QString nome, QString quantidade, QString preco, QString descricao)
 {
-    Produto::setCodigo(codigo);
-    Produto::setNome(nome);
+    setCodigo(codigo);
+    setNome(nome);
     setDescricao(descricao);
     setQuantidade(quantidade);
     setPreco(preco);
 }
-Produto::Produto(QString nome, QString quantidade, QString preco, QString descricao):
-    Thing()
+Produto::Produto(QString nome, QString quantidade, QString preco, QString descricao)
 {
-    Produto::setNome(nome);
+    codigo="";
+    setNome(nome);
     setDescricao(descricao);
     setQuantidade(quantidade);
     setPreco(preco);
@@ -28,7 +27,7 @@ void Produto::setCodigo(QString codigo)
 {
     long long int aux=codigo.toLongLong();
     if(aux<=0)throw QString("Código inválido!");
-    Thing::setCodigo(codigo);
+    this->codigo=codigo;
 }
 
 void Produto::setNome(QString nome)
@@ -41,12 +40,18 @@ void Produto::setNome(QString nome)
     {
         aux+=nome[i].toLower();
     }
-    Thing::setNome(aux);
+    this->nome=aux;
 }
 void Produto::setQuantidade(QString quantidade)
 {
     int n=quantidade.toInt();
     if(n<0)throw QString("Essa quantidade é inválida!");
+    int cont=0;
+    for(int i=0;i<(int)quantidade.size();++i)
+    {
+        if((quantidade[i]<='0' && quantidade[i]>='9') || (quantidade[i]!='.' && quantidade[i]!=' '))cont++;
+    }
+    if(cont>0)throw QString("Texto não válido no campo de quantidade!");
     this->quantidade=quantidade;
 }
 void Produto::setPreco(QString preco)
