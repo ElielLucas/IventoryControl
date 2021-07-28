@@ -46,12 +46,6 @@ void Produto::setQuantidade(QString quantidade)
 {
     int n=quantidade.toInt();
     if(n<0)throw QString("Essa quantidade é inválida!");
-    int cont=0;
-    for(int i=0;i<(int)quantidade.size();++i)
-    {
-        if((quantidade[i]<='0' && quantidade[i]>='9') || (quantidade[i]!='.' && quantidade[i]!=' '))cont++;
-    }
-    if(cont>0)throw QString("Texto não válido no campo de quantidade!");
     this->quantidade=quantidade;
 }
 void Produto::setPreco(QString preco)
